@@ -17,76 +17,135 @@ export default function EnhancedNewsTicker() {
   const controls = useAnimation();
   const textRef = useRef(null);
   const containerRef = useRef(null);
+  const labelRef = useRef(null);
+
   const [isPaused, setIsPaused] = useState(false);
-  const [widths, setWidths] = useState({ textWidth: 2000, containerWidth: 1000 });
+  // singleSetWidth = width of ONE set of items (we render two sets for seamless loop)
+  const [singleSetWidth, setSingleSetWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
   const [currentX, setCurrentX] = useState(0);
 
-  const SPEED = 70; // pixels per second
+  const SPEED = 80; // pixels per second
 
-  // Measure width before paint
+  // Measure widths (single set width = half of the scrollWidth because we duplicate contents)
   useLayoutEffect(() => {
-    const measureWidth = () => {
-      if (textRef.current && containerRef.current) {
-        const totalWidth = textRef.current.scrollWidth;
-        const containerW = containerRef.current.offsetWidth;
-        setWidths({ textWidth: totalWidth, containerWidth: containerW });
-      }
+    const measure = () => {
+      if (!textRef.current || !containerRef.current) return;
+      const totalScroll = textRef.current.scrollWidth; // this contains two sets
+      const single = Math.round(totalScroll / 2);
+      const cw = containerRef.current.offsetWidth;
+      setSingleSetWidth(single);
+      setContainerWidth(cw);
     };
-    measureWidth();
-    window.addEventListener("resize", measureWidth);
-    return () => window.removeEventListener("resize", measureWidth);
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (textRef.current) ro.observe(textRef.current);
+    if (containerRef.current) ro.observe(containerRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      ro.disconnect();
+    };
   }, []);
 
-  // Start animation instantly
+  // Start animation when measurements are ready
   useLayoutEffect(() => {
-    const { textWidth, containerWidth } = widths;
-    if (textWidth && containerWidth) {
-      const distance = textWidth + containerWidth;
-      const duration = distance / SPEED;
+    if (!singleSetWidth || !containerWidth) return;
 
-      controls.start({
-        x: [containerWidth, -textWidth],
-        transition: {
-          duration,
-          ease: "linear",
-          repeat: Infinity,
-        },
-      });
+    // We animate from x: 0 to x: -singleSetWidth and repeat infinitely.
+    // This works because the markup contains two identical sets in a row.
+    const duration = singleSetWidth / SPEED;
+    controls.set({ x: 0 }); // ensure precise starting point
+    controls.start({
+      x: -singleSetWidth,
+      transition: {
+        duration,
+        ease: "linear",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    });
+  }, [singleSetWidth, containerWidth, controls]);
+
+  // Helper: read current transform X (in px) of the animated element
+  const readCurrentTransformX = () => {
+    if (!textRef.current) return 0;
+    const transform = getComputedStyle(textRef.current).transform;
+    if (!transform || transform === "none") return 0;
+    try {
+      const matrix = new DOMMatrixReadOnly(transform);
+      return matrix.m41; // px
+    } catch {
+      return 0;
     }
-  }, [widths, controls]);
+  };
 
   // Pause on hover
   const handleMouseEnter = () => {
     setIsPaused(true);
+    // stop animation (pauses at current frame)
     controls.stop();
 
-    // Save current position
-    if (textRef.current) {
-      const transform = getComputedStyle(textRef.current).transform;
-      if (transform !== "none") {
-        const matrix = new DOMMatrixReadOnly(transform);
-        setCurrentX(matrix.m41);
-      }
-    }
+    // save current x
+    const cx = readCurrentTransformX();
+    setCurrentX(cx);
   };
 
-  // Resume smoothly
+  // Resume on leave — compute remaining distance to travel in the current loop,
+  // then start a linear animation from currentX to -singleSetWidth and continue repeating.
   const handleMouseLeave = () => {
     setIsPaused(false);
 
-    const { textWidth, containerWidth } = widths;
-    const remainingDistance = Math.abs(-textWidth - currentX);
-    const remainingDuration = remainingDistance / SPEED;
+    if (!singleSetWidth) {
+      // fallback: restart full animation
+      const duration = singleSetWidth / SPEED;
+      controls.start({
+        x: -singleSetWidth,
+        transition: { duration, ease: "linear", repeat: Infinity, repeatType: "loop" },
+      });
+      return;
+    }
 
+    let cx = readCurrentTransformX();
+    setCurrentX(cx);
+
+    // Normalize cx into the range [-singleSetWidth, 0)
+    // Because the animation translates from 0 -> -singleSetWidth repetitively,
+    // the productive offset modulo singleSetWidth gives the progress.
+    // matrix.m41 will be negative (or zero). We'll convert to positive progress.
+    const abs = Math.abs(cx);
+    const progressInLoop = abs % singleSetWidth; // how much has already moved in current cycle
+    const remaining = singleSetWidth - progressInLoop; // px to go before one full cycle is done
+    // Duration for remaining chunk
+    const duration = remaining / SPEED;
+
+    // Animate from current position to the target (-singleSetWidth), then resume repeating
+    // We need to set immediate 'x' to current computed value so framer starts from the correct spot
+    controls.set({ x: cx });
     controls.start({
-      x: [currentX, -textWidth],
+      x: -singleSetWidth,
       transition: {
-        duration: remainingDuration,
+        duration: duration > 0 ? duration : singleSetWidth / SPEED,
         ease: "linear",
-        repeat: Infinity,
+        // After finishing this single pass, repeat full cycles
+        // Achieve this by chaining: first this animation, then start repeating animation in .then
       },
+    }).then(() => {
+      // restart continuous loop
+      controls.start({
+        x: -singleSetWidth,
+        transition: {
+          duration: singleSetWidth / SPEED,
+          ease: "linear",
+          repeat: Infinity,
+          repeatType: "loop",
+        },
+      });
     });
   };
+
+  // compute paddingLeft based on label width so layout adapts responsively
+  const labelWidth = labelRef.current ? labelRef.current.offsetWidth : 160;
 
   return (
     <Box
@@ -96,7 +155,7 @@ export default function EnhancedNewsTicker() {
       sx={{
         position: "relative",
         overflow: "hidden",
-        height: { xs: "45px", sm: "55px", md: "35px" },
+        height: { xs: "25px", sm: "35px", md: "35px" },
         display: "flex",
         alignItems: "center",
         background: "linear-gradient(135deg, #0a0a0a, #1a1a1a)",
@@ -109,24 +168,25 @@ export default function EnhancedNewsTicker() {
     >
       {/* 🔥 Label */}
       <Box
+        ref={labelRef}
         sx={{
           position: "absolute",
           left: 0,
           top: 0,
           bottom: 0,
-          background:
-            "linear-gradient(135deg, #ff4444 0%, #dd0000 50%, #aa0000 100%)",
+          background: "linear-gradient(135deg, #ff4444 0%, #dd0000 50%, #aa0000 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minWidth: { xs: "140px", sm: "140px", md: "160px" },
-          clipPath: "polygon(0 0, calc(100% - 25px) 0, 100% 100%, 0 100%)",
+          minWidth: { xs: "100px", sm: "120px", md: "160px" },
+          clipPath: "polygon(0 0, calc(100% - 5px) 0, 100% 100%, 0 100%)",
           boxShadow: "3px 0 15px rgba(255,68,68,0.6)",
           zIndex: 3,
+          px: 2,
         }}
       >
         <Typography
-          variant={{ xs: "caption", sm: "caption", md: "h6" }}
+          variant="caption"
           sx={{
             fontWeight: "bold",
             fontSize: { xs: "0.8rem", sm: "0.7rem", md: "1rem" },
@@ -138,28 +198,62 @@ export default function EnhancedNewsTicker() {
         </Typography>
       </Box>
 
-      {/* 📰 Scrolling Text */}
+      {/* Scrolling area */}
       <Box
         sx={{
-          marginLeft: { xs: "100px", sm: "140px", md: "180px" },
-          width: "calc(100% - 200px)",
+          marginLeft: `${labelWidth + 12}px`, // leave space for the label (12px buffer)
+          width: `calc(100% - ${labelWidth + 12}px)`,
           display: "flex",
           alignItems: "center",
           whiteSpace: "nowrap",
           overflow: "hidden",
         }}
       >
-        <motion.div ref={textRef} animate={controls}>
+        {/* motion.div is the moving strip. It contains TWO identical sets of content for seamless looping */}
+        <motion.div
+          ref={textRef}
+          animate={controls}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            // ensure transform uses translateX
+            willChange: "transform",
+          }}
+        >
+          {/* first copy */}
           <Typography
+            component="div"
             sx={{
-              display: "inline-block",
+              display: "inline-flex",
+              alignItems: "center",
               fontSize: { xs: "0.85rem", sm: "1rem", md: "0.95rem" },
               fontWeight: 500,
               color: "#ffffff",
+              gap: "100px",
             }}
           >
-            {[...newsItems, ...newsItems].map((item, i) => (
-              <span key={i} style={{ marginRight: "100px" }}>
+            {newsItems.map((item, i) => (
+              <span key={`a-${i}`} style={{ display: "inline-block" }}>
+                {item}
+              </span>
+            ))}
+          </Typography>
+
+          {/* second copy (duplicate) */}
+          <Typography
+            component="div"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              fontSize: { xs: "0.85rem", sm: "1rem", md: "0.95rem" },
+              fontWeight: 500,
+              color: "#ffffff",
+              gap: "100px",
+              ml: "40px",
+            }}
+          >
+            {newsItems.map((item, i) => (
+              <span key={`b-${i}`} style={{ display: "inline-block" }}>
                 {item}
               </span>
             ))}

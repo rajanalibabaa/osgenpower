@@ -1,311 +1,332 @@
-import React from 'react'
-import img1 from '../assets/Herobannerbgimage.jpg'
-import img2 from '../assets/Ecofriendlyimages.jpg'
-import { Box, Button, Typography, Container } from '@mui/material'
-import { styled, keyframes } from '@mui/material/styles'
+import React, { memo } from "react";
+import { Box, Button, Typography, Container } from "@mui/material";
+import { motion } from "framer-motion";
+import { useTheme, useMediaQuery } from "@mui/material";
+import { lazy } from "react";
+import img1 from "../assets/Herobannerbgimage.jpg"; // background image
+import img2 from '../assets/Ecofriendlyimages.png'
+import img3 from '../assets/HerSectionBanner.png'
+// Optimized animation variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+};
 
-// Animation keyframes
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
+const fadeInScale = {
+  initial: { opacity: 0, scale: 0.7, x: 150 },
+  animate: { opacity: 1, scale: 1, x: 0 },
+};
 
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`
+// Memoized button styles for better performance
+const getButtonStyles = (theme) => ({
+  primary: {
+    background: "linear-gradient(135deg, #ef0168ff 0%, #6b46c1 100%)",
+    borderRadius: "12px",
+    fontWeight: 600,
+    px: { xs: 2, sm: 3, md: 4 },
+    py: { xs: 1, sm: 1.25, md: 1.5 },
+    textTransform: "none",
+    boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+    border: "none",
+    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+    "&:hover": {
+      background: "linear-gradient(135deg, #ef016893 0%, #6b46c191 100%)",
+      transform: "translateY(-3px)",
+      boxShadow: "0 8px 25px rgba(102, 126, 234, 0.5)",
+    },
+    "&:active": {
+      transform: "translateY(-1px)",
+      boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+    },
+  },
+  outlined: {
+    color: "white",
+    borderColor: "rgba(255, 255, 255, 0.3)",
+    borderWidth: "2px",
+    borderRadius: "12px",
+    px: { xs: 2, sm: 3, md: 4 },
+    py: { xs: 1, sm: 1.25, md: 1.5 },
+    textTransform: "none",
+    fontWeight: 600,
+    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+    background: "rgba(255, 255, 255, 0.05)",
+    backdropFilter: "blur(10px)",
+    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.9)",
+      color: "#1a202c",
+      borderColor: "rgba(255, 255, 255, 0.9)",
+      transform: "translateY(-2px)",
+      boxShadow: "0 6px 20px rgba(255, 255, 255, 0.2)",
+    },
+    "&:active": {
+      transform: "translateY(0px)",
+    },
+  },
+});
 
-const slideInRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`
+const HeroSectionModern = memo(() => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const buttonStyles = getButtonStyles(theme);
 
-// Styled components
-const AnimatedTypography = styled(Typography)(({ delay = 0 }) => ({
-  animation: `${fadeInUp} 1s ease-out ${delay}s both`,
-}))
-
-const AnimatedButton = styled(Button)(({ delay = 0, variant }) => ({
-  animation: `${slideInUp} 0.8s ease-out ${delay}s both`,
-  margin: '8px',
-  padding: '12px 24px',
-  borderRadius: '25px',
-  textTransform: 'none',
-  fontWeight: 600,
-  fontSize: '16px',
-  transition: 'all 0.3s ease',
-  ...(variant === 'primary' && {
-    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-    color: 'white',
-    '&:hover': {
-      background: 'linear-gradient(45deg, #1976D2 30%, #0288D1 90%)',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 25px rgba(33, 150, 243, 0.3)',
-    }
-  }),
-  ...(variant === 'secondary' && {
-    background: 'linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)',
-    color: 'white',
-    '&:hover': {
-      background: 'linear-gradient(45deg, #388E3C 30%, #689F38 90%)',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 25px rgba(76, 175, 80, 0.3)',
-    }
-  }),
-  ...(variant === 'outline' && {
-    border: '2px solid white',
-    color: 'white',
-    background: 'rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(10px)',
-    '&:hover': {
-      background: 'white',
-      color: '#333',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
-    }
-  })
-}))
-
-const slideInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-const EcoFriendlyImage = styled('img')({
-  animation: `${slideInRight} 1.2s ease-out 1.5s both`,
-  borderRadius: '15px',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-  transition: 'transform 0.3s ease',
-  '&:hover': {
-    transform: 'scale(1.05)',
-  }
-})
-
-const EcoFriendlyBadge = styled(Box)({
-  position: 'absolute',
-  top: '-15px',
-  left: '20px',
-  background: 'linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)',
-  color: 'white',
-  padding: '8px 16px',
-  borderRadius: '20px',
-  fontSize: '14px',
-  fontWeight: 'bold',
-  animation: `${fadeInUp} 0.8s ease-out 2s both`,
-  boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)',
-})
-
-const HeroSectionContainer = () => {
   return (
-    <>
-      {/* Hero Section with Fixed Background */}
-      <Box
-        sx={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${img1})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed', // Fixed background
-          height: '100vh',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              textAlign: 'center',
-              color: 'white',
-              zIndex: 2,
-            }}
-          >
-            {/* Animated Main Title */}
-            <AnimatedTypography
-              variant="h2"
-              component="h1"
-              delay={0.2}
-              sx={{
-                fontWeight: 'bold',
-                fontSize: { xs: '2rem', md: '3.5rem' },
-                marginBottom: '20px',
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              Power That Never Fails — Reliable Generators
-            </AnimatedTypography>
-
-            {/* Animated Subtitle */}
-            <AnimatedTypography
-              variant="h5"
-              component="h2"
-              delay={0.4}
-              sx={{
-                fontWeight: 300,
-                fontSize: { xs: '1rem', md: '1.5rem' },
-                marginBottom: '10px',
-                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              Smart Energy. Total Service
-            </AnimatedTypography>
-
-            {/* Animated Description */}
-            <AnimatedTypography
-              variant="body1"
-              delay={0.6}
-              sx={{
-                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                marginBottom: '40px',
-                maxWidth: '600px',
-                margin: '0 auto 40px auto',
-                lineHeight: 1.6,
-                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              From sales and service to smart monitoring — we deliver end-to-end power solutions for
-              homes, industries, and businesses across India.
-            </AnimatedTypography>
-
-            {/* Animated Buttons */}
-            <Box sx={{ marginTop: '30px' }}>
-              <AnimatedButton variant="primary" delay={0.8}>
-                Explore Generators
-              </AnimatedButton>
-              <AnimatedButton variant="secondary" delay={1.0}>
-                Request Service
-              </AnimatedButton>
-              <AnimatedButton variant="outline" delay={1.2}>
-                Become a Dealer
-              </AnimatedButton>
-            </Box>
-          </Box>
-        </Container>
-
-        {/* Scroll Indicator */}
+    <Box
+      sx={{
+        position: "relative",
+        height: { xs: "80svh", md: "100vh" }, // Use svh for mobile
+        backgroundImage: {
+          xs: `linear-gradient(rgba(5, 20, 40, 0.8), rgba(5, 20, 40, 0.8)), url(${img1})`,
+          md: `linear-gradient(rgba(5, 20, 40, 0.6), rgba(5, 20, 40, 0.7)), url(${img1})`,
+        },
+        backgroundSize: "cover",
+        backgroundPosition: { xs: "center right", md: "center" },
+        backgroundRepeat: "no-repeat",
+        color: "#fff",
+        display: "flex",
+        overflow: "hidden",
+        minHeight: { xs: "600px", sm: "700px" },
+      }}
+    >
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
         <Box
           sx={{
-            position: 'absolute',
-            bottom: '30px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            animation: `${fadeInUp} 1s ease-out 2s both`,
+            mt: { xs: "8vh", sm: "10vh", md: "12vh" },
+            textAlign: { xs: "center", md: "left" },
+            maxWidth: { xs: "100%", md: "700px" },
+            px: { xs: 2, sm: 0 },
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'white',
-              marginBottom: '10px',
-              textAlign: 'center',
-            }}
+         {/* Main Heading */}
+<motion.div
+  variants={fadeInUp}
+  initial="initial"
+  animate="animate"
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <Typography
+    variant="h1"
+    sx={{
+      fontWeight: { xs: 600, md: 700 },
+      lineHeight: { xs: 1.1, md: 1.2 },
+      fontSize: {
+        xs: "1.8rem",
+        sm: "2.5rem",
+        md: "3rem",
+        lg: "3.5rem",
+      },
+      mb: { xs: 1.5, md: 2 },
+background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      // textShadow: "0 2px 20px rgba(255, 255, 255, 0.3)",
+      filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))",
+    }}
+  >
+    Power That Drives the Future Generations
+  </Typography>
+</motion.div>
+
+{/* Subtitle */}
+<motion.div
+  variants={fadeInUp}
+  initial="initial"
+  animate="animate"
+  transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+>
+  <Typography
+    variant="h6"
+    sx={{
+      fontWeight: 500,
+      mb: { xs: 2, md: 4 },
+      fontSize: { xs: "1rem", sm: "1.15rem", md: "1.25rem" },
+      // background: "linear-gradient(135deg, #ffffffff 0%, #34d399 50%, #fbbf24 100%)",
+      background:'white',
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      fontFamily: "'Inter', 'Roboto', sans-serif",
+      letterSpacing: "0.5px",
+      // textShadow: "0 1px 10px rgba(96, 165, 250, 0.3)",
+    }}
+  >
+    Reliable Generators • Smart Energy • Sustainable Solutions
+  </Typography>
+</motion.div>
+
+{/* Description */}
+<motion.div
+  variants={fadeInUp}
+  initial="initial"
+  animate="animate"
+  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+>
+  <Typography
+    variant="body1"
+    sx={{
+      lineHeight: 1.7,
+      mb: { xs: 3, sm: 4, md: 5 },
+      fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
+      color: "#f8fafc",
+      maxWidth: { xs: "100%", md: "600px" },
+      fontWeight: 400,
+      textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
+      opacity: 0.95,
+      "& strong": {
+        color: "#71f320ff",
+        fontWeight: 600,
+      },
+    }}
+  >
+    From homes to industries, we deliver <strong>uninterrupted power solutions</strong> 
+    that combine performance, efficiency, and eco-conscious design. 
+    <strong>Empower your business</strong> with the energy of innovation.
+  </Typography>
+</motion.div>
+
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           >
-            Scroll Down
-          </Typography>
-          <Box
-            sx={{
-              width: '2px',
-              height: '30px',
-              background: 'white',
-              margin: '0 auto',
-              animation: `${fadeInUp} 2s ease-in-out infinite alternate`,
+            <Box
+              sx={{
+                display: "flex",
+                gap: { xs: 1.5, sm: 2 },
+                flexWrap: "wrap",
+                justifyContent: { xs: "center", md: "flex-start" },
+                flexDirection: { xs: "column", sm: "row" },
+              }}
+            >
+              <Button variant="contained" size="large" sx={buttonStyles.primary}>
+                Explore Generators
+              </Button>
+
+              <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
+                Request Service
+              </Button>
+
+              {!isMobile && (
+                <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
+                  Request Dealership
+                </Button>
+              )}
+            </Box>
+
+            {/* Third button for mobile - stacked */}
+            {isMobile && (
+              <Box sx={{ mt: 1.5, display: "flex", justifyContent: "center" }}>
+                <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
+                  Request Dealership
+                </Button>
+              </Box>
+            )}
+          </motion.div>
+        </Box>
+      </Container>
+
+      {/* Eco-friendly badge - Responsive positioning */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          top: isMobile ? 490 : 30,
+          right: isMobile ? 10 : 30,
+          zIndex: 3,
+        }}
+      >
+        <img
+          src={img2}
+          alt="Eco Friendly"
+          style={{
+            width: isMobile ? 120 : isTablet ? 100 : 220,
+            height: isMobile ? 110 : isTablet ? 100 : 200,
+            objectFit: "contain",
+          }}
+          loading="lazy"
+        />
+      </motion.div>
+
+      {/* Hero image - Responsive positioning */}
+      {!isMobile && (
+        <motion.div
+          variants={fadeInScale}
+          initial="initial"
+          animate="animate"
+          transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            top: isTablet ? 430 : 280,
+            right: isTablet ? -20 : -60,
+            zIndex: 1,
+          }}
+        >
+          <img
+            src={img3}
+            alt="Generator"
+            style={{
+              width: isTablet ? 800 : 800,
+              height: isTablet ? 520 : 430,
+              objectFit: "contain",
+            }}
+            loading="lazy"
+          />
+        </motion.div>
+      )}
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        style={{
+          position: "absolute",
+          bottom: isMobile ? 10 : 15,
+          left: "50%",
+          transform: "translateX(-50%)",
+          textAlign: "center",
+          zIndex: 2,
+        }}
+      >
+        <Box
+          sx={{
+            width: isMobile ? 25 : 30,
+            height: isMobile ? 40 : 50,
+            border: "4px solid rgba(254, 29, 33, 1)",
+            borderRadius: 25,
+            margin: "0 auto",
+            position: "relative",
+          }}
+        >
+          <motion.div
+            animate={{ y: [3, 15, 3] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+            style={{
+              width: 5,
+              height: isMobile ? 18 : 16,
+              backgroundColor: "#f6e424ff",
+              borderRadius: 2,
+              position: "absolute",
+              top: 6,
+              left: "43%",
+              transform: "translateX(-50%)",
+              boxShadow: "0 0 8px rgba(0, 255, 0, 0.6)",
             }}
           />
         </Box>
-      </Box>
+      </motion.div>
+    </Box>
+  );
+});
 
-      {/* Content Section with Eco-Friendly Image */}
-      <Box
-        sx={{
-          padding: { xs: '60px 20px', md: '100px 50px' },
-          background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-          position: 'relative',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              gap: '50px',
-            }}
-          >
-            {/* Left Content */}
-            <Box sx={{ flex: 1 }}>
-              <AnimatedTypography
-                variant="h3"
-                delay={0.2}
-                sx={{
-                  fontWeight: 'bold',
-                  color: '#333',
-                  marginBottom: '20px',
-                  fontSize: { xs: '1.8rem', md: '2.5rem' },
-                }}
-              >
-                Eco-Friendly Power Solutions
-              </AnimatedTypography>
-              <AnimatedTypography
-                variant="body1"
-                delay={0.4}
-                sx={{
-                  color: '#666',
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                }}
-              >
-                Our commitment to the environment drives us to provide sustainable energy solutions 
-                that reduce carbon footprint while delivering reliable power for all your needs.
-              </AnimatedTypography>
-            </Box>
+HeroSectionModern.displayName = "HeroSectionModern";
 
-            {/* Right Image with Badge */}
-            <Box sx={{ flex: 1, position: 'relative', textAlign: 'center' }}>
-              <EcoFriendlyBadge>
-                🌱 100% Eco-Friendly
-              </EcoFriendlyBadge>
-              <EcoFriendlyImage 
-                src={img2} 
-                alt="Eco-Friendly Generator" 
-                style={{
-                  width: '100%',
-                  maxWidth: '400px',
-                  height: 'auto',
-                }}
-              />
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-    </>
-  )
-}
-
-export default HeroSectionContainer
+export default HeroSectionModern;
