@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import NewsTicker from './Components/NewsTicker';
 import AboutPage from './pages/AboutPage';
+import ContactUsPage from './pages/ContactUsPage';
 
 
 const theme = createTheme({
@@ -27,7 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage/>} />
           <Route path='/about' element={<AboutPage/>} />  
-          
+          <Route path='/contactus' element={<ContactUsPage/>} />
         </Routes>
       </Router>
       </ThemeProvider>
