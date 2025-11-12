@@ -20,7 +20,7 @@ const fadeInScale = {
 // Memoized button styles for better performance
 const getButtonStyles = (theme) => ({
   primary: {
-    background: "linear-gradient(135deg, #ef0168ff 0%, #6b46c1 100%)",
+        background: 'linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%)',
     borderRadius: "12px",
     fontWeight: 600,
     px: { xs: 2, sm: 3, md: 4 },

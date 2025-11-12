@@ -1,11 +1,19 @@
 import React from "react";
-import { Box, Typography, Grid, Paper, useTheme, useMediaQuery,Card, } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  useTheme,
+  useMediaQuery,
+  Card,
+} from "@mui/material";
 import { motion } from "framer-motion";
-import img1 from '../assets/Realtimegeneratormonitoring.jpg'
-import img2 from '../assets/PredictiveMaintenanceAlerts.jpg'
-import img3 from '../assets/AutomaticLoadBalancing.jpg'
-import img4 from '../assets/RemoteDiagnosticsSupport.jpg'
-import img5 from '../assets/EnergyEfficiencyReports.jpg'
+import img1 from "../assets/Realtimegeneratormonitoring.jpg";
+import img2 from "../assets/PredictiveMaintenanceAlerts.jpg";
+import img3 from "../assets/AutomaticLoadBalancing.jpg";
+import img4 from "../assets/RemoteDiagnosticsSupport.jpg";
+import img5 from "../assets/EnergyEfficiencyReports.jpg";
+import ContactButtons from "./ContactButtons";
 
 const features = [
   { img: img1, title: "Real-Time Generator Monitoring App" },
@@ -19,6 +27,22 @@ const SmartTechnology = () => {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Motion variants for smooth, batched animation
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.1, // Faster sequence instead of delay * index
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.9 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45 } },
+  };
+
   return (
     <Box
       sx={{
@@ -26,111 +50,105 @@ const SmartTechnology = () => {
         px: { xs: 3, md: 8 },
         bgcolor: "#ffffffff",
         textAlign: "center",
+        overflow: "hidden",
       }}
     >
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <Typography variant={isSm ? "h4" : "h3"} fontWeight="bold" gutterBottom color="#ff4400ff">
+        <Typography
+          variant={isSm ? "h4" : "h3"}
+          fontWeight="bold"
+          gutterBottom
+          color="#ff4400ff"
+        >
           Smart Technology
         </Typography>
-        <Box sx={{ maxWidth: 200, mx: "auto", mb: 5,  backgroundColor: "#ff6a00ff", height: 3}}/>
+        <Box
+          sx={{
+            maxWidth: 200,
+            mx: "auto",
+            mb: 5,
+            backgroundColor: "#ff6a00ff",
+            height: 3,
+            borderRadius: 2,
+          }}
+        />
         <Typography
           variant="body1"
           sx={{ maxWidth: 600, mx: "auto", color: "#555", mb: 6 }}
         >
-          We integrate the latest IoT & AI technologies to give our customers smarter insights,
-          better uptime, and lower running costs.
+          We integrate the latest IoT & AI technologies to give our customers
+          smarter insights, better uptime, and lower running costs.
         </Typography>
       </motion.div>
 
       {/* Features Grid */}
-      <Grid container spacing={4} justifyContent="center">
-  {features.map((feature, index) => (
-    <Grid item xs={12} sm={6} md={4} key={index}>
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.15, duration: 0.6 }}
-        whileHover={{ 
-          y: -15, 
-          transition: { duration: 0.3 } 
-        }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <Card
-          sx={{
-            p: 4,
-            borderRadius: 3,
-            height: "100%",
-            background: `url(${feature.img}) center/cover no-repeat`,
-            position: "relative",
-            overflow: "hidden",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            //   background: "rgba(255, 255, 255, 0.05)",
-            //   backdropFilter: "blur(10px)",
-            },
-            "&:hover": {
-              boxShadow: "0 20px 40px rgba(133, 234, 102, 0.3)",
-              "& .feature-icon": {
-                transform: "scale(1.1) rotate(5deg)",
-              },
-            },
-          }}
-        >
-          <Box sx={{ position: "relative", zIndex: 2, textAlign: "center" }}>
-            {/* <Box
-              className="feature-icon"
-              sx={{
-                width: 80,
-                height: 80,
-                borderRadius: "50%",
-                // background: "rgba(255, 255, 255, 0.15)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                mx: "auto",
-                mb: 3,
-                transition: "all 0.3s ease",
-                // backdropFilter: "blur(10px)",
-              }}
-            >
-              <Typography
-                variant="h3"
-                sx={{ color: "white", fontWeight: "bold" }}
+        <Grid container spacing={4} justifyContent="center" mb={{xs: 4, md: 8}}>
+          {features.map((feature, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <motion.div
+                variants={cardVariants}
+                whileHover={{
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.25, ease: "easeOut" },
+                }}
               >
-                {index + 1}
-              </Typography>
-            </Box> */}
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 600,
-                color: "#ffffffff",
-                lineHeight: 1.3,
-                textShadow: "5px 5px 10px rgba(0,0,0,0.3)",
-              }}
-            >
-              {feature.title}
-            </Typography>
-          </Box>
-        </Card>
+                <Card
+                  sx={{
+                    p: 4,
+                    borderRadius: 3,
+                    height: "100%",
+                    background: `url(${feature.img}) center/cover no-repeat`,
+                    position: "relative",
+                    overflow: "hidden",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                    "&:hover": {
+                      boxShadow: "0 15px 35px rgba(255,106,0,0.35)",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      textAlign: "center",
+                      backdropFilter: "blur(2px)",
+                      p: 2,
+                      borderRadius: 2,
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 600,
+                        color: "#ffffffff",
+                        lineHeight: 1.3,
+                        textShadow: "2px 2px 8px rgba(0,0,0,0.4)",
+                      }}
+                    >
+                      {feature.title}
+                    </Typography>
+                  </Box>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
       </motion.div>
-    </Grid>
-  ))}
-</Grid>
-
+      <ContactButtons />
     </Box>
   );
 };

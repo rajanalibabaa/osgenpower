@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -15,7 +15,6 @@ import { motion } from "framer-motion";
 import img1 from "../assets/wheareProviding.png";
 import img2 from "../assets/generaterservices.jpg";
 import img3 from "../assets/Generatesales.png";
-import img4 from "../assets/generatorhignlight.jpg";
 
 const services = [
   { title: "Generator Sales", icon: img3, color: "#ff6a00" },
@@ -30,7 +29,6 @@ const industries = [
   "Construction",
   "Hospitals",
   "IT / Data Centers",
-  "etc..",
 ];
 
 // Animation Variants
@@ -44,7 +42,12 @@ const fadeInUp = {
 };
 
 const ServiceCard = ({ service, index }) => (
-  <motion.div variants={fadeInUp} custom={index}>
+  <motion.div 
+    variants={fadeInUp} 
+    custom={index}
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
     <Card
       sx={{
         borderRadius: 3,
@@ -58,7 +61,7 @@ const ServiceCard = ({ service, index }) => (
         alignItems: "center",
         justifyContent: "flex-start",
         "&:hover": {
-          transform: "translateY(-8px) scale(1.02)",
+          transform: "translateY(-8px)",
           borderColor: `${service.color}60`,
         },
       }}
@@ -92,6 +95,7 @@ const ServiceCard = ({ service, index }) => (
             component="img"
             src={service.icon}
             alt={service.title}
+            loading="lazy"
             sx={{
               width: "100%",
               height: "100%",
@@ -115,20 +119,115 @@ const ServiceCard = ({ service, index }) => (
   </motion.div>
 );
 
+// Mobile scrollable service cards container
+const ServiceCardScrollable = () => {
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  // Track scroll position for indicators
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+      
+      const scrollPosition = scrollRef.current.scrollLeft;
+      const cardWidth = scrollRef.current.firstChild.offsetWidth;
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      
+      if (newIndex !== activeIndex && newIndex < services.length) {
+        setActiveIndex(newIndex);
+      }
+    };
+    
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, [activeIndex]);
+
+  return (
+    <Box sx={{ position: "relative", width: "100%" }}>
+      <Box
+        ref={scrollRef}
+        sx={{
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          gap: 2,
+          pb: 2,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          "&::-webkit-scrollbar": { display: "none" },
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            right: 0,
+            height: "100%",
+            width: "40px",
+            background: "linear-gradient(to right, rgba(255,255,255,0), #fff)",
+            pointerEvents: "none",
+            zIndex: 2,
+          }
+        }}
+      >
+        {services.map((service, index) => (
+          <Box
+            key={index}
+            sx={{
+              flex: "0 0 auto",
+              width: "230px", // Fixed width for mobile cards
+              scrollSnapAlign: "start",
+            }}
+          >
+            <ServiceCard service={service} index={index} />
+          </Box>
+        ))}
+      </Box>
+      
+      {/* Scroll indicators */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 1,
+          mt: 2,
+        }}
+      >
+        {services.map((service, index) => (
+          <Box
+            key={index}
+            sx={{
+              width: activeIndex === index ? "24px" : "8px",
+              height: "8px",
+              borderRadius: activeIndex === index ? "4px" : "50%",
+              backgroundColor: activeIndex === index 
+                ? service.color 
+                : `${service.color}40`,
+              transition: "all 0.3s ease",
+            }}
+          />
+        ))}
+      </Box>
+    </Box>
+  );
+};
+
 const WeAreProviding = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <>
     <Box
       sx={{
         position: "relative",
         overflow: "hidden",
-        py: { xs: 6, sm: 8, md: 12 },
+        py: { xs: 0, sm: 8, md: 12 },
         background: `url(${img1}) no-repeat right/contain`,
         backgroundPosition: {
-          xs: "calc(100% + 100px) center",
+          xs: "calc(100% + 70px) center",
           sm: "calc(100% + 200px) center",
           md: "calc(100% + 200px) center",
         },
@@ -143,7 +242,7 @@ const WeAreProviding = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <Box sx={{ textAlign: "center", mb: { xs: 4, md: 8 } }}>
+          <Box sx={{ textAlign: "center", mb: {  md: 8 } }}>
             <Typography
               variant={isMobile ? "h4" : "h3"}
               fontWeight="bold"
@@ -181,7 +280,7 @@ const WeAreProviding = () => {
           alignItems={{ xs: "center", md: "left" }}
           justifyContent={{ xs: "center", md: "space-between" }}
         >
-          <Grid item xs={12} md={6} sx={{ p: { xs:1, sm: 1, md: 5 } }}>
+          <Grid item xs={12} md={6} sx={{ p: { xs: 1, sm: 1, md: 5 } }}>
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -192,7 +291,8 @@ const WeAreProviding = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "#555",
+                    color: "#000000ff",
+                    textShadow: isMobile ? "0 1px 3px rgba(177, 165, 6, 0.5)" : null,
                     mb: 1,
                     lineHeight: 1.8,
                     fontSize: { xs: "1rem", md: "1.1rem" },
@@ -222,6 +322,7 @@ const WeAreProviding = () => {
                 <Typography
                   variant="h6"
                   sx={{
+                    mt: 2.5,
                     fontWeight: 700,
                     mb: 2,
                     color: "#333",
@@ -247,10 +348,10 @@ const WeAreProviding = () => {
                         px: 2,
                         py: 1,
                         background:
-                          "linear-gradient(135deg, #ff6a0020, #ff440020)",
-                        color: "#000000ff",
+                          "#ff003c96 ",
+                        color: "#ffffffff",
                         fontWeight: 600,
-                        fontSize: { xs: "0.75rem", sm: "0.85rem" },
+                        fontSize: { xs: "0.9rem", sm: "0.85rem" },
                         border: "1px solid #ff6a0030",
                         "&:hover": {
                           background:
@@ -266,33 +367,31 @@ const WeAreProviding = () => {
                 ))}
               </Box>
 
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: {
-                    xs: "1fr",
-                    sm: "1fr 1fr",
-                    md: "1fr 1fr",
-                  },
-                  gap: 2.5,
-                }}
-              >
-                {services.map((service, index) => (
-                  <ServiceCard key={index} service={service} index={index} />
-                ))}
-              </Box>
+              {/* Conditionally render either the grid or the scrollable version based on screen size */}
+              {isMobile || isTablet ? (
+                <ServiceCardScrollable />
+              ) : (
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: {
+                      xs: "1fr",
+                      sm: "1fr 1fr",
+                      md: "1fr 1fr",
+                    },
+                    gap: 2.5,
+                  }}
+                >
+                  {services.map((service, index) => (
+                    <ServiceCard key={index} service={service} index={index} />
+                  ))}
+                </Box>
+              )}
             </motion.div>
           </Grid>
         </Grid>
       </Container>
     </Box>
-    <Box
-      component={'img'}
-      src={img4}
-      alt="We Are Providing"
-      sx={{ width: '100%', height: 'auto' }}
-    />
-    </>
   );
 };
 
