@@ -35,6 +35,7 @@ import RightCapacitySolutionAboutimage from "../assets/RightCapacitySolutionAbou
 import TechnicalSupportAboutimage from "../assets/TechnicalSupportAboutimage.jpg"
 import WellExperiencedAboutimage from "../assets/WellExperiencedAboutimage.jpg"
 import TrustedBrandAboutimage from "../assets/TrustedBrandAboutimage.jpg"
+import img1 from '../assets/Aboutpagebackground.jpg'
 
 // Animation variants
 const fadeInUp = {
@@ -112,12 +113,12 @@ const AboutPage = () => {
   ];
 
   const features = [
-    { icon: <BuildIcon />,image: WellExperiencedAboutimage,  title: 'Well Experienced Staff', description: 'Professional team with extensive industry knowledge' },
-    { icon: <TrendingUpIcon />, image:RightCapacitySolutionAboutimage,title: 'Right Capacity Solutions', description: 'We conduct load studies and supply the right capacity generators actually required' },
-    { icon: <SecurityIcon />,image:CustomerSatisfactionAboutimage, title: 'Customer Satisfaction Focus', description: 'Committed to fulfilling customer power generation needs' },
-    { icon: <SupportIcon />,image:TechnicalSupportAboutimage, title: '24x7 Technical Support', description: 'Round-the-clock technical and on-site service support' },
-    { icon: <SecurityIcon />,image:TrustedBrandAboutimage, title: 'Trusted Brands', description: 'Carefully procured products from trusted suppliers only' },
-    { icon: <LocalShippingIcon />, image:ReliableDeliveryAboutimage, title: 'Reliable Delivery', description: 'Efficient delivery through wide sales and distribution network' }
+    { icon: <BuildIcon />,image: WellExperiencedAboutimage,  title: 'Well Experienced Staff' },
+    { icon: <TrendingUpIcon />, image:RightCapacitySolutionAboutimage,title: 'Right Capacity Solutions',  },
+    { icon: <SecurityIcon />,image:CustomerSatisfactionAboutimage, title: 'Customer Satisfaction Focus', },
+    { icon: <SupportIcon />,image:TechnicalSupportAboutimage, title: '24x7 Technical Support',  },
+    { icon: <SecurityIcon />,image:TrustedBrandAboutimage, title: 'Trusted Brands',  },
+    { icon: <LocalShippingIcon />, image:ReliableDeliveryAboutimage, title: 'Reliable Delivery', }
   ];
 
   return (
@@ -446,20 +447,11 @@ const AboutPage = () => {
         </Box>
       </Container>
 
-      {/* What We Do Section */}
-      <Container sx={{ mb: { xs: 6, md: 10 } }}>
-  <motion.div
-    initial="initial"
-    whileInView="animate"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={staggerContainer}
-  >
-    {/* ====== Header Section ====== */}
-    <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
       <motion.div variants={fadeInUp}>
         <Typography
           variant={isMobile ? "h4" : "h3"}
           fontWeight="bold"
+          textAlign={'center'}
           gutterBottom
           color={primaryOrange}
           sx={{
@@ -479,6 +471,18 @@ const AboutPage = () => {
           }}
         />
       </motion.div>
+
+      {/* What We Do Section */}
+      <Container sx={{ mb: { xs: 6, md: 3 },background:`url(${img1}) no-repeat center center / cover `,backgroundAttachment:'scroll' }}>
+  <motion.div
+    initial="initial"
+    whileInView="animate"
+    viewport={{ once: true, margin: "-50px" }}
+    variants={staggerContainer}
+  >
+    {/* ====== Header Section ====== */}
+    <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+      
 
       <motion.div variants={fadeInUp}>
         <Typography
@@ -538,7 +542,7 @@ const AboutPage = () => {
                     width: { xs: 70, sm: 80, md: 100 },
                     height: { xs: 70, sm: 80, md: 100 },
                     borderRadius: '50%',
-                    background: `linear-gradient(135deg, #F3C623, #FFB22C)`,
+                    background: '#CD2C58',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -633,7 +637,7 @@ const AboutPage = () => {
 
 
       {/* Why Choose Us Section */}
-      <Container
+      <Container  
         sx={{
           position: 'relative',
           py: { xs: 8, md: 12 },
@@ -670,7 +674,7 @@ const AboutPage = () => {
         <Box sx={{ textAlign: 'center', mb: 5 }}>
           <motion.div 
               variants={fadeInUp}
-              style={{ marginTop: '2rem' }}
+              // style={{ marginTop: '2rem' }}
             >
               <Typography 
                 variant={isMobile ? "h4" : "h3"} 
@@ -717,7 +721,7 @@ const AboutPage = () => {
                     textAlign: 'center',
                     borderRadius: 5,
                     overflow: 'hidden',
-                    background: `rgba(255,255,255,0.7)`,
+                    background: `rgba(255, 255, 255, 0.38)`,
                     backdropFilter: 'blur(12px)',
                     boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
                     transition: 'all 0.4s ease',
