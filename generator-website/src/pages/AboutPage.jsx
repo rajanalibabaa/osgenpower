@@ -197,7 +197,7 @@ const AboutPage = () => {
               variant="contained"
               size="large"
               endIcon={<ArrowForwardIcon />}
-              onClick={() => navigate('/ContactUsPage')}
+              onClick={() => navigate('/contact')}
               sx={{
                 px: 4,
                 py: 1.5,

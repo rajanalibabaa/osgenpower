@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import img1 from "../assets/wheareProviding.png";
 import img2 from "../assets/generaterservices.jpg";
 import img3 from "../assets/Generatesales.png";
+import img4 from "../assets/generatorhignlight.jpg";
 
 const services = [
   { title: "Generator Sales", icon: img3, color: "#ff6a00" },
@@ -119,6 +120,7 @@ const WeAreProviding = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
+    <>
     <Box
       sx={{
         position: "relative",
@@ -284,6 +286,13 @@ const WeAreProviding = () => {
         </Grid>
       </Container>
     </Box>
+    <Box
+      component={'img'}
+      src={img4}
+      alt="We Are Providing"
+      sx={{ width: '100%', height: 'auto' }}
+    />
+    </>
   );
 };
 
