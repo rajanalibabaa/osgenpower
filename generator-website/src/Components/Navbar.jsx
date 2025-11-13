@@ -44,14 +44,14 @@ const SUB_SERVICES = [
 
 const NAV_ITEMS = [
   { text: "Home", icon: <HomeIcon />, path: "/" },
-  { text: "About Us", icon: <InfoIcon />, path: "/about" },
   {
     text: "Generator Services",
     icon: <BuildIcon />,
     path: "/services/kirloskar", 
     dropdown: SUB_SERVICES, 
   },
-  { text: "Generator Sales / Dealership / Rental", icon: <StoreIcon />, path: "/sales" },
+  { text: "Generator Sales / Dealership / Rental", icon: <StoreIcon />, path: "/Generatorsales/Delearership/Rental" },
+    { text: "About Us", icon: <InfoIcon />, path: "/about" },
   { text: "Gallery", icon: <GalleryIcon />, path: "/gallery" },
   { text: "Contact Us", icon: <ContactIcon />, path: "/contact" },
 ];
@@ -69,12 +69,11 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
-  const location = useLocation(); // To track current path for active state
+  const location = useLocation(); 
 
   // State to manage the currently active main navigation item
   const [activeMainItem, setActiveMainItem] = useState("Home");
 
-  // Effect to update activeMainItem based on current URL path
   useEffect(() => {
     let currentPath = location.pathname;
     let foundActive = false;
@@ -122,6 +121,13 @@ const Navbar = () => {
     setOpenMobileServices(!openMobileServices);
   };
 
+  const handleLogoClick = () => {
+    navigate("/");
+    if (isMobile) {
+      setMobileOpen(false);
+    }
+  };
+
   // Drawer content for mobile
   const drawer = (
     <Box
@@ -143,6 +149,7 @@ const Navbar = () => {
           cursor: "pointer",
           
         }}
+         onClick={handleLogoClick} 
       >
         <img
           src="/omshakthigenpower_logo.jpg"
@@ -222,10 +229,12 @@ const Navbar = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              cursor: "pointer",
             }}
           >
             {/* Logo */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+              onClick={handleLogoClick}>
               <img
                 src="/omshakthigenpower_logo.jpg"
                 alt="Om Shakthi Gen Power"

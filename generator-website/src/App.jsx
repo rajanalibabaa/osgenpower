@@ -15,6 +15,7 @@ import ManufacturingAcoustic from './pages/ServiceComponents/ManufacturingAcoust
 import ElectricalWorks from './pages/ServiceComponents/ElectricalWorks';
 import PanelBoards from './pages/ServiceComponents/PanelBoards';
 import Footer from './Components/Footer';
+import SalesRentalDealerPage from './pages/SalesRentalDealerPage';
 
 
 const theme = createTheme({
@@ -38,6 +39,7 @@ function App() {
           <Route path='/' element={<HomePage/>} />
           <Route path='/about' element={<AboutPage/>} />  
           <Route path='/contactus' element={<ContactUsPage/>} />
+          <Route path='/Generatorsales/Delearership/Rental' element={<SalesRentalDealerPage/>} />
 
           {/* Services Routes */}
           <Route path="/services" element={<ServicesPage/>}>
