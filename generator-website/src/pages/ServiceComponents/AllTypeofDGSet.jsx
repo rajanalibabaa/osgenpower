@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  Stack,
-  useTheme,
-  useMediaQuery
-} from '@mui/material';
+import Stack from '@mui/material';
+
+import Card from "@mui/material/Card";
+
+import  {useTheme}  from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { SupervisorAccountOutlined } from '@mui/icons-material';
 
 const fadeInUp = {

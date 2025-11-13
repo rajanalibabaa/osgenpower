@@ -1,20 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
-  Stack,
-  useTheme
-} from '@mui/material';
-import {
-  PrecisionManufacturingOutlined,
-  EngineeringOutlined,
-  ChecklistOutlined,
-  VerifiedOutlined
-} from '@mui/icons-material';
+
+import Stack from '@mui/material';
+
+
+import  {useTheme}  from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import PrecisionManufacturingOutlined from '@mui/icons-material/PrecisionManufacturingOutlined';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },

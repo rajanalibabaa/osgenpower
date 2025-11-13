@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Grid,
-  useTheme,
-  useMediaQuery,
-  Card,
-} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import  {useTheme}  from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+
 import { easeIn, motion } from "framer-motion";
 import img1 from "../assets/Realtimegeneratormonitoring.jpg";
 import img2 from "../assets/PredictiveMaintenanceAlerts.jpg";

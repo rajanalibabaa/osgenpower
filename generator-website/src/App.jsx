@@ -1,20 +1,22 @@
-import { useState } from 'react'
+import { lazy, useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Components/Navbar';
-import HomePage from './pages/HomePage';
+// import HomePage from './pages/HomePage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import NewsTicker from './Components/NewsTicker';
-import AboutPage from './pages/AboutPage';
-import ContactUsPage from './pages/ContactUsPage';
-import ServicesPage from './pages/ServicesPage';
-import KirloskarGreenGenerators from './pages/ServiceComponents/KirloskarGreenGenerators';
-import AllTypeofDGSet from './pages/ServiceComponents/AllTypeofDGSet';
-import AllTurnkeyProject from './pages/ServiceComponents/AllTurnkeyProject';
-import ManufacturingAcoustic from './pages/ServiceComponents/ManufacturingAcoustic';
-import ElectricalWorks from './pages/ServiceComponents/ElectricalWorks';
-import PanelBoards from './pages/ServiceComponents/PanelBoards';
-import Footer from './Components/Footer';
+
+const HomePage=lazy(() => import('./pages/HomePage'));
+const NewsTicker=lazy(() => import('./Components/NewsTicker'));
+const AboutPage=lazy(() => import('./pages/AboutPage'));
+const ContactUsPage=lazy(() => import('./pages/HomePage'));
+const ServicesPage=lazy(() => import('./pages/ServicesPage'));
+const KirloskarGreenGenerators=lazy(() => import('./pages/ServiceComponents/KirloskarGreenGenerators'));
+const AllTypeofDGSet=lazy(() => import('./pages/ServiceComponents/AllTypeofDGSet'));
+const AllTurnkeyProject=lazy(() => import('./pages/ServiceComponents/AllTurnkeyProject'));
+const ManufacturingAcoustic=lazy(() => import('./pages/ServiceComponents/ManufacturingAcoustic'));
+const ElectricalWorks=lazy(() => import('./pages/ServiceComponents/ElectricalWorks'));
+const PanelBoards=lazy(() => import('./pages/ServiceComponents/PanelBoards'));
+const Footer=lazy(() => import('./Components/Footer'));
 
 
 const theme = createTheme({

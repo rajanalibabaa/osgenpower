@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import {
-  Box,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  useTheme,
-  useMediaQuery,
-  alpha,
-} from "@mui/material";
+import {useTheme,alpha} from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+
 import { motion } from "framer-motion";
 
 const sidebarVariants = {

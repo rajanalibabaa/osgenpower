@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-  IconButton,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  useMediaQuery,
-  useTheme,
-  Container,
-  Menu, 
-  MenuItem, 
-  Collapse, 
-} from "@mui/material";
-import {
-  Menu as MenuIcon,
-  Home as HomeIcon,
-  Info as InfoIcon,
-  Build as BuildIcon,
-  Store as StoreIcon,
-  Collections as GalleryIcon,
-  ContactMail as ContactIcon,
-  Add as AddIcon, 
-  ExpandLess, 
-  ExpandMore, 
-} from "@mui/icons-material";
+// ---- MUI Core Components ----
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Collapse from "@mui/material/Collapse";
+
+// ---- MUI Icons ----
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import BuildIcon from "@mui/icons-material/Build";
+import StoreIcon from "@mui/icons-material/Store";
+import GalleryIcon from "@mui/icons-material/Collections";
+import ContactIcon from "@mui/icons-material/ContactMail";
+import AddIcon from "@mui/icons-material/Add";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useNavigate, useLocation } from "react-router-dom";
 

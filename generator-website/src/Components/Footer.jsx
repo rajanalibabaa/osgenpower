@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  IconButton,
-  Link,
-  Divider,
-  Stack,
-  Fab,
+  
   useTheme,
-  useMediaQuery,
-} from "@mui/material";
-import {
-  Facebook,
-  Instagram,
-  LinkedIn,
-  Twitter,
-  WhatsApp,
-  YouTube,
-  Email,
-  Phone,
-  LocationOn,
-  Schedule,
-  BadgeOutlined,
-  KeyboardDoubleArrowUp,
-  KeyboardDoubleArrowDown,
-  RotateLeftOutlined,
-} from "@mui/icons-material";
+
+} from "@mui/material/styles";
+
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import Fab from "@mui/material/Fab";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import  Facebook  from "@mui/icons-material/Facebook";
+import  Instagram  from "@mui/icons-material/Instagram";
+import  WhatsApp  from "@mui/icons-material/WhatsApp";
+import  YouTube  from "@mui/icons-material/YouTube";
+import  Email  from "@mui/icons-material/Email";
+import  Phone  from "@mui/icons-material/Phone";
+import  LocationOn  from "@mui/icons-material/LocationOn";
+import  Schedule  from "@mui/icons-material/Schedule";
+import  BadgeOutlined  from "@mui/icons-material/BadgeOutlined";
+import  KeyboardDoubleArrowUp  from "@mui/icons-material/KeyboardDoubleArrowUp";
+import  KeyboardDoubleArrowDown  from "@mui/icons-material/KeyboardDoubleArrowDown";
+import  RotateLeftOutlined  from "@mui/icons-material/RotateLeftOutlined";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import logo from "../../public/omshakthigenpower_logo.jpg";
-import logo1 from "../../public/PoweredLogo.jpeg";
+import logo from "../assets/omshakthigenpower_logo.jpg";
+import logo1 from "../assets/PoweredLogo.jpeg";
 
 const MotionIconButton = motion(IconButton);
 
@@ -415,10 +415,8 @@ const Footer = () => {
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15548.99494697667!2d80.20123!3d13.019826!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52673b4b71dd57%3A0x98f75164702a5490!2sOM%20SHAKTHI%20GEN%20POWER!5e0!3m2!1sen!2sus!4v1763028853406!5m2!1sen!2sus"
                 width="800"
                 height="300"
-                allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+                      ></iframe>
             </Box>
           )}
         </Box>

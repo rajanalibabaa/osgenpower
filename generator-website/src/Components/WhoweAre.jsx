@@ -1,5 +1,10 @@
 import React from 'react';
-import { Box, Typography, Grid, Paper, useTheme, useMediaQuery } from '@mui/material';
+import  Grid from '@mui/material/Grid';
+import  {useTheme}  from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from 'framer-motion';
 import img4 from "../assets/generatorhignlight.jpg";
 import icon1 from "../assets/24-hours_9815847.png";
