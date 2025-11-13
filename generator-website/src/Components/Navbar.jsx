@@ -140,12 +140,14 @@ const Navbar = () => {
           alignItems: "center",
           justifyContent: "center",
           mb: 2,
+          cursor: "pointer",
+          
         }}
       >
         <img
           src="/omshakthigenpower_logo.jpg"
           alt="Logo"
-          style={{ height: 50, borderRadius: 6 }}
+          style={{ height: 50, borderRadius: 6, }}
         />
       </Box>
       <List>

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useNavigate } from "react-router-dom";
 
 const ContactButtons = () => {
+  const navigate = useNavigate();
+
   return (
     <Button
+    onClick={()=> navigate('/contact')}
       variant="contained"
       endIcon={<ArrowForwardIcon />}
       sx={{
+        
         background: 'linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%)',
         color: '#fff',
         textTransform: 'none',

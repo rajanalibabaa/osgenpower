@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import img5 from "../assets/Untitleddesign.jpg"; // Update with your actual image path
 import GradientButton from "./ContactButtons";
+import { useNavigate } from "react-router-dom";
 
 // Animation variants
 const containerVariants = {
@@ -58,6 +59,7 @@ const buttonVariants = {
 const ServiceHighlightSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
   
   const serviceButtons = [
     { text: "Generator Sales", color: "#9e1c60" },
@@ -71,7 +73,7 @@ const ServiceHighlightSection = () => {
       sx={{
         py: { xs: 6, md: 10 },
         px: { xs: 2, sm: 4, md: 8 },
-        background: 'linear-gradient(to bottom, #ffffff, #f7f7f7)',
+        // background: 'linear-gradient(to bottom, #ffffff, #f7f7f7)',
         overflow: 'hidden'
       }}
     >
@@ -228,6 +230,7 @@ const ServiceHighlightSection = () => {
               >
                 <Button
                   variant="contained"
+                  onClick={()=>navigate('/services') }
                   endIcon={<ArrowForwardIcon />}
                   sx={{
                     py: 1.5,

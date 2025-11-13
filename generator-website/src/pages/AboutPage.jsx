@@ -132,8 +132,8 @@ const AboutPage = () => {
         sx={{
           position: 'relative',
           color: 'white',
-          py: { xs: 6, md: 10 },
-          mb: 8,
+          py: { xs: 3, md: 10 },
+          mb: 4,
           textAlign: 'center',
           overflow: 'hidden',
           borderRadius: 0,
@@ -181,7 +181,7 @@ const AboutPage = () => {
               textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
             }}
           >
-            About Om Shakthi Gen Power
+            Om Shakthi Gen Power
           </Typography>
           <Typography 
             variant="h4" 
@@ -281,10 +281,10 @@ const AboutPage = () => {
       </Container>
 
       {/* Mission & Vision */}
-      <Container sx={{ mb: 5 }}>
+      <Container sx={{ mb: 1 }}>
         <Box
           sx={{
-            py: 5,
+            py: 2,
             backgroundColor: alpha(theme.palette.background.default, 0.5),
             textAlign: "center",
           }}
@@ -640,7 +640,7 @@ const AboutPage = () => {
       <Container  
         sx={{
           position: 'relative',
-          py: { xs: 8, md: 12 },
+          py: { xs: 1, md: 1 },
           mb: 3,
         }}
       >

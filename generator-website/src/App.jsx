@@ -14,6 +14,7 @@ import AllTurnkeyProject from './pages/ServiceComponents/AllTurnkeyProject';
 import ManufacturingAcoustic from './pages/ServiceComponents/ManufacturingAcoustic';
 import ElectricalWorks from './pages/ServiceComponents/ElectricalWorks';
 import PanelBoards from './pages/ServiceComponents/PanelBoards';
+import Footer from './Components/Footer';
 
 
 const theme = createTheme({
@@ -50,6 +51,7 @@ function App() {
           </Route>
           
         </Routes>
+        <Footer/>
       </Router>
       </ThemeProvider>
     </>
