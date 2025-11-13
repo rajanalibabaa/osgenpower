@@ -8,13 +8,9 @@ import {
   ListItemText,
   useTheme,
   useMediaQuery,
-  Drawer,
-  IconButton,
   alpha,
 } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
 import { motion } from "framer-motion";
-
 
 const sidebarVariants = {
   hidden: { x: -100, opacity: 0 },
@@ -44,7 +40,6 @@ const ROUTES = ["kirloskar","dg-set","turnkey","acoustic","electrical","panels"]
 const ServicesPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const navigate = useNavigate();
@@ -61,23 +56,22 @@ const ServicesPage = () => {
     setSelectedIndex(index);
     const slug = ROUTES[index] || "kirloskar";
     navigate(`/services/${slug}`);
-    if (isMobile) setMobileOpen(false);
   };
 
-  useEffect(() => {
-   
-    const parts = location.pathname.split("/").filter(Boolean); 
-    if (parts.length >= 2 && parts[0] === "services") {
-      const slug = parts[1];
-      const idx = ROUTES.indexOf(slug);
-      if (idx !== -1) {
-        setSelectedIndex(idx);
-        return;
-      }
+ useEffect(() => {
+  const parts = location.pathname.split("/").filter(Boolean);
+  if (parts.length >= 2 && parts[0] === "services") {
+    const slug = parts[1];
+    const idx = ROUTES.indexOf(slug);
+    if (idx !== -1) {
+      setSelectedIndex(idx);
+      window.scrollTo(0, 0); // 👈 ensure top of content is visible
+      return;
     }
-    // default fallback
-    setSelectedIndex(0);
-  }, [location.pathname]);
+  }
+  setSelectedIndex(0);
+}, [location.pathname]);
+
 
   // Sidebar content (keeps widths consistent)
   const sidebarContent = (
@@ -86,7 +80,7 @@ const ServicesPage = () => {
       initial="hidden"
       animate="visible"
       style={{
-        width: 320,
+        width: isMobile ? '100%' : 320,
         height: '100%',
         overflow: 'hidden',
         background: primaryGradient,
@@ -168,71 +162,47 @@ const ServicesPage = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', background: primaryGradient, overflowX: 'hidden' }}>
-      {/* Mobile Drawer */}
-      {isMobile && (
-        <>
-          <IconButton
-            aria-label="open sidebar"
-            onClick={() => setMobileOpen(true)}
-            sx={{
-              position: 'fixed',
-              top: 16,
-              left: 16,
-              zIndex: (t) => t.zIndex.drawer + 2,
-              color: neonGreen,
-              backgroundColor: alpha(neonTeal, 0.15),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onClose={() => setMobileOpen(false)}
-            ModalProps={{ keepMounted: true }}
-            sx={{
-              '& .MuiDrawer-paper': {
-                boxSizing: 'border-box',
-                width: 320,
-                background: primaryGradient,
-                color: '#fff',
-              },
-            }}
-          >
-            {sidebarContent}
-          </Drawer>
-        </>
-      )}
-
-      {/* Desktop Sidebar */}
-      {!isMobile && (
-        <Box
-          component="aside"
-          sx={{
-            width: 320,
-            flexShrink: 0,
-            height: '100vh',
-            position: 'sticky',
-            top: 0,
-            overflowY: 'auto',
-            borderRight: `1px solid ${alpha(neonGreen, 0.12)}`,
-            boxShadow: glowShadow,
-          }}
-        >
-          {sidebarContent}
-        </Box>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45 }}
-        style={{ flexGrow: 1 }}
+    <Box
+    sx={{
+      display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
+      minHeight: '100vh',
+      background: primaryGradient,
+      overflowX: 'hidden',
+    }}
+  >
+    {/* Sidebar - Hidden on mobile */}
+    {!isMobile && (
+      <Box
+        component="aside"
+        sx={{
+          width: 320,
+          flexShrink: 0,
+          height: '100vh',
+          position: 'sticky',
+          top: 0,
+          overflowY: 'auto',
+          borderRight: `1px solid ${alpha(neonGreen, 0.12)}`,
+          boxShadow: glowShadow,
+        }}
       >
-        <Outlet />
-      </motion.div>
-    </Box>
+        {sidebarContent}
+      </Box>
+    )}
+
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.45 }}
+  style={{
+    flexGrow: 1,
+    width: '100%',
+  }}
+>
+  <Outlet key={location.pathname} /> 
+</motion.div>
+
+  </Box>
   );
 };
 
