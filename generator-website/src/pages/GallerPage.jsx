@@ -10,19 +10,19 @@ import { motion } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
+import img1 from '../assets/gallery/osgenpower_gallery_img1.webp'
+import img2 from '../assets/gallery/osgenpower_gallery_img2.jpg'
+import img3 from '../assets/gallery/osgenpower_gallery_img3.jpg'
+import img7 from '../assets/gallery/osgenpower_gallery_img4.jpg'
+import img8 from '../assets/gallery/osgenpower_gallery_img5.jpg'
+import img4 from '../assets/osgenpower_Kcc35kv.png'
+import img5 from '../assets/osgenpower_kcc512kvimage.png'
+import img6 from '../assets/osgenpower_Kcc1530kvimage.jpeg'
+import img9 from '../assets/gallery/osgenpower_gallery.jpg'
 const GalleryPage = () => {
   // 🖼️ Example image array (replace with your real imported images)
   const images = [
-    "https://source.unsplash.com/random/800x600?generator",
-    "https://source.unsplash.com/random/800x600?electric",
-    "https://source.unsplash.com/random/800x600?factory",
-    "https://source.unsplash.com/random/800x600?light",
-    "https://source.unsplash.com/random/800x600?industry",
-    "https://source.unsplash.com/random/800x600?motor",
-    "https://source.unsplash.com/random/800x600?turbine",
-    "https://source.unsplash.com/random/800x600?energy",
-  ];
+    img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
   // 🧠 State
   const [open, setOpen] = useState(false);
@@ -46,7 +46,7 @@ const GalleryPage = () => {
         textAlign="center"
         fontWeight="bold"
         sx={{
-          mb: 5,
+          mb: 1,
           background: "linear-gradient(90deg,#d63939, #df3ebc)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
@@ -54,7 +54,16 @@ const GalleryPage = () => {
       >
         Our Gallery
       </Typography>
-
+<Box
+          sx={{
+            maxWidth: 200,
+            mx: "auto",
+            mb: 5,
+            backgroundColor: "#ff6a00ff",
+            height: 3,
+            borderRadius: 2,
+          }}
+        />
       {/* 🔳 Responsive Grid */}
       <Grid container spacing={2} justifyContent="center" px={{ xs: 2, md: 10 }}>
         {images.map((img, index) => (

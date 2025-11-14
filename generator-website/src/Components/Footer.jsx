@@ -31,7 +31,7 @@ import  RotateLeftOutlined  from "@mui/icons-material/RotateLeftOutlined";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/omshakthigenpower_logo.jpg";
-import logo1 from "../assets/PoweredLogo.jpeg";
+import logo1 from "../assets/cholaautomation_PoweredLogo.jpeg";
 
 const MotionIconButton = motion(IconButton);
 

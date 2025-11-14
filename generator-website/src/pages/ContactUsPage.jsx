@@ -26,7 +26,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MessageIcon from "@mui/icons-material/Message";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { motion } from "framer-motion";
-import img1 from "../assets/Contactus.jpg";
+import img1 from "../assets/osgenpower_Contactus.jpg";
 import FAQSection from "../Components/FAQSections";
 
 const MotionBox = motion(Box);
@@ -102,7 +102,7 @@ export default function ContactPage() {
       {/* 📩 ENQUIRY FORM SECTION */}
       <Box
         component="section"
-        sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 8 }, background: "#F9F8F6" }}
+        sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 8 }, background: "#F9F8F6",mb:{xs:4,md:8} }}
       >
         <Grid
           container

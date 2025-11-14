@@ -12,9 +12,9 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 
-import img1 from "../assets/wheareProviding.png";
-import img2 from "../assets/generaterservices.jpg";
-import img3 from "../assets/Generatesales.png";
+import img1 from "../assets/osgenpower_wheareProviding.png";
+import img2 from "../assets/osgenpower_generaterservices.jpg";
+import img3 from "../assets/osgenpower_Generatesales.png";
 
 const services = [
   { title: "Generator Sales", icon: img3, color: "#ff6a00" },

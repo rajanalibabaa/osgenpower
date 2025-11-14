@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import img5 from "../assets/Untitleddesign.jpg"; // Update with your actual image path
+import img5 from "../assets/osgenpower_Untitleddesign.jpg"; // Update with your actual image path
 import GradientButton from "./ContactButtons";
 import { useNavigate } from "react-router-dom";
 

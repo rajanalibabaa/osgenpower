@@ -9,6 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import { motion } from "framer-motion";
+import FAQSection from "../Components/FAQSections";
 
 const sidebarVariants = {
   hidden: { x: -100, opacity: 0 },
@@ -160,6 +161,7 @@ const ServicesPage = () => {
   );
 
   return (
+    <>
     <Box
     sx={{
       display: 'flex',
@@ -167,6 +169,7 @@ const ServicesPage = () => {
       minHeight: '100vh',
       background: primaryGradient,
       overflowX: 'hidden',
+      mb: isMobile ? 4 : 8,
     }}
   >
     {/* Sidebar - Hidden on mobile */}
@@ -199,8 +202,9 @@ const ServicesPage = () => {
 >
   <Outlet key={location.pathname} /> 
 </motion.div>
-
   </Box>
+  <FAQSection/>
+</>
   );
 };
 

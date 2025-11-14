@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import  Container from "@mui/material/Container"; 
 import Box from "@mui/material/Box"; 
 
-import img3 from "../../assets/ElectricalWorksServiceimage.jpg";
+import img3 from "../../assets/osgenpower_ElectricalWorksServiceimage.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
