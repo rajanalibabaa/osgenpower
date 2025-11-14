@@ -3,8 +3,10 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Components/Navbar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-const GalleryPage =React.lazy(()=>import('./pages/GallerPage'))
-const SalesRentalDealerPage=React.lazy(()=>import('./pages/SalesRentalDealerPage'))
+const GalleryPage =React.lazy(()=>import('./pages/GallerPage'));
+const TermsandConditionPage =React.lazy(()=> import('./pages/TermsandConditionPage') );
+const PrivacyPolicyPage = React.lazy(()=> import ('./pages/PrivacyPolicyPage'));
+const SalesRentalDealerPage=React.lazy(()=>import('./pages/SalesRentalDealerPage'));
 const HomePage=React.lazy(() => import('./pages/HomePage'));
 const NewsTicker=React.lazy(() => import('./Components/NewsTicker'));
 const AboutPage=React.lazy(() => import('./pages/AboutPage'));
@@ -42,7 +44,8 @@ function App() {
           <Route path='/Generatorsales/Delearership/Rental' element={<SalesRentalDealerPage/>} />
           <Route path='/contact' element={<ContactUsPage/>} />
           <Route path='/gallery' element={<GalleryPage/>} />
-
+          <Route path='/termsandcondition' element={<TermsandConditionPage/>}/>
+          <Route path='/privacypolicy' element={<PrivacyPolicyPage/>}/>
           {/* Services Routes */}
           <Route path="/services" element={<ServicesPage/>}>
             <Route index element={<Navigate to="kirloskar" replace />} />
@@ -53,7 +56,6 @@ function App() {
             <Route path="electrical" element={<ElectricalWorks/>} />
             <Route path="panels"     element={<PanelBoards/>} />
           </Route>
-          
         </Routes>
         <Footer/>
       </Router>
