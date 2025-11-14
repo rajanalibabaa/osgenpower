@@ -2,7 +2,6 @@ import React,{ lazy, useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Components/Navbar';
-// import HomePage from './pages/HomePage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 const GalleryPage =React.lazy(()=>import('./pages/GallerPage'))
 const SalesRentalDealerPage=React.lazy(()=>import('./pages/SalesRentalDealerPage'))
