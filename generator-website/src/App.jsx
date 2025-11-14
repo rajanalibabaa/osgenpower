@@ -1,22 +1,23 @@
-import { lazy, useState } from 'react'
+import React,{ lazy, useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Components/Navbar';
 // import HomePage from './pages/HomePage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import GalleryPage from './pages/GallerPage';
 
-const HomePage=lazy(() => import('./pages/HomePage'));
-const NewsTicker=lazy(() => import('./Components/NewsTicker'));
-const AboutPage=lazy(() => import('./pages/AboutPage'));
-const ContactUsPage=lazy(() => import('./pages/HomePage'));
-const ServicesPage=lazy(() => import('./pages/ServicesPage'));
-const KirloskarGreenGenerators=lazy(() => import('./pages/ServiceComponents/KirloskarGreenGenerators'));
-const AllTypeofDGSet=lazy(() => import('./pages/ServiceComponents/AllTypeofDGSet'));
-const AllTurnkeyProject=lazy(() => import('./pages/ServiceComponents/AllTurnkeyProject'));
-const ManufacturingAcoustic=lazy(() => import('./pages/ServiceComponents/ManufacturingAcoustic'));
-const ElectricalWorks=lazy(() => import('./pages/ServiceComponents/ElectricalWorks'));
-const PanelBoards=lazy(() => import('./pages/ServiceComponents/PanelBoards'));
-const Footer=lazy(() => import('./Components/Footer'));
+const HomePage=React.lazy(() => import('./pages/HomePage'));
+const NewsTicker=React.lazy(() => import('./Components/NewsTicker'));
+const AboutPage=React.lazy(() => import('./pages/AboutPage'));
+const ContactUsPage=React.lazy(() => import('./pages/ContactUsPage'));
+const ServicesPage=React.lazy(() => import('./pages/ServicesPage'));
+const KirloskarGreenGenerators=React.lazy(() => import('./pages/ServiceComponents/KirloskarGreenGenerators'));
+const AllTypeofDGSet=React.lazy(() => import('./pages/ServiceComponents/AllTypeofDGSet'));
+const AllTurnkeyProject=React.lazy(() => import('./pages/ServiceComponents/AllTurnkeyProject'));
+const ManufacturingAcoustic=React.lazy(() => import('./pages/ServiceComponents/ManufacturingAcoustic'));
+const ElectricalWorks=React.lazy(() => import('./pages/ServiceComponents/ElectricalWorks'));
+const PanelBoards=React.lazy(() => import('./pages/ServiceComponents/PanelBoards'));
+const Footer=React.lazy(() => import('./Components/Footer'));
 
 
 const theme = createTheme({
@@ -39,7 +40,8 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage/>} />
           <Route path='/about' element={<AboutPage/>} />  
-          <Route path='/contactus' element={<ContactUsPage/>} />
+          <Route path='/contact' element={<ContactUsPage/>} />
+          <Route path='/gallery' element={<GalleryPage/>} />
 
           {/* Services Routes */}
           <Route path="/services" element={<ServicesPage/>}>
