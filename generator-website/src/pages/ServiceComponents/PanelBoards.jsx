@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import Stack from '@mui/material';
+import Stack from '@mui/material/Stack';
 
 
 import  {useTheme}  from "@mui/material/styles";
