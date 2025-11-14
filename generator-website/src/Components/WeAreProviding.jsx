@@ -1,15 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
-import {
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Container,
-  Chip,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+
+import  {useTheme}  from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+import CardContent from "@mui/material/CardContent";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 
 import img1 from "../assets/wheareProviding.png";

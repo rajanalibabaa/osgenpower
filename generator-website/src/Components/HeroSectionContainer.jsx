@@ -1,5 +1,8 @@
 import React, { memo } from "react";
-import { Box, Button, Typography, Container } from "@mui/material";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
 import { lazy } from "react";

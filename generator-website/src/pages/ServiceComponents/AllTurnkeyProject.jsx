@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Box, Container, Typography, Grid, Card, Stack,Chip ,Paper  } from "@mui/material"; 
-import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
-import SettingsInputComponentOutlinedIcon from "@mui/icons-material/SettingsInputComponentOutlined";
-import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined";
+import  Card  from "@mui/material/Card"; 
+import Grid from "@mui/material/Grid"; 
+import Typography from "@mui/material/Typography"; 
+import Container from "@mui/material/Container"; 
+import Box from "@mui/material/Box"; 
+
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
-import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import img2 from "../../assets/TurnkeyServiceimage.jpg"
 
 const fadeInUp = {

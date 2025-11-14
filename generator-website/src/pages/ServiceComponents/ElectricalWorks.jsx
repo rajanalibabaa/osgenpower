@@ -1,7 +1,11 @@
 // src/pages/ServiceComponents/ElectricalWorks.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { Box, Container, Typography, Card } from "@mui/material"; 
+import  Card  from "@mui/material/Card"; 
+import Typography from "@mui/material/Typography"; 
+import  Container from "@mui/material/Container"; 
+import Box from "@mui/material/Box"; 
+
 import img3 from "../../assets/ElectricalWorksServiceimage.jpg";
 
 const fadeInUp = {

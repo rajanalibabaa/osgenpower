@@ -1,5 +1,9 @@
 import React from "react";
-import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
+import  {useTheme}  from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import img5 from "../assets/Untitleddesign.jpg"; // Update with your actual image path
