@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { Box, CircularProgress } from "@mui/material";
+import React from "react";
+import Box from "@mui/material/Box";
 import { motion } from "framer-motion";
 // 🧠 Lazy-loaded sections for performance
 const HeroSectionContainer = React.lazy(() => import("../Components/HeroSectionContainer"));

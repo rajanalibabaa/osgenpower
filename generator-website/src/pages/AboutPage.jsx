@@ -27,7 +27,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { motion } from 'framer-motion';
 import { keyframes } from '@emotion/react';
 
-import Aboutusbgimage from "../assets/osgenpower_Aboutusbgimage.png";
+import Aboutusbgimage from "../assets/osgenpower_Aboutusbgimage.jpeg";
 import CustomerSatisfactionAboutimage from "../assets/osgenpower_CustomerSatisfactionAboutimage.jpg"
 import ReliableDeliveryAboutimage from "../assets/osgenpower_ReliableDeliveryAboutimage.jpg"
 import RightCapacitySolutionAboutimage from "../assets/osgenpower_RightCapacitySolutionAboutimage.jpg"
