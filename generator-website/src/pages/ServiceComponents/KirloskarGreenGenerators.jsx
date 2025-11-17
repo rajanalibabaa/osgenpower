@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
-import img1 from "../../assets/KirloskarGreenimage.jpg";
+import img1 from "../../assets/osgenpower_KirloskarGreenimage.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },

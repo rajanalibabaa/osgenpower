@@ -8,11 +8,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 
 import { easeIn, motion } from "framer-motion";
-import img1 from "../assets/Realtimegeneratormonitoring.jpg";
-import img2 from "../assets/PredictiveMaintenanceAlerts.jpg";
-import img3 from "../assets/AutomaticLoadBalancing.jpg";
-import img4 from "../assets/RemoteDiagnosticsSupport.jpg";
-import img5 from "../assets/EnergyEfficiencyReports.jpg";
+import img1 from "../assets/osgenpower_Realtimegeneratormonitoring.jpg";
+import img2 from "../assets/osgenpower_PredictiveMaintenanceAlerts.jpg";
+import img3 from "../assets/osgenpower_AutomaticLoadBalancing.jpg";
+import img4 from "../assets/osgenpower_RemoteDiagnosticsSupport.jpg";
+import img5 from "../assets/osgenpower_EnergyEfficiencyReports.jpg";
 import ContactButtons from "./ContactButtons";
 
 const features = [

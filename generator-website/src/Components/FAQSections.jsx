@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState } from "react";
 import {  useTheme} from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -69,6 +69,11 @@ const FAQSection = () => {
   const primaryColor = "#000000ff";
   const secondaryColor = "#FF7F50";
 
+   const [expanded, setExpanded] = useState(false);
+    const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   return (
     <Box
       sx={{
@@ -88,32 +93,30 @@ const FAQSection = () => {
           viewport={{ once: true }}
         >
           <Typography
-            variant="h4"
+            variant="h3"
             fontWeight="700"
             textAlign="center"
-            sx={{
-              color: primaryColor,
-              mb: 2,
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              '&::after': {
-                content: '""',
-                display: 'block',
-                width: '180px',
-                height: '2px',
-                background: secondaryColor,
-                margin: '10px auto 0',
-              },
-            }}
+             color="#ff4400"
+           
           >
             Frequently Asked Questions
           </Typography>
+            <Box
+      sx={{
+        width: 100,
+        mt:1,
+        height: 3,
+        backgroundColor: "#ff6a00",
+        mx: "auto",
+      }}
+    />
           <Typography
             variant="body1"
             textAlign="center"
             sx={{
               color: "text.secondary",
               mb: 6,
+              mt:3,
               maxWidth: 600,
               mx: "auto",
               fontSize: "1rem",
@@ -125,69 +128,72 @@ const FAQSection = () => {
           </Typography>
         </MotionBox>
 
-        {/* FAQ Accordion List */}
-        {faqData.map((faq, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
-            viewport={{ once: true }}
-          >
-            <Accordion
-              elevation={2}
-              sx={{
-                mb: 2,
-                borderRadius: 2,
-                overflow: "hidden",
-                border: `1px solid ${primaryColor}30`,
-                background:
-                  theme.palette.mode === "dark"
-                    ? "rgba(255, 255, 255, 0.07)"
-                    : "rgba(255, 255, 255, 0.8)",
-                backdropFilter: "blur(8px)",
-                transition: "all 0.3s ease",
-                "&:before": { display: "none" },
-                "&:hover": {
-                  boxShadow: `0 4px 20px ${secondaryColor}33`,
-                },
-              }}
-            >
-              <AccordionSummary
-                expandIcon={
-                  <ExpandMoreIcon sx={{ color: primaryColor, fontSize: 26 }} />
-                }
-                aria-controls={`panel-${index}-content`}
-                id={`panel-${index}-header`}
-              >
-                <Typography
-                  variant="subtitle1"
-                  fontWeight="600"
-                  sx={{
-                    color: theme.palette.mode === "dark" ? "#fff" : "#111",
-                    fontSize: { xs: "1rem", md: "1.05rem" },
-                  }}
-                >
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
+      {/* FAQ Accordion List */}
+      
+{faqData.map((faq, index) => (
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.05 }}
+    viewport={{ once: true }}
+  >
+    <Accordion
+      expanded={expanded === `panel${index}`}
+      onChange={handleChange(`panel${index}`)}
+      elevation={2}
+      sx={{
+        mb: 2,
+        borderRadius: 2,
+        overflow: "hidden",
+        border: `1px solid ${primaryColor}30`,
+        background:
+          theme.palette.mode === "dark"
+            ? "rgba(255, 255, 255, 0.07)"
+            : "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(8px)",
+        transition: "all 0.3s ease",
+        "&:before": { display: "none" },
+        "&:hover": {
+          boxShadow: `0 4px 20px ${secondaryColor}33`,
+        },
+      }}
+    >
+      <AccordionSummary
+        expandIcon={
+          <ExpandMoreIcon sx={{ color: primaryColor, fontSize: 26 }} />
+        }
+        aria-controls={`panel-${index}-content`}
+        id={`panel-${index}-header`}
+      >
+        <Typography
+          variant="subtitle1"
+          fontWeight="600"
+          sx={{
+            color: theme.palette.mode === "dark" ? "#fff" : "#111",
+            fontSize: { xs: "1rem", md: "1.05rem" },
+          }}
+        >
+          {faq.question}
+        </Typography>
+      </AccordionSummary>
 
-              <AccordionDetails>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "text.secondary",
-                    lineHeight: 1.7,
-                    fontSize: "0.95rem",
-                    pl: 0.5,
-                  }}
-                >
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          </motion.div>
-        ))}
+      <AccordionDetails>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+            lineHeight: 1.7,
+            fontSize: "0.95rem",
+            pl: 0.5,
+          }}
+        >
+          {faq.answer}
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  </motion.div>
+))}
       </Container>
     </Box>
   );

@@ -27,14 +27,15 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { motion } from 'framer-motion';
 import { keyframes } from '@emotion/react';
 
-import Aboutusbgimage from "../assets/Aboutusbgimage.png";
-import CustomerSatisfactionAboutimage from "../assets/CustomerSatisfactionAboutimage.jpg"
-import ReliableDeliveryAboutimage from "../assets/ReliableDeliveryAboutimage.jpg"
-import RightCapacitySolutionAboutimage from "../assets/RightCapacitySolutionAboutimage.jpg"
-import TechnicalSupportAboutimage from "../assets/TechnicalSupportAboutimage.jpg"
-import WellExperiencedAboutimage from "../assets/WellExperiencedAboutimage.jpg"
-import TrustedBrandAboutimage from "../assets/TrustedBrandAboutimage.jpg"
-import img1 from '../assets/Aboutpagebackground.jpg'
+import Aboutusbgimage from "../assets/osgenpower_Aboutusbgimage.jpeg";
+import CustomerSatisfactionAboutimage from "../assets/osgenpower_CustomerSatisfactionAboutimage.jpg"
+import ReliableDeliveryAboutimage from "../assets/osgenpower_ReliableDeliveryAboutimage.jpg"
+import RightCapacitySolutionAboutimage from "../assets/osgenpower_RightCapacitySolutionAboutimage.jpg"
+import TechnicalSupportAboutimage from "../assets/osgenpower_TechnicalSupportAboutimage.jpg"
+import WellExperiencedAboutimage from "../assets/osgenpower_WellExperiencedAboutimage.jpg"
+import TrustedBrandAboutimage from "../assets/osgenpower_TrustedBrandAboutimage.jpg"
+import img1 from '../assets/osgenpower_Aboutpagebackground.jpg'
+import FAQSection from '../Components/FAQSections';
 
 // Animation variants
 const fadeInUp = {
@@ -604,7 +605,7 @@ const AboutPage = () => {
                     gutterBottom
                     sx={{
                       fontWeight: 700,
-                      background: `linear-gradient(135deg, #84994F, #A6B28B)`,
+                      background: `linear-gradient(135deg, #000000ff, #000000ff)`,
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       color: 'transparent',
@@ -886,7 +887,7 @@ const AboutPage = () => {
     </Paper>
   </motion.div>
 </Container>
-
+<FAQSection />
     </Box>
   );
 };

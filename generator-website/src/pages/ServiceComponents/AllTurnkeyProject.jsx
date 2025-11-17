@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box"; 
 
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
-import img2 from "../../assets/TurnkeyServiceimage.jpg"
+import img2 from "../../assets/osgenpower_TurnkeyServiceimage.jpg"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -51,8 +51,8 @@ const AllTurnkeyProject = () => {
           filter: "blur(100px)",
           animation: 'pulse 5s infinite alternate', 
           '@keyframes pulse': {
-            '0%': { transform: 'scale(1)' },
-            '100%': { transform: 'scale(1.1)' },
+            '0%': { transform: 'scale(1)'},
+            '100%': { transform: 'scale(1.1)'},
           },
         }}
       />

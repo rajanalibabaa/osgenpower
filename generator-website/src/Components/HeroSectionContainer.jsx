@@ -5,10 +5,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
-import { lazy } from "react";
-import img1 from "../assets/Herobannerbgimage.jpg"; // background image
-import img2 from '../assets/Ecofriendlyimages.png'
-import img3 from '../assets/HerSectionBanner.png'
+import img1 from "../assets/osgenpower_Herobannerbgimage.jpg"; // background image
+import img2 from '../assets/osgenpower_Ecofriendlyimages.png'
+import img3 from '../assets/osgenpower_HerSectionBanner.png'
 // Optimized animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },

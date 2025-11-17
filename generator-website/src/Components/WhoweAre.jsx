@@ -6,11 +6,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from 'framer-motion';
-import img4 from "../assets/generatorhignlight.jpg";
-import icon1 from "../assets/24-hours_9815847.png";
-import icon2 from "../assets/Iot.png";
-import icon3 from "../assets/green-power.png";
-import icon4 from "../assets/quality-assurance.png";
+import img4 from "../assets/osgenpower_generatorhignlight.jpg";
+import icon1 from "../assets/osgenpower_24-hours.png";
+import icon2 from "../assets/osgenpower_Iot.png";
+import icon3 from "../assets/osgenpower_green-power.png";
+import icon4 from "../assets/osgenpower_quality-assurance.png";
 import ContactButtons from './ContactButtons';
 
 const highlights = [

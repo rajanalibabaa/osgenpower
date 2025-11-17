@@ -12,13 +12,13 @@ import { motion } from "framer-motion";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-import image1 from "../assets/Kcc35kv.png";
-import image2 from "../assets/Kcc512kvimage.png";
-import image3 from "../assets/Kcc1520kvimage.png";
-import image4 from "../assets/Kcc1530kvimage.png";
-import image5 from "../assets/koel-green-genset-40kva-125kva.png";
-import image6 from "../assets/160kVA-250kVAimage.png";
-import image7 from "../assets/320110kvaimage.png";
+import image1 from "../assets/osgenpower_Kcc35kv.png";
+import image2 from "../assets/osgenpower_Kcc512kvimage.png";
+import image3 from "../assets/osgenpower_Kcc1520kvimage.png";
+import image4 from "../assets/osgenpower_Kcc1530kvimage.jpeg";
+import image5 from "../assets/osgenpower_koel-green-genset-40kva-125kva.jpg";
+import image6 from "../assets/osgenpower_160kVA-250kVAimage.jpg";
+import image7 from "../assets/osgenpower_320110kvaimage.png";
 
 const useCardData = () =>
   useMemo(
