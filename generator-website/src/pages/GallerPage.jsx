@@ -99,111 +99,83 @@ const GalleryPage = () => {
       />
 
       {/* 🎞️ Main Slideshow Section with Arrows */}
-     <Box
+<Box
   sx={{
-    maxWidth: "1200px",
-    width: "100%",
-    mx: "auto",   
+    mx: "auto",
     position: "relative",
-    px: { xs: 0, md: 0 }, 
     cursor: "pointer",
     mb: 4,
-    borderRadius: "12px",
-    overflow: "hidden",
-    boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+    p: 0,
+    border: "none",
+    boxShadow: "none",
+    borderRadius: 0,
+    display: "flex",
+    justifyContent: "center",   
+    alignItems: "center",       
   }}
   onClick={() => handleOpenModal(activeDisplayIndex)}
 >
 
-        <AnimatePresence mode="wait">
-         <motion.img
-  key={activeDisplayIndex}
-  src={allImages[activeDisplayIndex]}
-  alt={`Gallery Image ${activeDisplayIndex + 1}`}
-  initial={{ opacity: 0, scale: 1.02 }}
-  animate={{ opacity: 1, scale: 1 }}
-  exit={{ opacity: 0, scale: 0.98 }}
-  transition={{ duration: 0.6 }}
-  style={{ width: "100%" }}  // keep width only in inline style
-  sx={{
-    height: { xs: "45vh", sm: "55vh", md: "60vh", lg: "65vh" },
-    objectFit: "cover",
-    maxWidth: "1200px",
-    display: "block",
-    borderRadius: "12px",
-  }}
-/>
 
-        </AnimatePresence>
+  <AnimatePresence mode="wait">
+    <motion.img
+      key={activeDisplayIndex}
+      src={allImages[activeDisplayIndex]}
+      alt={`Gallery Image ${activeDisplayIndex + 1}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        height: "auto",
+        alignItems:"center",
+        display: "block",
+        background: "none",
+        margin: 0,
+        padding: 0,
+      }}
+    />
+  </AnimatePresence>
 
-        {/* Left & Right Nav Buttons */}
-       <IconButton
-  onClick={(e) => {
-    e.stopPropagation();
-    handlePrev();
-  }}
-  sx={{
-    position: "absolute",
-    top: "50%",
-    left: { xs: 5, sm: 15, md: 25 },    // Responsive left space
-    transform: "translateY(-50%)",
-    color: "white",
-    backgroundColor: "rgba(0,0,0,0.3)",
-    p: { xs: 0.5, sm: 1 },               // Smaller padding on mobile
-    "& svg": { fontSize: { xs: "20px", sm: "28px", md: "34px" } }, // Arrow resize
-    "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
-  }}
->
-  <ArrowBackIosNewIcon />
-</IconButton>
+  {/* Left Arrow */}
+  <IconButton
+    onClick={(e) => {
+      e.stopPropagation();
+      handlePrev();
+    }}
+    sx={{
+      position: "absolute",
+      top: "50%",
+      left: 10,
+      transform: "translateY(-50%)",
+      color: "white",
+      backgroundColor: "rgba(0,0,0,0.3)",
+      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+    }}
+  >
+    <ArrowBackIosNewIcon />
+  </IconButton>
 
-<IconButton
-  onClick={(e) => {
-    e.stopPropagation();
-    handleNext();
-  }}
-  sx={{
-    position: "absolute",
-    top: "50%",
-    right: { xs: 5, sm: 15, md: 25 },  
-    transform: "translateY(-50%)",
-    color: "white",
-    backgroundColor: "rgba(0,0,0,0.3)",
-    p: { xs: 0.5, sm: 1 },
-    "& svg": { fontSize: { xs: "20px", sm: "28px", md: "34px" } },
-    "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
-  }}
->
-  <ArrowForwardIosIcon />
-</IconButton>
+  {/* Right Arrow */}
+  <IconButton
+    onClick={(e) => {
+      e.stopPropagation();
+      handleNext();
+    }}
+    sx={{
+      position: "absolute",
+      top: "50%",
+      right: 10,
+      transform: "translateY(-50%)",
+      color: "white",
+      backgroundColor: "rgba(0,0,0,0.3)",
+      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+    }}
+  >
+    <ArrowForwardIosIcon />
+  </IconButton>
+</Box>
 
-
-        {/* Image Indicator Dots */}
-        <Box
-          position="absolute"
-          bottom={20}
-          left="50%"
-          sx={{
-            transform: "translateX(-50%)",
-            display: "flex",
-            gap: 1,
-          }}
-        >
-          {allImages.map((_, i) => (
-            <Box
-              key={i}
-              sx={{
-                height: 10,
-                width: 10,
-                borderRadius: "50%",
-                backgroundColor:
-                  i === activeDisplayIndex ? "#ff6a00ff" : "rgba(255,255,255,0.5)",
-                transition: "0.3s ease",
-              }}
-            />
-          ))}
-        </Box>
-      </Box>
 
       {/* 🖼️ Thumbnail Row */}
       <Box
