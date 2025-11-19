@@ -1,46 +1,78 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Grid,
-  Dialog,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Box, Dialog, IconButton, Typography } from "@mui/material";
+import { motion, AnimatePresence } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import img1 from '../assets/gallery/osgenpower_gallery_img1.webp'
-import img2 from '../assets/gallery/osgenpower_gallery_img2.jpg'
-import img3 from '../assets/gallery/osgenpower_gallery_img3.jpg'
-import img7 from '../assets/gallery/osgenpower_gallery_img4.jpg'
-import img8 from '../assets/gallery/osgenpower_gallery_img5.jpg'
-import img4 from '../assets/osgenpower_Kcc35kv.png'
-import img5 from '../assets/osgenpower_kcc512kvimage.png'
-import img6 from '../assets/osgenpower_Kcc1530kvimage.jpeg'
-import img9 from '../assets/gallery/osgenpower_gallery.jpg'
+
+// ✅ Import images
+import img1 from "../assets/gallery/osgenpower_gallery_img1.webp";
+import img2 from "../assets/gallery/osgenpower_gallery_img2.jpg";
+import img3 from "../assets/gallery/osgenpower_gallery_img3.jpg";
+import img7 from "../assets/gallery/osgenpower_gallery_img4.jpg";
+import img8 from "../assets/gallery/osgenpower_gallery_img5.jpg";
+import img4 from "../assets/osgenpower_Kcc35kv.png";
+import img5 from "../assets/osgenpower_kcc512kvimage.png";
+import img6 from "../assets/osgenpower_Kcc1530kvimage.jpeg";
+import img9 from "../assets/gallery/osgenpower_gallery.jpg";
+
 const GalleryPage = () => {
-  // 🖼️ Example image array (replace with your real imported images)
-  const images = [
-    img1, img2, img3, img4, img5, img6, img7, img8, img9];
+  const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+  const [activeDisplayIndex, setActiveDisplayIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCurrentImageIndex, setModalCurrentImageIndex] = useState(0);
+  const autoslideRef = useRef(null);
 
-  // 🧠 State
-  const [open, setOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(0);
+  // 🔁 Auto-slide
+  const startAutoslide = useCallback(() => {
+    if (autoslideRef.current) clearInterval(autoslideRef.current);
+    autoslideRef.current = setInterval(() => {
+      setActiveDisplayIndex((prev) => (prev + 1) % allImages.length);
+    }, 4000);
+  }, [allImages.length]);
 
-  const handleOpen = (index) => {
-    setCurrentImage(index);
-    setOpen(true);
-  };
+  useEffect(() => {
+    startAutoslide();
+    return () => clearInterval(autoslideRef.current);
+  }, [startAutoslide]);
 
-  const handleClose = () => setOpen(false);
-  const handleNext = () =>
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  const handlePrev = () =>
-    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const handleThumbnailClick = useCallback(
+    (index) => {
+      setActiveDisplayIndex(index);
+      startAutoslide();
+    },
+    [startAutoslide]
+  );
+
+  // 📸 Modal handlers
+  const handleOpenModal = useCallback((index) => {
+    setModalCurrentImageIndex(index);
+    setIsModalOpen(true);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setActiveDisplayIndex((prev) => (prev + 1) % allImages.length);
+  }, [allImages.length]);
+
+  const handlePrev = useCallback(() => {
+    setActiveDisplayIndex((prev) =>
+      prev === 0 ? allImages.length - 1 : prev - 1
+    );
+  }, [allImages.length]);
+
+  const handleNextModalImage = useCallback(() => {
+    setModalCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+  }, [allImages.length]);
+
+  const handlePrevModalImage = useCallback(() => {
+    setModalCurrentImageIndex((prev) =>
+      prev === 0 ? allImages.length - 1 : prev - 1
+    );
+  }, [allImages.length]);
 
   return (
     <Box sx={{ backgroundColor: "#F9F9F9", py: 6 }}>
+      {/* 🔸 Header */}
       <Typography
         variant="h3"
         textAlign="center"
@@ -54,66 +86,185 @@ const GalleryPage = () => {
       >
         Our Gallery
       </Typography>
-<Box
-          sx={{
-            maxWidth: 200,
-            mx: "auto",
-            mb: 5,
-            backgroundColor: "#ff6a00ff",
-            height: 3,
-            borderRadius: 2,
-          }}
-        />
-      {/* 🔳 Responsive Grid */}
-      <Grid container spacing={2} justifyContent="center" px={{ xs: 2, md: 10 }}>
-        {images.map((img, index) => (
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            key={index}
-          >
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              style={{
-                overflow: "hidden",
-                borderRadius: "10px",
-                cursor: "pointer",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-              }}
-              onClick={() => handleOpen(index)}
-            >
-              <img
-                src={img}
-                alt={`Gallery ${index + 1}`}
-                loading="lazy"
-                style={{
-                  width: "100%",
-                  height: "250px",
-                  objectFit: "cover",
-                  transition: "transform 0.3s ease",
-                }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.transform = "scale(1.05)")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.transform = "scale(1)")
-                }
-              />
-            </motion.div>
-          </Grid>
-        ))}
-      </Grid>
+      <Box
+        sx={{
+          maxWidth: 200,
+          mx: "auto",
 
-      {/* 🖼️ Modal / Dialog */}
+          mb: 5,
+          backgroundColor: "#ff6a00ff",
+          height: 3,
+          borderRadius: 2,
+        }}
+      />
+
+      {/* 🎞️ Main Slideshow Section with Arrows */}
+     <Box
+  sx={{
+    maxWidth: "1200px",
+    width: "100%",
+    mx: "auto",   
+    position: "relative",
+    px: { xs: 0, md: 0 }, 
+    cursor: "pointer",
+    mb: 4,
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+  }}
+  onClick={() => handleOpenModal(activeDisplayIndex)}
+>
+
+        <AnimatePresence mode="wait">
+         <motion.img
+  key={activeDisplayIndex}
+  src={allImages[activeDisplayIndex]}
+  alt={`Gallery Image ${activeDisplayIndex + 1}`}
+  initial={{ opacity: 0, scale: 1.02 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.98 }}
+  transition={{ duration: 0.6 }}
+  style={{ width: "100%" }}  // keep width only in inline style
+  sx={{
+    height: { xs: "45vh", sm: "55vh", md: "60vh", lg: "65vh" },
+    objectFit: "cover",
+    maxWidth: "1200px",
+    display: "block",
+    borderRadius: "12px",
+  }}
+/>
+
+        </AnimatePresence>
+
+        {/* Left & Right Nav Buttons */}
+       <IconButton
+  onClick={(e) => {
+    e.stopPropagation();
+    handlePrev();
+  }}
+  sx={{
+    position: "absolute",
+    top: "50%",
+    left: { xs: 5, sm: 15, md: 25 },    // Responsive left space
+    transform: "translateY(-50%)",
+    color: "white",
+    backgroundColor: "rgba(0,0,0,0.3)",
+    p: { xs: 0.5, sm: 1 },               // Smaller padding on mobile
+    "& svg": { fontSize: { xs: "20px", sm: "28px", md: "34px" } }, // Arrow resize
+    "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+  }}
+>
+  <ArrowBackIosNewIcon />
+</IconButton>
+
+<IconButton
+  onClick={(e) => {
+    e.stopPropagation();
+    handleNext();
+  }}
+  sx={{
+    position: "absolute",
+    top: "50%",
+    right: { xs: 5, sm: 15, md: 25 },  
+    transform: "translateY(-50%)",
+    color: "white",
+    backgroundColor: "rgba(0,0,0,0.3)",
+    p: { xs: 0.5, sm: 1 },
+    "& svg": { fontSize: { xs: "20px", sm: "28px", md: "34px" } },
+    "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+  }}
+>
+  <ArrowForwardIosIcon />
+</IconButton>
+
+
+        {/* Image Indicator Dots */}
+        <Box
+          position="absolute"
+          bottom={20}
+          left="50%"
+          sx={{
+            transform: "translateX(-50%)",
+            display: "flex",
+            gap: 1,
+          }}
+        >
+          {allImages.map((_, i) => (
+            <Box
+              key={i}
+              sx={{
+                height: 10,
+                width: 10,
+                borderRadius: "50%",
+                backgroundColor:
+                  i === activeDisplayIndex ? "#ff6a00ff" : "rgba(255,255,255,0.5)",
+                transition: "0.3s ease",
+              }}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      {/* 🖼️ Thumbnail Row */}
+      <Box
+        sx={{
+          px: { xs: 2, md: 2 },
+          display: "flex",
+          overflowX: "auto",
+          gap: 2,
+          pb: 2,
+          "&::-webkit-scrollbar": { height: "8px" },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "rgba(0,0,0,0.3)",
+            borderRadius: "10px",
+          },
+        }}
+      >
+        {allImages.map((img, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => handleThumbnailClick(index)}
+            style={{
+              flexShrink: 0,
+              width: "150px",
+              height: "100px",
+              borderRadius: "8px",
+              overflow: "hidden",
+              cursor: "pointer",
+              border:
+                index === activeDisplayIndex
+                  ? "3px solid #ff6a00ff"
+                  : "3px solid transparent",
+              boxShadow:
+                index === activeDisplayIndex
+                  ? "0 0 10px rgba(255,106,0,0.5)"
+                  : "0 2px 6px rgba(0,0,0,0.2)",
+              transition: "all 0.3s ease",
+            }}
+          >
+            <img
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              loading="lazy"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </motion.div>
+        ))}
+      </Box>
+
+      {/* 🔍 Modal View */}
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         fullWidth
-        maxWidth="md"
+        maxWidth="lg"
         PaperProps={{
           sx: {
             background: "black",
@@ -124,13 +275,15 @@ const GalleryPage = () => {
         }}
       >
         <IconButton
-          onClick={handleClose}
+          onClick={() => setIsModalOpen(false)}
           sx={{
             position: "absolute",
             top: 10,
             right: 10,
             color: "white",
-            zIndex: 2,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            "&:hover": { backgroundColor: "rgba(255,255,255,0.2)" },
+            zIndex: 10,
           }}
         >
           <CloseIcon />
@@ -143,47 +296,44 @@ const GalleryPage = () => {
           position="relative"
           sx={{ height: { xs: "60vh", md: "80vh" } }}
         >
-          {/* Left Navigation */}
           <IconButton
-            onClick={handlePrev}
+            onClick={handlePrevModalImage}
             sx={{
               position: "absolute",
-              left: 10,
+              left: { xs: 10, md: 20 },
               color: "white",
-              backgroundColor: "rgba(0,0,0,0.3)",
+              backgroundColor: "rgba(0,0,0,0.4)",
               "&:hover": { backgroundColor: "rgba(255,255,255,0.2)" },
             }}
           >
-            <ArrowBackIosNewIcon />
+            <ArrowBackIosNewIcon fontSize="large" />
           </IconButton>
 
-          {/* Main Image */}
           <motion.img
-            key={currentImage}
-            src={images[currentImage]}
-            alt="Gallery Large View"
-            initial={{ opacity: 0, scale: 0.9 }}
+            key={modalCurrentImageIndex}
+            src={allImages[modalCurrentImageIndex]}
+            alt="Gallery Modal Large"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5 }}
             style={{
-              maxWidth: "100%",
-              maxHeight: "100%",
+              maxWidth: "90%",
+              maxHeight: "90%",
               objectFit: "contain",
             }}
           />
 
-          {/* Right Navigation */}
           <IconButton
-            onClick={handleNext}
+            onClick={handleNextModalImage}
             sx={{
               position: "absolute",
-              right: 10,
+              right: { xs: 10, md: 20 },
               color: "white",
-              backgroundColor: "rgba(0,0,0,0.3)",
+              backgroundColor: "rgba(0,0,0,0.4)",
               "&:hover": { backgroundColor: "rgba(255,255,255,0.2)" },
             }}
           >
-            <ArrowForwardIosIcon />
+            <ArrowForwardIosIcon fontSize="large" />
           </IconButton>
         </Box>
       </Dialog>
