@@ -79,9 +79,9 @@ const ManufacturingAcoustic = () => {
           <Box textAlign="center" mb={{ xs: 5, md: 8 }}>
             <Typography
               variant="h3"
-              fontWeight={1000}
+              fontWeight='bold'
               sx={{
-                fontSize: { xs: '2rem', md: '3rem' },
+                fontSize: { xs: '2rem', md: '3.5rem' },
                 background: "#eb2723",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
@@ -90,7 +90,16 @@ const ManufacturingAcoustic = () => {
             >
               Acoustic Enclosures Manufacturer
             </Typography>
-
+      <Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
             <Typography
               variant="h6"
               sx={{

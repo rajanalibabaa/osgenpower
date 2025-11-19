@@ -65,20 +65,30 @@ const KirloskarGreenGenerators = () => {
         <motion.div variants={fadeInUp} initial="initial" animate="animate"  >
           <Typography
             variant="h3"
-            fontWeight={900}
+            fontWeight="bold"
             textAlign="center"
             sx={{
               // background: "linear-gradient(90deg, #00e676, #00bfa5)",
               WebkitBackgroundClip: "text",
               color: "#eb2723",
               mb: 2,
-              fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
+              fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3.5rem" },
               px: { xs: 1, sm: 2 },
             }}
           >
             KOEL Green Gensets
           </Typography>
-
+<Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
+          
           <Typography
             variant="h5"
             textAlign="center"

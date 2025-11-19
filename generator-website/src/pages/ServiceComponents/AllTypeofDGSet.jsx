@@ -87,18 +87,28 @@ const AllTypeofDGSet = () => {
           <Box textAlign="center" mb={{ xs: 4, sm: 6, md: 8 }}>
             <Typography
               variant={isSmallMobile ? 'h5' : isMobile ? 'h4' : 'h3'}
-              fontWeight={800}
+              fontWeight='bold'
               sx={{
                 background: '#eb2723',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
                 mb: 2,
-                fontSize: { xs: '1.6rem', sm: '2rem', md: '2.8rem' },
+                fontSize: { xs: '1.6rem', sm: '2rem', md: '3.5rem' },
               }}
             >
               Generator Erection Services
             </Typography>
-
+<Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
+          
             <Typography
               variant="body1"
               sx={{

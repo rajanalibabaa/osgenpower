@@ -63,7 +63,7 @@ const AllTurnkeyProject = () => {
         <motion.div variants={fadeInUp} initial="initial" animate="animate">
           <Typography
             variant="h3"
-  fontWeight={800}
+  fontWeight='bold'
             textAlign="center"
             sx={{
               background: "#eb2723",
@@ -74,7 +74,17 @@ const AllTurnkeyProject = () => {
           >
           Turnkey Project Undertaken 
           </Typography>
-
+<Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
+          
           <Typography
             variant="h6"
             textAlign="center"

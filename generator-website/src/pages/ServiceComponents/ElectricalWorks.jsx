@@ -62,19 +62,28 @@ const ElectricalWorks = () => {
         <motion.div variants={fadeInUp} initial="initial" animate="animate">
           <Typography
             variant="h3"
-            fontWeight={1000}
+            fontWeight='bold'
             textAlign="center"
             sx={{
               background: "#eb2723",
               WebkitBackgroundClip: "text",
               color: "transparent",
               mb: { xs: 2, sm: 3 },
-              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3.5rem" },
             }}
           >
             Electrical Work in Commercial Premises
           </Typography>
-
+      <Box
+      sx={{
+        width: 370,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
           <Typography
             variant="h5"
             textAlign="center"

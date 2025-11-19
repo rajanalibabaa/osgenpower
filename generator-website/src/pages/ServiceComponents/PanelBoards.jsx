@@ -79,7 +79,7 @@ const PanelBoards = () => {
           <Box textAlign="center" mb={8}>
             <Typography
               variant="h3"
-              fontWeight={1000}
+              fontWeight='bold'
               textAlign="center"
               sx={{
                 background: "#eb2723",
@@ -90,6 +90,17 @@ const PanelBoards = () => {
             >
               EB Metering Panels
             </Typography>
+            
+            <Box
+      sx={{
+        width: 170,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#eb2723",
+        mx: "auto",
+      }}
+    />
             <Typography
               variant="h6"
               textAlign="center"
