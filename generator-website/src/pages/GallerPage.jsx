@@ -119,22 +119,22 @@ const GalleryPage = () => {
 
   <AnimatePresence mode="wait">
     <motion.img
-      key={activeDisplayIndex}
-      src={allImages[activeDisplayIndex]}
-      alt={`Gallery Image ${activeDisplayIndex + 1}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      style={{
-        height: "auto",
-        alignItems:"center",
-        display: "block",
-        background: "none",
-        margin: 0,
-        padding: 0,
-      }}
-    />
+  key={activeDisplayIndex}
+  src={allImages[activeDisplayIndex]}
+  alt={`Gallery Image ${activeDisplayIndex + 1}`}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.5 }}
+  style={{
+    width: "500px",    
+    height: "300px",  
+    objectFit: "contain", 
+    display: "block",
+    margin: "0 auto",   
+  }}
+/>
+
   </AnimatePresence>
 
   {/* Left Arrow */}

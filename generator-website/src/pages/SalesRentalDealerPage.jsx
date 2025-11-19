@@ -69,7 +69,7 @@ const useCardData = () =>
         title: "KOEL Green Gensets - 160-KVA-250-KVA",
         desc:
           "Revised CPCB norms are aimed at protecting the environment by reducing Genset emissions and improving emission quality. These are some of the most stringent emission norms in the world.",
-        pdf: "/OsGenPower160-kva-250-kva.pdf",
+        pdf: "/OsGenPowerKCC-160-kva-250-kva.pdf",
       },
       {
         id: 7,
@@ -77,7 +77,7 @@ const useCardData = () =>
         title: "KOEL Green Gensets - 320-1010 KVA",
         desc:
           "KOEL Green Gensets offer a unique combination of CPCB norm compliance and enhanced fuel efficiency. Across the range, KOEL Green Gensets offer substantial savings in fuel cost.",
-        pdf: "OsGenPower320-1010 kva.pdf-1.pdf",
+        pdf: "/OsGenPower320-1010 kva.pdf-1.pdf",
       },
     ],
     []
