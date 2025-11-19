@@ -97,6 +97,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
           textAlign="center"
           gutterBottom
           color="#ff4400"
+          sx={{ textAlign: "center" }}
         >
           Frequently Asked Questions
         </Typography>

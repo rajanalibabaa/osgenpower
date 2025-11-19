@@ -12,13 +12,13 @@ import { motion } from "framer-motion";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-import image1 from "../assets/osgenpower_Kcc35kv.png";
-import image2 from "../assets/osgenpower_Kcc512kvimage.png";
-import image3 from "../assets/osgenpower_Kcc1520kvimage.png";
+import image1 from "../assets/diesel-generator-3-kva-5-kva.png";
+import image2 from "../assets/5-kva-kirloskar-green-diesel-generator.png";
+import image3 from "../assets/15-kva-20-kva-generator.png";
 import image4 from "../assets/osgenpower_Kcc1530kvimage.jpeg";
 import image5 from "../assets/osgenpower_koel-green-genset-40kva-125kva.jpg";
 import image6 from "../assets/osgenpower_160kVA-250kVAimage.jpg";
-import image7 from "../assets/osgenpower_320110kvaimage.png";
+import image7 from "../assets/koel-diesel-genset-320-kva-1010-kva--164.png";
 
 const useCardData = () =>
   useMemo(

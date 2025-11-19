@@ -79,7 +79,7 @@ const GalleryPage = () => {
         fontWeight="bold"
         sx={{
           mb: 1,
-          background: "linear-gradient(90deg,#d63939, #df3ebc)",
+          background: "#f40",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}
@@ -149,11 +149,11 @@ const GalleryPage = () => {
       left: 10,
       transform: "translateY(-50%)",
       color: "white",
-      backgroundColor: "rgba(0,0,0,0.3)",
-      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+      backgroundColor: "#EF7722",
+      "&:hover": { backgroundColor: "#E62727" },
     }}
   >
-    <ArrowBackIosNewIcon />
+    <ArrowBackIosNewIcon  />
   </IconButton>
 
   {/* Right Arrow */}
@@ -168,8 +168,8 @@ const GalleryPage = () => {
       right: 10,
       transform: "translateY(-50%)",
       color: "white",
-      backgroundColor: "rgba(0,0,0,0.3)",
-      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+      backgroundColor: "#EF7722",
+      "&:hover": { backgroundColor: "#E62727" },
     }}
   >
     <ArrowForwardIosIcon />
