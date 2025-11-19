@@ -134,7 +134,7 @@ const FloatingForm = () => {
           onClick={manualOpen}
           sx={{
             position: "fixed",
-            bottom: "28%",
+            bottom: "18%",
             right: 20,
             backgroundColor: "#1976d2",
             color: "#fff",
