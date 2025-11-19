@@ -17,15 +17,15 @@ const ElectricalWorks = () => {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #081a20 0%, #1f4640 100%)",
-        color: "#fff",
+        // background: "linear-gradient(135deg, #081a20 0%, #1f4640 100%)",
+        color: "#000000ff",
         py: { xs: 8, sm: 10, md: 12 },
         position: "relative",
         overflow: "hidden",
       }}
     >
       {/* Glowing background effects */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           width: 400,
@@ -37,8 +37,8 @@ const ElectricalWorks = () => {
           right: "10%",
           filter: "blur(120px)",
         }}
-      />
-      <Box
+      /> */}
+      {/* <Box
         sx={{
           position: "absolute",
           width: 300,
@@ -55,7 +55,7 @@ const ElectricalWorks = () => {
             "100%": { transform: "scale(1.1)" },
           },
         }}
-      />
+      /> */}
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Header Section */}
@@ -65,7 +65,7 @@ const ElectricalWorks = () => {
             fontWeight={1000}
             textAlign="center"
             sx={{
-              background: "linear-gradient(90deg, #00e676, #00bfa5)",
+              background: "#eb2723",
               WebkitBackgroundClip: "text",
               color: "transparent",
               mb: { xs: 2, sm: 3 },
@@ -79,12 +79,12 @@ const ElectricalWorks = () => {
             variant="h5"
             textAlign="center"
             sx={{
-              color: "#d1fff0",
+              color: "#000000ff",
               mb: { xs: 5, md: 8 },
               fontWeight: 300,
               maxWidth: "800px",
               mx: "auto",
-              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
             }}
           >
             Different Careers Opportunities in the Electrical Trades
@@ -102,10 +102,10 @@ const ElectricalWorks = () => {
               overflow: "hidden",
               position: "relative",
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-              backgroundImage: `
-                radial-gradient(at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
-                radial-gradient(at 20% 80%, rgba(0, 150, 136, 0.1) 0%, transparent 50%)
-              `,
+              // backgroundImage: `
+              //   radial-gradient(at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+              //   radial-gradient(at 20% 80%, rgba(0, 150, 136, 0.1) 0%, transparent 50%)
+              // `,
             }}
           >
             <Box
@@ -153,7 +153,7 @@ const ElectricalWorks = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "rgba(255,255,255,0.8)",
+                    color: "rgba(0, 0, 0, 0.8)",
                     lineHeight: 1.8,
                     fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
                     textAlign: { xs: "center", lg: "justify" },
@@ -191,7 +191,7 @@ const ElectricalWorks = () => {
                     right: 0,
                     bottom: 0,
                     background:
-                      "linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(0, 150, 136, 0.1) 100%)",
+                      "linear-gradient(135deg, rgba(76, 175, 79, 0.92) 0%, rgba(0, 150, 135, 1) 100%)",
                     clipPath: {
                       xs: "none",
                       lg: "polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)",
@@ -208,7 +208,7 @@ const ElectricalWorks = () => {
                     width: { xs: "90%", sm: "80%", md: "70%", lg: "75%" },
                     maxWidth: { xs: 300, sm: 350, md: 400 },
                     borderRadius: "16px",
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+                    // boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
                     objectFit: "cover",
                   }}
                   onError={(e) => {

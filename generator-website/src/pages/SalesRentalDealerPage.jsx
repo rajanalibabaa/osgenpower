@@ -208,7 +208,7 @@ const GensetCard = React.memo(({ index, item, onOpen, isMobile, isTablet }) => (
             onClick={() => onOpen(item.pdf)}
             variant="contained"
             sx={{
-              background: "linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%)",
+              background: "#eb2723",
               mx: "auto",
               display: "flex",
               width: { xs: "70%", sm: "60%", md: "50%" },
@@ -225,7 +225,7 @@ const GensetCard = React.memo(({ index, item, onOpen, isMobile, isTablet }) => (
               }
             }}
           >
-            View More
+            Dounload Brochure
           </Button>
         </CardContent>
       </Card>
@@ -261,7 +261,7 @@ const SalesRentalDealerPage = () => {
           md: "24px", 
           lg: "32px" 
         },
-backgroundColor: "#F2FFF6",
+backgroundColor: "#ffffffff",
       }}
     >
               <Typography textAlign='center' color="#ff4400ff" fontWeight='bold' fontSize={{xs:'1.5rem',md:'2rem'}}>Generator / Sales / Rental / DealerShip</Typography>

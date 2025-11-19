@@ -81,7 +81,7 @@ const HeroSectionModern = memo(() => {
         height: { xs: "80svh", md: "100vh" }, // Use svh for mobile
         backgroundImage: {
           xs: `linear-gradient(rgba(5, 20, 40, 0.8), rgba(5, 20, 40, 0.8)), url(${img1})`,
-          md: `linear-gradient(rgba(5, 20, 40, 0.6), rgba(5, 20, 40, 0.7)), url(${img1})`,
+          md: `linear-gradient(rgba(5, 20, 40, 0.74), rgba(5, 20, 40, 0.95)), url(${img1})`,
         },
         backgroundSize: "cover",
         backgroundPosition: { xs: "center right", md: "center" },
@@ -183,9 +183,9 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
       },
     }}
   >
-    From homes to industries, we deliver <strong>uninterrupted power solutions</strong> 
-    that combine performance, efficiency, and eco-conscious design. 
-    <strong>Empower your business</strong> with the energy of innovation.
+    From homes to industries, we deliver <strong>uninterrupted power solutions </strong> 
+    that combine performance, efficiency, and eco-conscious design.  
+     <strong> Empower your business</strong> with the energy of innovation.
   </Typography>
 </motion.div>
 

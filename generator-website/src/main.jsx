@@ -23,7 +23,7 @@ const Loader = () => {
           width: 180,
           height: 180,
           borderRadius: "50%",
-          border: "6px solid #ffb300ff",
+          border: "6px solid #eb2723",
           borderTopColor: "transparent",
           
         }}

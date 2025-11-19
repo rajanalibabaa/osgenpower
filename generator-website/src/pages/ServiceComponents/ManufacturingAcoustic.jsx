@@ -47,15 +47,15 @@ const ManufacturingAcoustic = () => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
-        color: 'white',
+        // background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
+        color: 'black',
         overflow: 'hidden',
         position: 'relative',
         py: { xs: 6, md: 10 },
       }}
     >
       {/* Animated Background */}
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           top: 0,
@@ -67,7 +67,7 @@ const ManufacturingAcoustic = () => {
             radial-gradient(circle at 80% 20%, rgba(0, 191, 165, 0.1) 0%, transparent 50%)
           `,
         }}
-      />
+      /> */}
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Hero Section */}
@@ -82,7 +82,7 @@ const ManufacturingAcoustic = () => {
               fontWeight={1000}
               sx={{
                 fontSize: { xs: '2rem', md: '3rem' },
-                background: "linear-gradient(90deg, #00e676, #00bfa5)",
+                background: "#eb2723",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
                 mb: 2,
@@ -94,11 +94,11 @@ const ManufacturingAcoustic = () => {
             <Typography
               variant="h6"
               sx={{
-                color: "#d1fff0",
-                fontWeight: 300,
+                color: "#000000ff",
+                fontWeight: 500,
                 maxWidth: "800px",
                 mx: "auto",
-                fontSize: { xs: '1rem', md: '1.2rem' },
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 px: { xs: 2, md: 0 },
               }}
             >
@@ -113,11 +113,11 @@ const ManufacturingAcoustic = () => {
             <motion.div variants={fadeInUp} initial="initial" whileInView="animate" >
               <Card
                 sx={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(20px)',
+                  // background: 'rgba(255, 255, 255, 0.05)',
+                  // backdropFilter: 'blur(20px)',
                   borderRadius: 4,
                   p: { xs: 2, sm: 3, md: 4 },
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  // border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}
               >
                 <Grid container spacing={6} alignItems="flex-start">
@@ -129,7 +129,7 @@ const ManufacturingAcoustic = () => {
                         sx={{ 
                           fontSize: { xs: 32, md: 40 }, 
                           color: '#00e676',
-                          background: 'rgba(0, 230, 118, 0.1)',
+                          // background: 'rgba(0, 230, 118, 0.1)',
                           borderRadius: 2,
                           p: 1
                         }} 
@@ -137,12 +137,12 @@ const ManufacturingAcoustic = () => {
                       <Box>
                         <Typography 
                           variant="h5" 
-                          fontWeight="bold" 
-                          sx={{color: 'white', fontSize: { xs: '1.3rem', md: '1.6rem' }}}
+                          fontWeight="400" 
+                          sx={{color: 'black', fontSize: { xs: '1.3rem', md: '1.2rem' }}}
                         >
                           Kirloskar Green Generators
                         </Typography>
-                        <Typography variant="h6" sx={{ color: '#00bfa5', fontSize: { xs: '1rem', md: '1.1rem' } }}>
+                        <Typography variant="h6" sx={{ color: '#eb2723', fontSize: { xs: '1rem', md: '0.9rem' } }}>
                           Ecotone Systems
                         </Typography>
                       </Box>
@@ -150,7 +150,7 @@ const ManufacturingAcoustic = () => {
 
                     <Typography
                       sx={{
-                        color: 'rgba(255,255,255,0.8)',
+                        color: 'rgba(0, 0, 0, 1)',
                         lineHeight: 1.8,
                         fontSize: { xs: '0.95rem', md: '1.1rem' },
                         mb: 3
@@ -161,7 +161,7 @@ const ManufacturingAcoustic = () => {
 
                     <Typography
                       sx={{
-                        color: 'rgba(255,255,255,0.8)',
+                        color: 'rgba(0, 0, 0, 0.8)',
                         lineHeight: 1.8,
                         fontSize: { xs: '0.95rem', md: '1.1rem' },
                       }}
@@ -223,7 +223,7 @@ const ManufacturingAcoustic = () => {
                                 border: '1px solid rgba(255,255,255,0.1)',
                                 '&:hover': {
                                   background: 'rgba(255,255,255,0.08)',
-                                  borderColor: 'rgba(0, 230, 118, 0.3)',
+                                  borderColor: 'rgba(0, 230, 119, 0.63)',
                                   transform: 'translateX(5px)',
                                 },
                                 transition: 'all 0.3s ease',
@@ -236,7 +236,7 @@ const ManufacturingAcoustic = () => {
                                     variant="h6" 
                                     fontWeight="bold" 
                                     sx={{ 
-                                      color: '#00e676',
+                                      color: '#eb2723',
                                       fontSize: { xs: '1rem', md: '1.2rem' },
                                       mb: 1
                                     }}
@@ -245,7 +245,7 @@ const ManufacturingAcoustic = () => {
                                   </Typography>
                                   <Typography 
                                     sx={{ 
-                                      color: 'rgba(255,255,255,0.8)', 
+                                      color: 'rgba(0, 0, 0, 0.8)', 
                                       fontSize: { xs: '0.9rem', md: '1rem' },
                                       lineHeight: 1.6
                                     }}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
@@ -24,7 +23,6 @@ import BuildIcon from "@mui/icons-material/Build";
 import StoreIcon from "@mui/icons-material/Store";
 import GalleryIcon from "@mui/icons-material/Collections";
 import ContactIcon from "@mui/icons-material/ContactMail";
-import AddIcon from "@mui/icons-material/Add";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
@@ -43,14 +41,15 @@ const SUB_SERVICES = [
 
 const NAV_ITEMS = [
   { text: "Home", icon: <HomeIcon />, path: "/" },
+      { text: "About Us", icon: <InfoIcon />, path: "/about" },
+  { text: "Generator Sales / Rental", icon: <StoreIcon />, path: "/Generatorsales/Delearership/Rental" },
+
   {
     text: "Generator Services",
     icon: <BuildIcon />,
     path: "/services/kirloskar", 
     dropdown: SUB_SERVICES, 
   },
-  { text: "Generator Sales / Dealership / Rental", icon: <StoreIcon />, path: "/Generatorsales/Delearership/Rental" },
-    { text: "About Us", icon: <InfoIcon />, path: "/about" },
   { text: "Gallery", icon: <GalleryIcon />, path: "/gallery" },
   { text: "Contact Us", icon: <ContactIcon />, path: "/contact" },
 ];
@@ -135,7 +134,7 @@ const Navbar = () => {
         bgcolor: "background.paper",
         height: "100%",
         p: 2,
-        background: "linear-gradient(180deg, #1e1e2f 0%, #121212 100%)",
+        // background: "linear-gradient(180deg, #1e1e2f 0%, #121212 100%)",
         color: "#fff", 
       }}
     >
@@ -163,12 +162,12 @@ const Navbar = () => {
               onClick={item.dropdown ? handleMobileServicesClick : () => handleNavItemClick(item.path)}
               sx={{
                 cursor: "pointer",
-                color: activeMainItem === item.text ? "black" : "#fff",
+                color: activeMainItem === item.text ? "black" : "#000000ff",
                 mb: 0.5,
                 borderRadius: 1,
                 transition: "0.3s",
                 "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.08)",
+                  bgcolor: "#eb2723",
                 },
               }}
             >
@@ -192,7 +191,7 @@ const Navbar = () => {
                       sx={{
                         pl: 4, // Indent sub-items
                         cursor: "pointer",
-                        color: location.pathname === subItem.path ? "black" : "#ffffffcc",
+                        color: location.pathname === subItem.path ? "black" : "#000000cc",
                         "&:hover": {
                           bgcolor: "rgba(255,255,255,0.05)",
                         },
@@ -214,10 +213,10 @@ const Navbar = () => {
     <>
       {/* Modern AppBar */}
       <AppBar
-        position="sticky"
+        position="relative"
         elevation={6}
         sx={{
-          background: "linear-gradient(90deg, #08131e 0%, #1b5232 100%)",
+          background: "linear-gradient(90deg, #ffffffff 0%, #ffffffff 100%)",
         }}
       >
         <Container maxWidth="xl">
@@ -237,7 +236,7 @@ const Navbar = () => {
               <img
                 src="/omshakthigenpower_logo.jpg"
                 alt="Om Shakthi Gen Power"
-                style={{ height: 45, borderRadius: 6 }}
+                style={{ height: 56, borderRadius: 6 }}
               />
             </Box>
 
@@ -254,7 +253,7 @@ const Navbar = () => {
                       onClick={handleServicesMenuOpen}
                       onMouseEnter={handleServicesMenuOpen} // Open on hover
                       sx={{
-                        color: activeMainItem === item.text || openServicesMenu ? "#00e676" : "#ffffffcc",
+                        color: activeMainItem === item.text || openServicesMenu ? "#eb2723" : "#000000cc",
                         mx: 0.8,
                         fontWeight: activeMainItem === item.text || openServicesMenu ? 600 : 400,
                         fontSize: "0.95rem",
@@ -262,7 +261,7 @@ const Navbar = () => {
                         transition: "0.3s",
                         textTransform: "none",
                         "&:hover": {
-                          color: "#00e676",
+                          color: "#eb2723",
                         },
                         "&::after": {
                           content: '""',
@@ -271,12 +270,12 @@ const Navbar = () => {
                           height: "2px",
                           bottom: 0,
                           left: 0,
-                          bgcolor: "#00e676",
+                          bgcolor: "#eb2723",
                           transition: "width 0.3s ease-in-out",
                         },
                         "&:hover::after": {
                           width: "100%",
-                          bgcolor: "#00e676", 
+                          bgcolor: "#eb2723", 
                         },
                         display: "flex", 
                         alignItems: "center",
@@ -303,7 +302,7 @@ const Navbar = () => {
                       }}
                       sx={{
                         "& .MuiPaper-root": {
-                          bgcolor: "#f1f1f1ff", 
+                          bgcolor: "#000000ff", 
                           mt: 1.5,
                           borderRadius: 1,
                           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
@@ -317,11 +316,11 @@ const Navbar = () => {
                           key={subItem.text}
                           onClick={() => handleNavItemClick(subItem.path)}
                           sx={{
-                            color: location.pathname === subItem.path ? "#00e676" : "black", 
+                            color: location.pathname === subItem.path ? "#f9ca11ff" : "white", 
                             py: 1.5, 
                             "&:hover": {
-                              bgcolor: "rgba(0, 230, 118, 0.1)",
-                              color: "black", 
+                              bgcolor: "rgba(255, 255, 255, 0.1)",
+                              color: "white", 
                             },
                           }}
                         >
@@ -336,7 +335,7 @@ const Navbar = () => {
                     key={item.text}
                     onClick={() => handleNavItemClick(item.path)}
                     sx={{
-                      color: activeMainItem === item.text ? "#00e676" : "#ffffffcc",
+                      color: activeMainItem === item.text ? "#eb2723" : "#000000cc",
                       mx: 0.8,
                       fontWeight: activeMainItem === item.text ? 600 : 400,
                       fontSize: "0.95rem",
@@ -344,7 +343,7 @@ const Navbar = () => {
                       transition: "0.3s",
                       textTransform: "none",
                       "&:hover": {
-                        color: "#00e676",
+                        color: "#eb2723",
                       },
                       "&::after": {
                         content: '""',
@@ -353,12 +352,12 @@ const Navbar = () => {
                         height: "2px",
                         bottom: 0,
                         left: 0,
-                        bgcolor: "#00e676",
+                        bgcolor: "#eb2723",
                         transition: "width 0.3s ease-in-out",
                       },
                       "&:hover::after": {
                         width: "100%",
-                        bgcolor: "#00e676",
+                        bgcolor: "#eb2723",
                       },
                     }}
                   >
@@ -372,10 +371,11 @@ const Navbar = () => {
             <IconButton
               color="inherit"
               edge="end"
+              
               onClick={handleDrawerToggle}
-              sx={{ display: { md: "none" } }}
+              sx={{ display: { md: "none",color: "#eb2723" } }}
             >
-              <MenuIcon />
+              <MenuIcon  />
             </IconButton>
           </Toolbar>
         </Container>

@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  
-  useTheme,
-
-} from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -16,18 +12,18 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import  Facebook  from "@mui/icons-material/Facebook";
-import  Instagram  from "@mui/icons-material/Instagram";
-import  WhatsApp  from "@mui/icons-material/WhatsApp";
-import  YouTube  from "@mui/icons-material/YouTube";
-import  Email  from "@mui/icons-material/Email";
-import  Phone  from "@mui/icons-material/Phone";
-import  LocationOn  from "@mui/icons-material/LocationOn";
-import  Schedule  from "@mui/icons-material/Schedule";
-import  BadgeOutlined  from "@mui/icons-material/BadgeOutlined";
-import  KeyboardDoubleArrowUp  from "@mui/icons-material/KeyboardDoubleArrowUp";
-import  KeyboardDoubleArrowDown  from "@mui/icons-material/KeyboardDoubleArrowDown";
-import  RotateLeftOutlined  from "@mui/icons-material/RotateLeftOutlined";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
+import WhatsApp from "@mui/icons-material/WhatsApp";
+import YouTube from "@mui/icons-material/YouTube";
+import Email from "@mui/icons-material/Email";
+import Phone from "@mui/icons-material/Phone";
+import LocationOn from "@mui/icons-material/LocationOn";
+import Schedule from "@mui/icons-material/Schedule";
+import BadgeOutlined from "@mui/icons-material/BadgeOutlined";
+import KeyboardDoubleArrowUp from "@mui/icons-material/KeyboardDoubleArrowUp";
+import KeyboardDoubleArrowDown from "@mui/icons-material/KeyboardDoubleArrowDown";
+import RotateLeftOutlined from "@mui/icons-material/RotateLeftOutlined";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/omshakthigenpower_logo.jpg";
@@ -169,14 +165,15 @@ const Footer = () => {
                       fontWeight={600}
                       color="rgba(255, 255, 255, 1)"
                     >
-                      24/7 Emergency Support
+                      24 / 7 Emergency Support 
                     </Typography>
                     <Typography
                       fontSize="0.75rem"
                       color="rgba(255, 255, 255, 1)"
                     >
-                      Mon - Sat: 9AM - 6PM
+                      {/* Mon - Sat: 9AM - 6PM */}
                     </Typography>
+                    
                   </Box>
                 </Stack>
                 <Stack direction="row" spacing={1}>
@@ -325,15 +322,18 @@ const Footer = () => {
 
             <Stack spacing={2}>
               {/* Address */}
-             
- <Stack
+
+              <Stack
                 direction="row"
                 alignItems="center"
                 justifyContent={isMobile ? "center" : "flex-start"}
               >
                 <LocationOn sx={{ color: colors.primary, mr: 1 }} />
                 <Typography variant="body2" color="rgba(255, 255, 255, 1)">
-                  No:06/04, G Floor, <br/>Sandhiveeran Appartments,<br/>Munuswamy Street,
+                  No:06/04, G Floor, <br />
+                  Sandhiveeran Appartments,
+                  <br />
+                  Munuswamy Street,
                   <br /> Ekkatuthangal, Chennai-600032.
                 </Typography>
               </Stack>
@@ -416,7 +416,7 @@ const Footer = () => {
                 width="800"
                 height="300"
                 loading="lazy"
-                      ></iframe>
+              ></iframe>
             </Box>
           )}
         </Box>

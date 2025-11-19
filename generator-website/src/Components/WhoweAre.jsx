@@ -123,7 +123,7 @@ const WhoWeAre = () => {
             color: 'rgba(0, 0, 0, 0.85)',
             lineHeight: 1.8,
             fontWeight: 500,
-            fontSize: { xs: '1rem', md: '1.1rem' },
+            // fontSize: { xs: '1rem', md: '1.1rem' },
           }}
         >
           We are Chennai's leading distributors and suppliers of diesel generators and gensets, delivering power solutions that combine reliability, performance, and innovation. As trusted Kirloskar dealers, we empower industries and businesses with eco-efficient and intelligent energy solutions.
@@ -189,7 +189,6 @@ const WhoWeAre = () => {
           item 
           sx={{ 
             width: { xs: '200px', sm: '220px', md: '320px' },
-            // flex: { xs: '0 0 auto', md: 'unset' }
           }} 
           md={3} 
           key={index}

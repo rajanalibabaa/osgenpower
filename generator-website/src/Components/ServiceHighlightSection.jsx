@@ -186,7 +186,7 @@ const ServiceHighlightSection = () => {
          <motion.div variants={itemVariants}>
   <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
     <Typography
-      variant={isMobile ? "h5" : "h4"}
+      variant={isMobile ? "h5" : "h3"}
       fontWeight="bold"
       gutterBottom
       color="#ff4400"
@@ -196,7 +196,7 @@ const ServiceHighlightSection = () => {
 
     <Box
       sx={{
-        width: 80,
+        width: 380,
         height: 3,
         backgroundColor: "#ff6a00",
       }}
@@ -208,7 +208,7 @@ const ServiceHighlightSection = () => {
               variant="body1"
               sx={{
                 mb: 3,
-                color: "#666",
+                // color: "#666",
                 lineHeight: 1.8,
                 fontSize: { xs: "1rem", md: "1.1rem" },
               }}

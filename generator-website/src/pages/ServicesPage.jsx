@@ -28,7 +28,7 @@ const listItemVariants = {
 const SERVICE_ITEMS = [
   'Kirloskar Green Generators',
   'All type of DG Set',
-  'All Turnkey Project Undertaken Hiring 5kva to 1500kva',
+  'All Turnkey Project',
   'Manufacturing Acoustic Encloser',
   'All type of Electrical Works',
   'All type of HT/LT/AMF Panel boards',
@@ -45,9 +45,9 @@ const ServicesPage = () => {
   const location = useLocation();
 
   // Colors
-  const primaryGradient = "linear-gradient(135deg, #0f2027, #203a43, #2c5364)";
-  const neonGreen = "#00e676";
-  const neonTeal = "#00bfa5";
+  const primaryGradient = "white";
+  const neonGreen = "#000000ff";
+  const neonTeal = "#000000ff";
   const glowShadow = `0 0 15px ${alpha(neonTeal, 0.4)}`;
 
   // Navigate + set selected index
@@ -83,7 +83,7 @@ const ServicesPage = () => {
         height: '100%',
         overflow: 'hidden',
         background: primaryGradient,
-        color: '#fff',
+        color: '#000000ff',
         display: 'flex',
         flexDirection: 'column',
         boxShadow: glowShadow,
@@ -94,19 +94,19 @@ const ServicesPage = () => {
           borderBottom: `2px solid ${alpha(neonGreen, 0.4)}`,
           px: 2,
           py: 2,
-          background: alpha('#00bfa5', 0.12),
-          backdropFilter: 'blur(6px)',
+          background: alpha('#000000ff', 0.12),
+          // backdropFilter: 'blur(6px)',
         }}
       >
         <Typography
           variant="h6"
           sx={{
-            background: `linear-gradient(90deg, ${neonGreen}, ${neonTeal})`,
+            background: `linear-gradient(190deg, ${neonGreen}, ${neonTeal})`,
             WebkitBackgroundClip: 'text',
             color: 'transparent',
             fontWeight: 700,
             letterSpacing: 0.8,
-            textShadow: `0 0 10px ${alpha(neonTeal, 0.6)}`,
+            // textShadow: `0 0 10px ${alpha(neonTeal, 0.6)}`,
           }}
         >
           GENERATOR SERVICES
@@ -150,7 +150,7 @@ const ServicesPage = () => {
                 primaryTypographyProps={{
                   fontSize: '0.95rem',
                   fontWeight: selectedIndex === index ? 600 : 400,
-                  color: selectedIndex === index ? neonGreen : alpha('#fff', 0.9),
+                  color: selectedIndex === index ? neonGreen : alpha('#000000ff', 0.9),
                 }}
               />
             </ListItemButton>

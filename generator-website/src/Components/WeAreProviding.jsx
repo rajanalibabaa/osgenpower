@@ -243,14 +243,13 @@ const WeAreProviding = () => {
           transition={{ duration: 0.7 }}
         >
           <Box sx={{ textAlign: "center", mb: {  md: 8 } }}>
-            <Typography
-              variant={isMobile ? "h4" : "h3"}
-              fontWeight="bold"
-              gutterBottom
-              color="#ff4400ff"
-            >
-              We Are Providing
-            </Typography>
+           <Typography
+          variant={isMobile ? "h4" : "h3"}
+          fontWeight="bold"
+          gutterBottom
+          color="#ff4400"
+        >
+We Are Providing        </Typography>
             <Box
               sx={{
                 maxWidth: 200,
@@ -261,9 +260,9 @@ const WeAreProviding = () => {
               }}
             />
             <Typography
-              variant="subtitle1"
+              variant="body1"
               sx={{
-                color: "#666",
+                // color: "#666",
                 fontWeight: 400,
                 px: { xs: 2, sm: 0 },
                 fontSize: { xs: "0.95rem", sm: "1rem" },

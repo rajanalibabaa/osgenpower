@@ -7,21 +7,10 @@ import {
   CircularProgress,
   InputAdornment,
   Grid,
-  IconButton,
 } from "@mui/material";
-// import {
-//   Phone as PhoneIcon,
-//   Email as EmailIcon,
-//   AccountCircle,
-//   Message as MessageIcon,
-//   LocationOn as LocationOnIcon,
-//   WhatsApp as WhatsAppIcon,
-// } from "@mui/icons-material";
-import PhoneIcons from "@mui/icons-material/Phone";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import bg from '../assets/osgenpowerabout.jpg';
 import EmailIcon from "@mui/icons-material/Email";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import EventIcon from "@mui/icons-material/Event";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MessageIcon from "@mui/icons-material/Message";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -54,10 +43,11 @@ export default function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         sx={{
+          mt:{ xs: 0, sm: 0, md: 2 },
           width: "100%",
           height: { xs: "40vh", sm: "50vh", md: "55vh" },
-          backgroundImage: `url(${img1})`,
-          backgroundSize: "contain",
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           display: "flex",
@@ -67,16 +57,11 @@ export default function ContactPage() {
           position: "relative",
         }}
       >
-        {/* <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0, 0, 0, 0.3)",
-          }}
-        /> */}
+       
         <Box sx={{ zIndex: 2 }}>
           <MotionTypography
             variant="h2"
+            mt={2}
             sx={{
               color: "#e60767ff",
               fontWeight: "bold",

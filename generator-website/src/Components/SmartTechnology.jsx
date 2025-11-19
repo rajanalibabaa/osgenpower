@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 
-import { easeIn, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import img1 from "../assets/osgenpower_Realtimegeneratormonitoring.jpg";
 import img2 from "../assets/osgenpower_PredictiveMaintenanceAlerts.jpg";
 import img3 from "../assets/osgenpower_AutomaticLoadBalancing.jpg";
@@ -98,7 +98,7 @@ const SmartTechnology = () => {
         />
         <Typography
           variant="body1"
-          sx={{ maxWidth: 600, mx: "auto", color: "#555", mb: 6 }}
+          sx={{ maxWidth: 600, mx: "auto", color: "#000000ff", mb: 6 }}
         >
           We integrate the latest IoT & AI technologies to give our customers
           smarter insights, better uptime, and lower running costs.
@@ -200,6 +200,7 @@ const SmartTechnology = () => {
                       borderRadius: 3,
                       height: "100%",
                       background: `url(${feature.img}) center/cover no-repeat`,
+
                       position: "relative",
                       overflow: "hidden",
                       border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -224,8 +225,10 @@ const SmartTechnology = () => {
                         variant="h6"
                         sx={{
                           fontWeight: 600,
-                          color: "#fff",
+backgroundColor: "rgba(255, 68, 0, 0.87)",
+                          color: "#ffffffff",
                           lineHeight: 1.3,
+                          p: 2,
                           textShadow: "2px 2px 8px rgba(0,0,0,0.4)",
                         }}
                       >

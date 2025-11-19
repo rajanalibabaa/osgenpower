@@ -36,7 +36,7 @@ import WellExperiencedAboutimage from "../assets/osgenpower_WellExperiencedAbout
 import TrustedBrandAboutimage from "../assets/osgenpower_TrustedBrandAboutimage.jpg"
 import img1 from '../assets/osgenpower_Aboutpagebackground.jpg'
 import FAQSection from '../Components/FAQSections';
-
+import omshakthigenpower_logo from '../assets/omshakthigenpower_logo.jpg'
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -173,21 +173,19 @@ const AboutPage = () => {
         >
           <Typography 
             variant="h1" 
-            component="h1" 
             gutterBottom 
             sx={{ 
-              fontWeight: 'bold',
-              fontSize: { xs: '2.5rem', md: '4rem' },
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
               textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
             }}
           >
-            Om Shakthi Gen Power
+            About  <img src={omshakthigenpower_logo} alt="Om Shakthi Gen Power" style={{ maxWidth: '100%', height: 'auto' }} /> !!
           </Typography>
           <Typography 
             variant="h4" 
             sx={{ 
               opacity: 0.9,
-              fontSize: { xs: '1.2rem', md: '1.5rem' },
+              fontSize: { xs: '1.2rem', md: '1.1rem' },
               mb: 4,
             }}
           >

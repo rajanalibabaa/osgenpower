@@ -19,7 +19,6 @@ const fadeInUp = {
 };
 
 const PanelBoards = () => {
-  const theme = useTheme();
 
   const processSteps = [
     {
@@ -47,7 +46,7 @@ const PanelBoards = () => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
+        // background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
         minHeight: '100vh',
         color: 'white',
         overflow: 'hidden',
@@ -55,7 +54,7 @@ const PanelBoards = () => {
       }}
     >
       {/* Background */}
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           top: 0,
@@ -68,7 +67,7 @@ const PanelBoards = () => {
             radial-gradient(circle at 40% 40%, rgba(41, 182, 246, 0.05) 0%, transparent 50%)
           `,
         }}
-      />
+      /> */}
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: 5 }}>
         {/* Hero Section */}
@@ -83,7 +82,7 @@ const PanelBoards = () => {
               fontWeight={1000}
               textAlign="center"
               sx={{
-                background: "linear-gradient(90deg, #00e676, #00bfa5)",
+                background: "#eb2723",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
                 mb: 2,
@@ -92,10 +91,10 @@ const PanelBoards = () => {
               EB Metering Panels
             </Typography>
             <Typography
-              variant="h5"
+              variant="h6"
               textAlign="center"
               sx={{
-                color: "#d1fff0",
+                color: "#000000ff",
                 mb: 6,
                 fontWeight: 300,
                 maxWidth: "800px",
@@ -117,7 +116,7 @@ We are offering EB Metering Panel Board to our clients.It is to be installed EB 
             >
               <Card
                 sx={{
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  // background: 'rgba(255, 255, 255, 0.05)',
                   backdropFilter: 'blur(20px)',
                   borderRadius: 4,
                   p: 4,
@@ -136,10 +135,10 @@ We are offering EB Metering Panel Board to our clients.It is to be installed EB 
                     }} 
                   />
                   <Box>
-                    <Typography variant="h4" fontWeight="bold" sx={{ color: '#5D866C' }}>
+                    <Typography variant="h5" fontWeight="bold" sx={{ color: '#000000ff' }}>
                       Reliable Power Control
                     </Typography>
-                    <Typography variant="h6" sx={{ color: '#00bfa5' }}>
+                    <Typography variant="body1" sx={{ color: '#eb2723' }}>
                       Advanced Metering Panel Solutions
                     </Typography>
                   </Box>
@@ -148,7 +147,7 @@ We are offering EB Metering Panel Board to our clients.It is to be installed EB 
                 <Typography
                   variant="body1"
                   sx={{
-                    color: 'rgba(255,255,255,0.8)',
+                    color: 'rgba(0, 0, 0, 0.8)',
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
                     mb: 4
@@ -220,7 +219,7 @@ animate={{ opacity: 1, x: 0 }}
                             justifyContent: 'center',
                             '&:hover': {
                               background: 'rgba(255,255,255,0.05)',
-                              borderColor: 'rgba(0, 230, 118, 0.3)',
+                              borderColor: 'rgba(0, 230, 119, 0.97)',
                               transform: 'translateX(5px)'
                             }
                           }}
@@ -230,7 +229,7 @@ animate={{ opacity: 1, x: 0 }}
                             fontWeight="bold" 
                             gutterBottom
                             sx={{ 
-                              color: '#00e676',
+                              color: '#eb2723',
                               fontSize: '1.1rem',
                               mb: 1.5
                             }}
@@ -240,7 +239,7 @@ animate={{ opacity: 1, x: 0 }}
                           <Typography 
                             variant="body2" 
                             sx={{ 
-                              color: 'rgba(255,255,255,0.7)', 
+                              color: 'rgba(0, 0, 0, 0.7)', 
                               lineHeight: 1.6,
                               fontSize: '0.95rem'
                             }}

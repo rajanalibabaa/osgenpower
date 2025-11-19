@@ -2,7 +2,9 @@ import React, { Suspense } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import logo from "./assets/omshakthigenpower_logo.jpg";
+import   Fab  from "@mui/material/Fab";
+import  WhatsAppIcon  from "@mui/icons-material/WhatsApp";
+import ScrollToTop from "./Components/ScroolTop";
 // Global Components (lazy-loaded)
 const Navbar = React.lazy(() => import("./Components/Navbar"));
 const NewsTicker = React.lazy(() => import("./Components/NewsTicker"));
@@ -35,18 +37,39 @@ const theme = createTheme({
 });
 
 // Fallback Loader
-const Loader = () => (
-  <img src={logo} alt="logo" style={{ width: "300px", height: "100px", margin: "auto", display: "block", marginTop: "200px" }} />
-);
 
+const WhatsApp = () => {
+  const mobileNumber = "+91 735 000 0000"; // Replace with your actual mobile number
+  return(
+     <Fab
+      onClick={() => window.open(`https://wa.me/${mobileNumber}`, "_blank")}
+      sx={{
+        position: "fixed",
+        bottom: 100,
+        right: 20,
+        backgroundColor: "#25D366",
+        color: "#fff",
+        width: 60,
+        height: 60,
+        zIndex: 9999,
+        "&:hover": {
+          backgroundColor: "#1ebe5d",
+        },
+      }}
+    >
+      < WhatsAppIcon sx={{ fontSize: 32 }} />
+    </Fab>
+  )
+}
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
         {/* <Suspense fallback={<Loader />}> */}
+        <ScrollToTop/>
           <NewsTicker />
           <Navbar />
-
+<WhatsApp/>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

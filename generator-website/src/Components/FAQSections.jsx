@@ -7,6 +7,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import  useMediaQuery  from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -68,7 +69,7 @@ const FAQSection = () => {
   const theme = useTheme();
   const primaryColor = "#000000ff";
   const secondaryColor = "#FF7F50";
-
+const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
    const [expanded, setExpanded] = useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -77,15 +78,13 @@ const FAQSection = () => {
   return (
     <Box
       sx={{
-        py: { xs: 8, md: 0 },
+        py: { xs: 1, md: 0 },
         // background:
         //   theme.palette.mode === "dark"
         //     ? "linear-gradient(135deg, #0f0f0f, #1d1d1d)"
         //     : "linear-gradient(135deg, #fafafa, #ffffff)",
       }}
     >
-      <Container maxWidth="md">
-        {/* Section Header */}
         <MotionBox
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,14 +92,13 @@ const FAQSection = () => {
           viewport={{ once: true }}
         >
           <Typography
-            variant="h3"
-            fontWeight="700"
-            textAlign="center"
-             color="#ff4400"
-           
-          >
-            Frequently Asked Questions
-          </Typography>
+          variant={isMobile ? "h4" : "h3"}
+          fontWeight="bold"
+          gutterBottom
+          color="#ff4400"
+        >
+          Who We Are
+        </Typography>
             <Box
       sx={{
         width: 100,
@@ -127,6 +125,9 @@ const FAQSection = () => {
             installations, and maintenance services.
           </Typography>
         </MotionBox>
+      <Container maxWidth="md">
+        {/* Section Header */}
+      
 
       {/* FAQ Accordion List */}
       

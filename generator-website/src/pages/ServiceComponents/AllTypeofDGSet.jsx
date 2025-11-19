@@ -49,8 +49,8 @@ const AllTypeofDGSet = () => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
-        color: 'white',
+        // background: 'linear-gradient(135deg, #0a1929 0%, #1a237e 100%)',
+        color: 'black',
         minHeight: '100vh',
         overflow: 'hidden',
         position: 'relative',
@@ -59,7 +59,7 @@ const AllTypeofDGSet = () => {
       }}
     >
       {/* Glowing Background */}
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           inset: 0,
@@ -68,7 +68,7 @@ const AllTypeofDGSet = () => {
             radial-gradient(circle at 80% 20%, rgba(0, 191, 165, 0.1) 0%, transparent 50%)
           `,
         }}
-      />
+      /> */}
 
       <Container
         maxWidth="xl"
@@ -89,7 +89,7 @@ const AllTypeofDGSet = () => {
               variant={isSmallMobile ? 'h5' : isMobile ? 'h4' : 'h3'}
               fontWeight={800}
               sx={{
-                background: 'linear-gradient(90deg, #00e676, #00bfa5)',
+                background: '#eb2723',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
                 mb: 2,
@@ -102,11 +102,11 @@ const AllTypeofDGSet = () => {
             <Typography
               variant="body1"
               sx={{
-                color: '#d1fff0',
-                fontWeight: 300,
+                color: '#000000ff',
+                fontWeight: 400,
                 mx: 'auto',
                 maxWidth: { xs: '90%', sm: '85%', md: '750px' },
-                fontSize: { xs: '0.95rem', sm: '1.05rem', md: '1.2rem' },
+                fontSize: { xs: '0.95rem', sm: '1.05rem', md: '1.1rem' },
                 lineHeight: 1.7,
               }}
             >
@@ -159,8 +159,8 @@ const AllTypeofDGSet = () => {
                       variant="h5"
                       fontWeight="bold"
                       sx={{
-                        color: '#7ee1a5',
-                        fontSize: { xs: '1.4rem', sm: '1.8rem', md: '2.2rem' },
+                        color: '#000000ff',
+                        fontSize: { xs: '1.4rem', sm: '1.8rem', md: '1.2rem' },
                       }}
                     >
                       Professional Erection
@@ -168,8 +168,8 @@ const AllTypeofDGSet = () => {
                     <Typography
                       variant="subtitle1"
                       sx={{
-                        color: '#00bfa5',
-                        fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' },
+                        color: '#eb2723',
+                        fontSize: { xs: '1rem', sm: '1.1rem', md: '0.9rem' },
                       }}
                     >
                       Pre & Post Installation Services
@@ -181,7 +181,7 @@ const AllTypeofDGSet = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: 'rgba(255,255,255,0.8)',
+                    color: 'rgba(0, 0, 0, 0.8)',
                     lineHeight: 1.7,
                     fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
                     mb: { xs: 3, md: 4 },
@@ -272,7 +272,7 @@ animate={{ opacity: 1, x: 0 }}
             transition: 'all 0.3s ease',
             '&:hover': {
               background: 'rgba(255,255,255,0.06)',
-              borderColor: 'rgba(0,230,118,0.25)',
+              borderColor: 'rgba(0, 230, 119, 1)',
               transform: 'translateY(-2px)',
             },
           }}
@@ -280,7 +280,7 @@ animate={{ opacity: 1, x: 0 }}
           <Typography
             variant="h6"
             sx={{
-              color: '#00e676',
+              color: '#eb2723',
               fontWeight: 600,
               mb: 0.8,
               fontSize: { xs: '1rem', sm: '1.1rem' },
@@ -291,7 +291,7 @@ animate={{ opacity: 1, x: 0 }}
           <Typography
             variant="body2"
             sx={{
-              color: 'rgba(255,255,255,0.7)',
+              color: 'rgba(0, 0, 0, 0.7)',
               fontSize: { xs: '0.85rem', sm: '0.95rem' },
               lineHeight: 1.6,
             }}

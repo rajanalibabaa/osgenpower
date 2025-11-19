@@ -21,16 +21,16 @@ const HomePage = () => {
     <>
       {/* ✅ Hero Section */}
       <HeroSectionContainer />
-
-      {/* ✅ Smart Technology */}
+{/* ✅ Who We Are Section */}
       <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: "-100px" }}
       >
-        <SmartTechnology />
+        <WhoWeAre />
       </MotionBox>
+     
 
       {/* ✅ Services Provided */}
       <MotionBox
@@ -41,19 +41,7 @@ const HomePage = () => {
       >
         <WeAreProviding />
       </MotionBox>
-
-      {/* ✅ Who We Are Section */}
-      <MotionBox
-        variants={sectionFadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <WhoWeAre />
-      </MotionBox>
-
-      {/* ✅ Service Highlights */}
-      <MotionBox
+           <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
@@ -61,6 +49,20 @@ const HomePage = () => {
       >
         <ServiceHighlightSection />
       </MotionBox>
+       {/* ✅ Smart Technology */}
+      <MotionBox
+        variants={sectionFadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <SmartTechnology />
+      </MotionBox>
+ {/* ✅ Service Highlights */}
+ 
+      
+
+     
 
       {/* ✅ FAQ Section */}
       <MotionBox

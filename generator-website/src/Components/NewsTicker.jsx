@@ -145,7 +145,7 @@ export default function EnhancedNewsTicker() {
           variant="caption"
           sx={{
             fontWeight: "bold",
-            fontSize: { xs: "0.8rem", sm: "0.7rem", md: "1rem" },
+            fontSize: { xs: "0.8rem", sm: "0.7rem", md: "0.8rem" },
             textTransform: "uppercase",
             letterSpacing: "1.5px",
           }}

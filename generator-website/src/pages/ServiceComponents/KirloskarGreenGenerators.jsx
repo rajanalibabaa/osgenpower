@@ -20,15 +20,15 @@ const KirloskarGreenGenerators = () => {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #081a20 0%, #1f4640 100%)",
+        background: "#ffffffff",
         color: "#fff",
-        py: { xs: 4, sm: 6, md: 8 },
+        py: { xs: 4, sm: 6, md: 4 },
         position: "relative",
         overflow: "hidden",
       }}
     >
       {/* Glow Effects */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           width: { xs: 200, sm: 300, md: 400 },
@@ -40,8 +40,8 @@ const KirloskarGreenGenerators = () => {
           right: { xs: "-10%", sm: "5%", md: "10%" },
           filter: "blur(80px)",
         }}
-      />
-      <Box
+      /> */}
+      {/* <Box
         sx={{
           position: "absolute",
           width: { xs: 150, sm: 250, md: 300 },
@@ -58,7 +58,7 @@ const KirloskarGreenGenerators = () => {
             "100%": { transform: "scale(1.1)" },
           },
         }}
-      />
+      /> */}
 
       <Container maxWidth="lg">
         {/* Heading Section */}
@@ -68,9 +68,9 @@ const KirloskarGreenGenerators = () => {
             fontWeight={900}
             textAlign="center"
             sx={{
-              background: "linear-gradient(90deg, #00e676, #00bfa5)",
+              // background: "linear-gradient(90deg, #00e676, #00bfa5)",
               WebkitBackgroundClip: "text",
-              color: "transparent",
+              color: "#eb2723",
               mb: 2,
               fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
               px: { xs: 1, sm: 2 },
@@ -83,13 +83,13 @@ const KirloskarGreenGenerators = () => {
             variant="h5"
             textAlign="center"
             sx={{
-              color: "#d1fff0",
+              color: "#000000ff",
               mb: { xs: 4, md: 6 },
-              fontWeight: 300,
+              fontWeight: 400,
               maxWidth: "800px",
               mx: "auto",
               px: { xs: 2, sm: 3 },
-              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.1rem" },
             }}
           >
             Offering a unique blend of{" "}
@@ -108,15 +108,15 @@ const KirloskarGreenGenerators = () => {
           <Card
             sx={{
               background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(16px)",
+              // backdropFilter: "blur(16px)",
               borderRadius: { xs: "20px", md: "32px" },
               border: "1px solid rgba(76, 175, 80, 0.2)",
               overflow: "hidden",
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-              backgroundImage: `
-                radial-gradient(at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
-                radial-gradient(at 20% 80%, rgba(0, 150, 136, 0.1) 0%, transparent 50%)
-              `,
+              // backgroundImage: `
+              //   radial-gradient(at 80% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+              //   radial-gradient(at 20% 80%, rgba(0, 150, 136, 0.1) 0%, transparent 50%)
+              // `,
               mx: { xs: 1, sm: 2 },
             }}
           >
@@ -156,7 +156,7 @@ const KirloskarGreenGenerators = () => {
                     height: 4,
                     width: 60,
                     background: "linear-gradient(90deg, #4CAF50, #009688)",
-                    mb: 3,
+                    mb: 1,
                     borderRadius: 2,
                     mx: { xs: "auto", lg: 0 },
                   }}
@@ -165,7 +165,7 @@ const KirloskarGreenGenerators = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "rgba(255,255,255,0.8)",
+                    color: "rgba(0, 0, 0, 0.8)",
                     lineHeight: 1.7,
                     fontSize: { xs: "0.95rem", sm: "1.05rem" },
                   }}
@@ -199,7 +199,7 @@ const KirloskarGreenGenerators = () => {
                     right: 0,
                     bottom: 0,
                     background:
-                      "linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(0, 150, 136, 0.1) 100%)",
+                      "linear-gradient(235deg, rgba(76, 175, 79, 0.31) 0%, rgba(0, 150, 135, 0.87) 100%)",
                     clipPath: {
                       xs: "polygon(0% 0%, 100% 0, 100% 80%, 0% 100%)",
                       lg: "polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)",
@@ -217,7 +217,7 @@ const KirloskarGreenGenerators = () => {
                     width: { xs: "70%", sm: "65%", lg: "80%" },
                     maxWidth: { xs: 280, sm: 320, lg: 340 },
                     borderRadius: "16px",
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+                    // boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
                   }}
                   onError={(e) => {
 e.target.src = "/fallback.jpg"; 
@@ -242,7 +242,7 @@ e.target.src = "/fallback.jpg";
               position: "relative",
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 position: "absolute",
                 top: 0,
@@ -254,11 +254,11 @@ e.target.src = "/fallback.jpg";
                 zIndex: 0,
                 opacity: 0.5,
               }}
-            />
+            /> */}
 
             <Grid
               container
-              spacing={{ xs: 4, md: 6 }}
+              spacing={{ xs: 4, md: 2 }}
               alignItems="center"
               justifyContent="center"
               sx={{ position: "relative", zIndex: 1 }}
@@ -272,7 +272,7 @@ e.target.src = "/fallback.jpg";
                     alignItems: "center",
                     justifyContent: "center",
                     gap: { xs: 1, sm: 2 },
-                    mb: 2,
+                    mb: 1,
                   }}
                 >
                   <motion.div
@@ -286,20 +286,20 @@ e.target.src = "/fallback.jpg";
                     <BoltOutlinedIcon
                       sx={{
                         fontSize: { xs: 50, sm: 60, md: 80 },
-                        color: "#4CAF50",
+                        color: "#31dd37ff",
                         filter: "drop-shadow(0 0 20px rgba(76,175,80,0.5))",
                       }}
                     />
                   </motion.div>
                   <Typography
                     variant="h3"
-                    fontWeight={900}
+                    fontWeight={600}
                     sx={{
-                      background: "linear-gradient(90deg, #00e676, #00bfa5)",
+                      // background: "linear-gradient(90deg, #00e676, #00bfa5)",
                       WebkitBackgroundClip: "text",
-                      color: "transparent",
+                      color: "black",
                       letterSpacing: { xs: 0.5, sm: 1 },
-                      fontSize: { xs: "1.75rem", sm: "2.25rem", md: "3rem" },
+                      fontSize: { xs: "1.75rem", sm: "2.25rem", md: "1.8rem" },
                     }}
                   >
                     O2E SERIES
@@ -309,8 +309,8 @@ e.target.src = "/fallback.jpg";
                 <Typography
                   variant="subtitle1"
                   sx={{
-                    color: "rgba(255,255,255,0.7)",
-                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 1)",
+                    fontWeight: 500,
                     letterSpacing: { xs: 1, sm: 2 },
                     fontSize: { xs: "0.9rem", sm: "1rem" },
                   }}
@@ -324,7 +324,7 @@ e.target.src = "/fallback.jpg";
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "rgba(0, 0, 0, 1)",
                     fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.15rem" },
                     lineHeight: 1.7,
                     textAlign: { xs: "center", md: "left" },
@@ -339,12 +339,12 @@ e.target.src = "/fallback.jpg";
                   <br />
                   Summer & winter lead to an average 50–70% loading. Considering
                   this,{" "}
-                  <Box component="span" sx={{ color: "#4CAF50", fontWeight: 600 }}>
+                  <Box component="span" sx={{ color: "#32e338ff", fontWeight: 600 }}>
                     KOEL
                   </Box>{" "}
                   has extended fuel efficiency optimization from 100% down to 50%
                   of rated load. Combination of best-in-class fuel efficiency &
-                  <Box component="span" sx={{ color: "#4CAF50", fontWeight: 600 }}>
+                  <Box component="span" sx={{ color: "#34e73aff", fontWeight: 600 }}>
                     {" "}
                     O2E
                   </Box>{" "}
