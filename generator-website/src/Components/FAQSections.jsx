@@ -96,6 +96,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
           fontWeight="bold"
           gutterBottom
           color="#ff4400"
+          sx={{ textAlign: "center" }}
         >
           Who We Are
         </Typography>
