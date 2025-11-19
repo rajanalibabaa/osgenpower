@@ -94,10 +94,11 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
           <Typography
           variant={isMobile ? "h4" : "h3"}
           fontWeight="bold"
+          textAlign="center"
           gutterBottom
           color="#ff4400"
         >
-          Who We Are
+          Frequently Asked Questions
         </Typography>
             <Box
       sx={{

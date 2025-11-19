@@ -179,7 +179,7 @@ const AboutPage = () => {
               textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
             }}
           >
-            About  <img src={omshakthigenpower_logo} alt="Om Shakthi Gen Power" style={{ maxWidth: '100%', height: 'auto' }} /> !!
+            About  <img src={omshakthigenpower_logo} alt="Om Shakthi Gen Power" style={{ maxWidth: '100%', height: 'auto' }} />   !!
           </Typography>
           <Typography 
             variant="h4" 
@@ -248,13 +248,13 @@ const AboutPage = () => {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <Typography 
-                variant="h6" 
-                color="text.secondary" 
+                variant="body1" 
+                // color="text.secondary" 
                 sx={{ 
                   maxWidth: 1200,
                   mx: 'auto',
                   mb: 4,
-                  fontSize: { xs: '1rem', md: '1.2rem' },
+                  // fontSize: { xs: '1rem', md: '1.2rem' },
                   textAlign: 'justify',  
                   lineHeight: 1.8
                 }}
@@ -349,9 +349,9 @@ const AboutPage = () => {
                     <Typography
                       variant="body1"
                       sx={{
-                        color: "#555",
-                        fontSize: "1rem",
-                        lineHeight: 1.8,
+                        color: "#000000ff",
+                        // fontSize: "1rem",
+                        // lineHeight: 1.8,
                         maxWidth: 400,
                         mx: "auto",
                       }}
@@ -426,9 +426,9 @@ const AboutPage = () => {
                     <Typography
                       variant="body1"
                       sx={{
-                        color: "#555",
-                        fontSize: "1rem",
-                        lineHeight: 1.8,
+                        color: "#000000ff",
+                        // fontSize: "1rem",
+                        // lineHeight: 1.8,
                         maxWidth: 400,
                         mx: "auto",
                       }}
@@ -445,200 +445,15 @@ const AboutPage = () => {
         </Box>
       </Container>
 
-      <motion.div variants={fadeInUp}>
-        <Typography
-          variant={isMobile ? "h4" : "h3"}
-          fontWeight="bold"
-          textAlign={'center'}
-          gutterBottom
-          color={primaryOrange}
-          sx={{
-            fontSize: { xs: '1.9rem', sm: '2.2rem', md: '3rem' },
-          }}
-        >
-          What We Do
-        </Typography>
 
-        <Box
-          sx={{
-            maxWidth: 200,
-            mx: "auto",
-            mb: { xs: 2, md: 3 },
-            backgroundColor: secondaryOrange,
-            height: 3,
-          }}
-        />
-      </motion.div>
-
-      {/* What We Do Section */}
-      <Container sx={{ mb: { xs: 6, md: 3 },background:`url(${img1}) no-repeat center center / cover `,backgroundAttachment:'scroll' }}>
-  <motion.div
-    initial="initial"
-    whileInView="animate"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={staggerContainer}
-  >
-    {/* ====== Header Section ====== */}
-    <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
-      
-
-      <motion.div variants={fadeInUp}>
-        <Typography
-          variant="h6"
-          color="text.secondary"
-          sx={{
-            maxWidth: 800,
-            mx: 'auto',
-            mt: { xs: 2, md: 3 },
-            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.3rem' },
-            lineHeight: 1.8,
-            px: { xs: 2, sm: 4, md: 0 },
-          }}
-        >
-          At <b>Om Shakthi Gen Power</b>, we offer a complete power ecosystem, ensuring a seamless
-          experience at every step.
-        </Typography>
-      </motion.div>
-    </Box>
-
-    {/* ====== Services Timeline Section ====== */}
-    <Box sx={{ position: 'relative' }}>
-      {services.map((service, index) => (
-        <motion.div
-          key={index}
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          custom={index}
-        >
-          <Grid
-            container
-            spacing={{ xs: 2, sm: 3, md: 4 }}
-            sx={{
-              mb: { xs: 6, md: 8 },
-              alignItems: 'center',
-              flexDirection: {
-                xs: 'column',
-                sm: index % 2 === 0 ? 'row' : 'row-reverse',
-              },
-              textAlign: { xs: 'center', sm: 'left' },
-            }}
-          >
-            {/* Icon Circle */}
-            <Grid item xs={12} sm={2} md={1}>
-              <motion.div
-                whileHover={{
-                  scale: 1.2,
-                  rotate: 360,
-                  transition: { duration: 0.6 },
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: 70, sm: 80, md: 100 },
-                    height: { xs: 70, sm: 80, md: 100 },
-                    borderRadius: '50%',
-                    background: '#CD2C58',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: { xs: 30, md: 40 },
-                    boxShadow: `0 10px 30px ${alpha(primaryOrange, 0.3)}`,
-                    mx: { xs: 'auto', sm: 'initial' },
-                    mb: { xs: 3, sm: 0 },
-                    position: 'relative',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      inset: -4,
-                      background: `linear-gradient(135deg, ${primaryOrange}, ${secondaryOrange})`,
-                      borderRadius: '50%',
-                      zIndex: -1,
-                      opacity: 0.3,
-                      animation: `${pulseAnimation} 2s infinite`,
-                    },
-                  }}
-                >
-                  {service.icon}
-                </Box>
-              </motion.div>
-            </Grid>
-
-            {/* Content */}
-            <Grid item xs={12} sm={10} md={5}>
-              <motion.div
-                whileHover={{
-                  x: index % 2 === 0 ? 10 : -10,
-                  transition: { type: "spring", stiffness: 300 },
-                }}
-              >
-                <Box
-                  sx={{
-                    p: { xs: 3, sm: 4 },
-                    background: `linear-gradient(145deg, ${alpha(
-                      theme.palette.background.paper,
-                      0.8
-                    )}, ${alpha(theme.palette.background.default, 0.4)})`,
-                    backdropFilter: 'blur(20px)',
-                    borderRadius: 4,
-                    border: `1px solid ${alpha(primaryOrange, 0.1)}`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '4px',
-                      background: `linear-gradient(90deg, ${primaryOrange}, ${secondaryOrange})`,
-                    },
-                  }}
-                >
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{
-                      fontWeight: 700,
-                      background: `linear-gradient(135deg, #000000ff, #000000ff)`,
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      mb: { xs: 1.5, md: 2 },
-                      fontSize: { xs: '1.4rem', sm: '1.6rem', md: '1.8rem' },
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      fontSize: { xs: '1rem', md: '1.1rem' },
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
-                </Box>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </motion.div>
-      ))}
-    </Box>
-  </motion.div>
-</Container>
+ 
 
 
       {/* Why Choose Us Section */}
       <Container  
         sx={{
           position: 'relative',
-          py: { xs: 1, md: 1 },
+          py: { xs: 1, md: 4 },
           mb: 3,
         }}
       >

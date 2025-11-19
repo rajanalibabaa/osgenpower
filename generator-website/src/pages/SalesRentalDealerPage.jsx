@@ -69,7 +69,7 @@ const useCardData = () =>
         title: "KOEL Green Gensets - 160-KVA-250-KVA",
         desc:
           "Revised CPCB norms are aimed at protecting the environment by reducing Genset emissions and improving emission quality. These are some of the most stringent emission norms in the world.",
-        pdf: "/OsGenPower160-kva-250-kva.pdf",
+        pdf: "/160-kva-250-kva.pdf",
       },
       {
         id: 7,
@@ -77,104 +77,109 @@ const useCardData = () =>
         title: "KOEL Green Gensets - 320-1010 KVA",
         desc:
           "KOEL Green Gensets offer a unique combination of CPCB norm compliance and enhanced fuel efficiency. Across the range, KOEL Green Gensets offer substantial savings in fuel cost.",
-        pdf: "OsGenPower320-1010 kva.pdf-1.pdf",
+        pdf: "/OsGenPower320-1010 kva.pdf-1.pdf",
       },
     ],
     []
   );
 
 const GensetCard = React.memo(({ index, item, onOpen, isMobile, isTablet }) => (
-  <Grid 
-    item 
-    xs={12} 
-    sm={6} 
-    md={6} 
-    lg={4}
-    sx={{ 
-      display: "flex", 
+  <Grid
+    item
+    xs={12}
+    sm={6}
+    md={4}
+    lg={3}
+    sx={{
+      display: "flex",
       justifyContent: "center",
-      padding: { xs: "8px", sm: "12px", md: "16px" }
-      
+      padding: { xs: 1.5, sm: 2 },
     }}
   >
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 0.6, 
+      transition={{
+        duration: 0.5,
         delay: index * 0.1,
-        ease: "easeOut"
+        ease: "easeOut",
       }}
-      style={{ 
-        height: "100%", 
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-
-      }}
+      style={{ width: "100%", display: "flex" }}
     >
       <Card
         sx={{
-          height: isMobile ? 380 : isTablet ? 480 : 520,
           width: "100%",
-          maxWidth: isMobile ? 400 : 670,
-          borderRadius: { xs: "12px", sm: "16px", md: "18px" },
+          maxWidth: 420,
+          borderRadius: "22px",
           overflow: "hidden",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          transition: "all 0.3s ease-in-out",
+          position: "relative",
+          background: "#ffffff",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+          transition: "0.35s",
+          p: 0,
+
           "&:hover": {
-            transform: isMobile ? "none" : "translateY(-6px)",
-            boxShadow: isMobile ? "0 4px 12px rgba(0,0,0,0.1)" : "0 10px 25px rgba(0,0,0,0.2)",
+            transform: "translateY(-6px)",
+            boxShadow: "0 16px 40px rgba(0,0,0,0.15)",
           },
         }}
       >
-        <Box sx={{ 
-          height: isMobile ? 200 : isTablet ? 250 : 320, 
-          overflow: "hidden",
-          backgroundColor: "#d9f8e6ff"
-        }}>
+        {/* TOP IMAGE SECTION */}
+        <Box
+          sx={{
+            height: isMobile ? 190 : isTablet ? 220 : 260,
+            position: "relative",
+            background: "rgba(255,255,255,0.6)",
+            backdropFilter: "blur(10px)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+        >
+          {/* Glow Shadow Behind Image */}
+          <Box
+            sx={{
+              position: "absolute",
+              width: "70%",
+              height: "70%",
+              filter: "blur(40px)",
+              background: "rgba(0, 180, 90, 0.25)",
+              borderRadius: "50%",
+            }}
+          />
+
+          {/* PRODUCT IMAGE */}
           <img
-            loading="lazy"
             src={item.img}
+            loading="lazy"
             alt={item.title}
             style={{
-              width: "100%",
-              height: "100%",
+              width: "80%",
+              height: "80%",
               objectFit: "contain",
-              transition: "transform 0.6s ease",
-              padding: isMobile ? "8px" : "12px",
+              zIndex: 5,
+              transform: "translateY(8px)",
+              transition: "0.5s",
             }}
-            className="card-img"
+            className="product-img"
           />
         </Box>
 
-        <CardContent sx={{ 
-          backgroundColor:'#ffff',
-          padding: { xs: "16px", sm: "20px", md: "24px" },
-          '&:last-child': { 
-            paddingBottom: { xs: "16px", sm: "20px", md: "24px" } 
-          }
-        }}>
-          <Typography 
-            variant={isMobile ? "subtitle1" : "h6"} 
-            textAlign={"center"}
-            fontWeight="600"
+        {/* CONTENT */}
+        <CardContent
+          sx={{
+            padding: { xs: 2, sm: 3 },
+            textAlign: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            fontWeight={700}
             sx={{
-              fontSize: { 
-                xs: "0.9rem", 
-                sm: "1rem", 
-                md: "1.125rem" 
-              },
-              lineHeight: { 
-                xs: 1.3, 
-                sm: 1.4, 
-                md: 1.5 
-              },
-              marginBottom: { xs: 1, sm: 1.5 },
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              fontSize: { xs: "1rem", sm: "1.15rem" },
+              mb: 1,
+              color: "#1d1d1d",
             }}
           >
             {item.title}
@@ -183,55 +188,56 @@ const GensetCard = React.memo(({ index, item, onOpen, isMobile, isTablet }) => (
           <Typography
             variant="body2"
             sx={{
-              color: "grey.600",
-              mb: { xs: 2, sm: 2.5 },
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
+              color: "grey.700",
+              lineHeight: 1.6,
+              height: 48,
               overflow: "hidden",
-              fontSize: { 
-                xs: "0.75rem", 
-                sm: "0.8rem", 
-                md: "0.875rem" 
-              },
-              lineHeight: { 
-                xs: 1.4, 
-                sm: 1.5, 
-                md: 1.6 
-              },
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              mb: 2,
+              fontSize: { xs: "0.82rem", sm: "0.9rem" },
             }}
           >
             {item.desc}
           </Typography>
 
-          <Button
-            onClick={() => onOpen(item.pdf)}
-            variant="contained"
+          {/* Bottom Action Bar */}
+          <Box
             sx={{
-              background: "#eb2723",
-              mx: "auto",
+              mt: 2,
               display: "flex",
-              width: { xs: "70%", sm: "60%", md: "50%" },
-              color: "#fff",
-              textTransform: "none",
-              fontWeight: "600",
-              borderRadius: "50px",
-              padding: { xs: "8px 16px", sm: "10px 20px" },
-              fontSize: { xs: "0.75rem", sm: "0.8rem", md: "0.875rem" },
-              minHeight: { xs: "36px", sm: "40px" },
-              '&:hover': {
-                background: "linear-gradient(135deg, #e54327 0%, #e53a62 100%)",
-                transform: "scale(1.02)",
-              }
+              justifyContent: "center",
             }}
           >
-            Dounload Brochure
-          </Button>
+            <Button
+              onClick={() => onOpen(item.pdf)}
+              variant="contained"
+              sx={{
+                background: "linear-gradient(135deg, #16a34a, #0e7b38)",
+                color: "#fff",
+                fontWeight: "600",
+                borderRadius: "999px",
+                px: 4,
+                py: 1.2,
+                textTransform: "none",
+                fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                boxShadow: "0 6px 16px rgba(0,150,70,0.3)",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  background: "linear-gradient(135deg, #11803f, #0b5c2d)",
+                },
+              }}
+            >
+              Download Brochure
+            </Button>
+          </Box>
         </CardContent>
       </Card>
     </motion.div>
   </Grid>
 ));
+
 
 const SalesRentalDealerPage = () => {
   const cardData = useCardData();
@@ -264,7 +270,7 @@ const SalesRentalDealerPage = () => {
 backgroundColor: "#ffffffff",
       }}
     >
-              <Typography textAlign='center' color="#ff4400ff" fontWeight='bold' fontSize={{xs:'1.5rem',md:'2rem'}}>Generator / Sales / Rental / DealerShip</Typography>
+              <Typography textAlign='center' color="#ff4400ff" variant={isMobile ? "h4" : "h3"} fontWeight='bold' fontSize={{xs:'1.5rem',md:'3.5rem'}}>Generator / Sales / Rental </Typography>
 
         <Box
           sx={{

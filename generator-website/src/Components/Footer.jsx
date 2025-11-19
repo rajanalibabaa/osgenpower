@@ -442,11 +442,17 @@ const Footer = () => {
           Powered by :{" "}
           <a href="https://cholabiz.com/">
             {" "}
-            <img src={logo1} alt="CHOLA BIz" width="50px" />
+            <Typography
+              component="span"
+              color='white'
+              fontWeight={700}
+            >
+              CholaBiz.com
+            </Typography>
           </a>
         </Typography>
 
-        <Divider sx={{ my: 1, borderColor: "rgba(255, 255, 255, 1)" }} />
+        {/* <Divider sx={{ my: 1, borderColor: "rgba(255, 255, 255, 1)" }} />
 
         <Stack
           direction="row"
@@ -474,7 +480,7 @@ const Footer = () => {
               )}
             </React.Fragment>
           ))}
-        </Stack>
+        </Stack> */}
       </Container>
 
       {/* Scroll Button */}

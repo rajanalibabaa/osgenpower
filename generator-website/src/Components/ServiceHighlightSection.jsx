@@ -210,7 +210,7 @@ const ServiceHighlightSection = () => {
                 mb: 3,
                 // color: "#666",
                 lineHeight: 1.8,
-                fontSize: { xs: "1rem", md: "1.1rem" },
+                // fontSize: { xs: "1rem", md: "1.1rem" },
               }}
             >
              We are the Dealer for Kirloskar Green Generators(KGD) & we have an entire range of diesel generators which starts from 5kVA to 1500kVA DG sets. Our generators provide reliable power solutions for businesses of all sizes across various industries.
