@@ -196,7 +196,7 @@ const ServiceHighlightSection = () => {
 
     <Box
       sx={{
-        width: 380,
+        width: { xs: "80%", md: "50%" },
         height: 3,
         backgroundColor: "#ff6a00",
       }}

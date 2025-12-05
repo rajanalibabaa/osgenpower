@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo , useMemo,useState,useEffect} from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -7,7 +7,14 @@ import { motion } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
 import img1 from "../assets/osgenpower_Herobannerbgimage.jpg"; // background image
 import img2 from '../assets/osgenpower_Ecofriendlyimages.png'
-import img3 from '../assets/osgenpower_HerSectionBanner.png'
+
+import { useNavigate } from "react-router-dom";
+import {InputAdornment,Paper,IconButton,TextField } from "@mui/material";
+
+import PersonIcon from "@mui/icons-material/Person";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MessageIcon from "@mui/icons-material/Message";
+
 // Optimized animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },
@@ -68,17 +75,198 @@ const getButtonStyles = (theme) => ({
   },
 });
 
+const FloatingForm = () => {
+  const isMobile = useMediaQuery("(max-width: 600px)");
+   const [formData, setFormData] = useState({
+    fullName: "",
+    mobile: "",
+    altMobile: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formData);
+    alert("Form submitted!");
+    setFormData({
+    fullName: "",
+    mobile: "",
+    altMobile: "",
+    message: "",
+  });
+
+  };
+
+
+  return (
+    <>
+    {!isMobile && (
+      <Paper
+          elevation={3}
+          sx={{
+            mt: 12,
+            mr: 10,
+            // position: "absolute",
+            // bottom:{xs: "20%", sm: "30%", md: "25%"},
+            // right: { xs: 20, sm: 40, md: '19%' },
+            width: 350,
+            height:390,
+            p: 2,
+            zIndex: 9999,
+            backgroundColor: "#2fa6aaff",
+            color: "#fff",
+            borderRadius: 2,
+          }}
+        >
+          {/* Close Button */}
+         
+
+          <Typography
+            variant="h6"
+            sx={{ textAlign: "center", mb: 3, mt: 1, color: "#fff" }}
+          >
+            Send Us a Message
+          </Typography>
+
+          <Box component="form" onSubmit={handleSubmit}>
+            {/* Full Name */}
+            <TextField
+              name="fullName"
+              label="Full Name"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={formData.fullName}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonIcon sx={{ color: "#fff" }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                mb: 2.5,
+                input: { color: "#fff" },
+                label: { color: "#fff" },
+                fieldset: { borderColor: "#fff" },
+              }}
+            />
+
+            {/* Mobile Number */}
+            <TextField
+              name="mobile"
+              label="Mobile Number"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={formData.mobile}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PhoneIcon sx={{ color: "#fff" }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                mb: 2.5,
+                input: { color: "#fff" },
+                label: { color: "#fff" },
+                fieldset: { borderColor: "#fff" },
+              }}
+            />
+
+            {/* Alternative Mobile */}
+            <TextField
+              name="altMobile"
+              label="Alternative Mobile"
+              variant="outlined"
+              fullWidth
+              size="small"
+              value={formData.altMobile}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PhoneIcon sx={{ color: "#fff" }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                mb: 2.5,
+                input: { color: "#fff" },
+                label: { color: "#fff" },
+                fieldset: { borderColor: "#fff" },
+              }}
+            />
+
+            {/* Message */}
+            <TextField
+              name="message"
+              label="Message"
+              variant="outlined"
+              multiline
+              rows={3}
+              fullWidth
+              size="small"
+              value={formData.message}
+              onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ alignSelf: "flex-start" }}>
+                    <MessageIcon sx={{ color: "#fff", mt: 1 }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                mb: 2.5,
+                input: { color: "#fff" },
+                label: { color: "#fff" },
+                fieldset: { borderColor: "#fff" },
+              }}
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="outlined"
+              sx={{
+                color: "#fff",
+                borderColor: "#fff",
+                mt: 1,
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+        </Paper>
+    )}
+        
+      {/* )} */}
+    </>
+  );
+};
+
+
 const HeroSectionModern = memo(() => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const buttonStyles = getButtonStyles(theme);
 
+    const navigate = useNavigate();
+
   return (
     <Box
       sx={{
         position: "relative",
-        height: { xs: "80svh", md: "100vh" }, // Use svh for mobile
+        height: { xs: "80svh", md: "90vh" }, // Use svh for mobile
         backgroundImage: {
           xs: `linear-gradient(rgba(5, 20, 40, 0.8), rgba(5, 20, 40, 0.8)), url(${img1})`,
           md: `linear-gradient(rgba(5, 20, 40, 0.74), rgba(5, 20, 40, 0.95)), url(${img1})`,
@@ -92,13 +280,15 @@ const HeroSectionModern = memo(() => {
         minHeight: { xs: "600px", sm: "700px" },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+      <Box sx={{ position: "absolute", zIndex: 0 ,width: '100%',display: { xs: 'block', md: 'flex',justifyContent:'space-evenly'}}}>
         <Box
           sx={{
-            mt: { xs: "8vh", sm: "10vh", md: "12vh" },
+            
+            mt: { xs: "8vh", sm: "10vh", md: "15vh" },
             textAlign: { xs: "center", md: "left" },
-            maxWidth: { xs: "100%", md: "700px" },
+            maxWidth: { xs: "100%", md: "50%" },
             px: { xs: 2, sm: 0 },
+            ml: { xs: 0, md: 5},
           }}
         >
          {/* Main Heading */}
@@ -206,16 +396,16 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
                 flexDirection: { xs: "column", sm: "row" },
               }}
             >
-              <Button variant="contained" size="large" sx={buttonStyles.primary}>
+              <Button variant="contained" size="large" sx={buttonStyles.primary} onClick={()=> navigate('/Generatorsales/Delearership/Rental')}>
                 Explore Generators
               </Button>
 
-              <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
+              <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={()=> navigate('/contact')}>
                 Request Service
               </Button>
 
               {!isMobile && (
-                <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
+                <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={()=> navigate('/contact')}>
                   Request Dealership
                 </Button>
               )}
@@ -231,7 +421,9 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
             )}
           </motion.div>
         </Box>
-      </Container>
+        <FloatingForm/>
+      </Box>
+         
 
       {/* Eco-friendly badge - Responsive positioning */}
       <motion.div
@@ -240,8 +432,8 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
         transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
         style={{
           position: "absolute",
-          top: isMobile ? 490 : 30,
-          right: isMobile ? 10 : 30,
+          top: isMobile ? 470 : 30,
+          right: isMobile ? 270 : 20,
           zIndex: 3,
         }}
       >
@@ -249,7 +441,7 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
           src={img2}
           alt="Eco Friendly"
           style={{
-            width: isMobile ? 120 : isTablet ? 100 : 220,
+            width: isMobile ? 120 : isTablet ? 100 : 100,
             height: isMobile ? 110 : isTablet ? 100 : 200,
             objectFit: "contain",
           }}
@@ -258,7 +450,7 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
       </motion.div>
 
       {/* Hero image - Responsive positioning */}
-      {!isMobile && (
+      {/* {!isMobile && (
         <motion.div
           variants={fadeInScale}
           initial="initial"
@@ -282,7 +474,8 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
             loading="lazy"
           />
         </motion.div>
-      )}
+      )} */}
+     
 
       {/* Scroll Indicator */}
       <motion.div

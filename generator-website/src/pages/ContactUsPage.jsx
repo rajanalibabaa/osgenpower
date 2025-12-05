@@ -9,14 +9,14 @@ import {
   Grid,
   Paper
 } from "@mui/material";
-import bg from '../assets/osgenpowerabout.jpg';
+import bg from '../assets/omshakthigenpower_contactbg.jpg';
 import EmailIcon from "@mui/icons-material/Email";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MessageIcon from "@mui/icons-material/Message";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { motion } from "framer-motion";
-import img1 from "../assets/osgenpower_Contactus.jpg";
+import img1 from "../assets/omshakthigenpower_contact.jpg";
 import FAQSection from "../Components/FAQSections";
 import img5 from "../assets/osgenpower_Untitleddesign.jpg";
 
@@ -40,18 +40,41 @@ export default function ContactPage() {
   return (
     <>
       {/* 🧭 HEADER BANNER */}
-      <MotionBox
+      
+
+      {/* 📩 ENQUIRY FORM SECTION */}
+      <Box
+  component="section"
+  sx={{
+    position: "relative",
+    py: { xs: 4, md: 8 },
+    px: { xs: 2, md: 8 },
+    mb: { xs: 4, md: 8 },
+    overflow: "hidden",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      inset: 0,
+      background: `url(${bg}) no-repeat center/cover`,
+      // opacity: 0.9,              // 👈 control background image opacity
+      filter: "blur(10px)",       // 👈 backdrop filter on image
+      zIndex: -1,
+    },
+    backdropFilter: "blur(4px)", // 👈 blur behind content
+  }}
+      >
+        <MotionBox
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         sx={{
-          mt: { xs: 0, sm: 0, md: 2 },
+          mt: { xs: 0, sm: 0, md: 0 },
           width: "100%",
-          height: { xs: "40vh", sm: "50vh", md: "40vh" },
-          backgroundImage: `url(${bg})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
+          height: { xs: "30vh", sm: "30vh", md: "15vh" },
+          // backgroundImage: `url(${bg})`,
+          // backgroundSize: "cover",
+          // backgroundRepeat: "no-repeat",
+          // backgroundPosition: "center",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -68,22 +91,13 @@ export default function ContactPage() {
               color: "#ff4400",
               fontWeight: "bold",
               letterSpacing: "0.5px",
-              fontSize: { xs: "1.5rem", sm: "2.5rem", md: "3rem" },
+              fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
             }}
           >
             Contact Us
           </MotionTypography>
 
-          {/* <Typography
-                    variant={isMobile ? "h4" : "h3"}
-                    fontWeight="bold"
-                    textAlign="center"
-                    gutterBottom
-                    color="#ff4400"
-                    sx={{ textAlign: "center" }}
-                  >
-                    Frequently Asked Questions
-                  </Typography> */}
+          
                       <Box
                 sx={{
                   width: 100,
@@ -97,24 +111,21 @@ export default function ContactPage() {
             variant="subtitle1"
             sx={{
               mt: 2,
+              mb:{ xs: 0, sm: 0, md: 5 },
               color: "#ffffffff",
               fontSize: { xs: "0.8rem", sm: "1.1rem" },
             }}
           >
-            We’d love to hear from you. Get in touch today!
+          We’re here to help with all your generator sales, service, and KOEL authorized dealership inquiries.<br/>
+Reach out to us for product details, quotations, support, or partnership requests.
           </Typography>
         </Box>
       </MotionBox>
-
-      {/* 📩 ENQUIRY FORM SECTION */}
-      <Box
-        component="section"
-        sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 8 }, background: "#F9F8F6", mb: { xs: 4, md: 8 } }}
-      >
-        <Grid
+      <Grid
           container
           spacing={6}
           justifyContent="center"
+          mt={{ xs: 0, md: 6 }}
           alignItems="flex-start"
         >
           {/* FORM SIDE */}
@@ -382,11 +393,11 @@ export default function ContactPage() {
               >
                 <Box
                   component={motion.img}
-                  src={img5}
+                  src={img1}
                   alt="Contact Us"
                   sx={{
                     width: '100%',
-                    maxWidth: '500px',
+                    maxWidth: '750px',
                     height: 'auto',
                     borderRadius: 4,
                     boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
@@ -409,17 +420,17 @@ export default function ContactPage() {
                 variant="h4"
                 textAlign="center"
                 fontWeight="bold"
-                sx={{ mb: 3, color: "#d63939" }}
+                sx={{ mb: 3, color: "#000000ce" }}
               >
                 Contact Information
               </Typography>
 
-              <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={3}>
+              <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={3} bgcolor={"#ffffffe3"} p={5}>
                 <Box display="flex" alignItems="flex-start" gap={2}>
-                  <LocationOnIcon color="primary" sx={{ fontSize: 30 }} />
+                  <LocationOnIcon color="error" sx={{ fontSize: 30 }} />
                   <Box>
                     <Typography variant="h6">Address</Typography>
-                    <Typography color="text.secondary">
+                    <Typography >
                       No: 06/04, G Floor, Sandhiveeran Apartments,
                       <br /> Munuswamy Street, Ekkatuthangal, Chennai-600032.
                     </Typography>

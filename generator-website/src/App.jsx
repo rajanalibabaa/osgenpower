@@ -1,8 +1,8 @@
-import React, { Suspense,useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { Fab, Box, TextField, Button, Typography, Paper, IconButton, InputAdornment } from "@mui/material";
+import { Fab, Box, TextField, Button, Typography, Paper, IconButton, InputAdornment,useMediaQuery } from "@mui/material";
 import  WhatsAppIcon  from "@mui/icons-material/WhatsApp";
 import ChatIcon from "@mui/icons-material/Chat";
 import CloseIcon from "@mui/icons-material/Close";
@@ -44,13 +44,13 @@ const theme = createTheme({
 // Fallback Loader
 
 const WhatsApp = () => {
-  const mobileNumber = "+91 735 000 0000"; // Replace with your actual mobile number
+  const mobileNumber = "+919841642050"; // Replace with your actual mobile number
   return(
      <Fab
       onClick={() => window.open(`https://wa.me/${mobileNumber}`, "_blank")}
       sx={{
         position: "fixed",
-        bottom: 100,
+        bottom: 130,
         right: 20,
         backgroundColor: "#25D366",
         color: "#fff",
@@ -67,11 +67,47 @@ const WhatsApp = () => {
   )
 }
 
+const PhoneCallButton = () => {
+  const phoneNumber = "+918248638595";   // your number here
+
+  const handleCallClick = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
+  return (
+    <Fab
+      onClick={handleCallClick}
+      sx={{
+        position: "fixed",
+        bottom: { xs: 80, sm: 200, md: 280, lg: 120 },   
+        right:  { xs: 295, sm: 10, md: 25 },             
+
+        backgroundColor: "#28a745",
+        color: "#fff",
+
+        width:  { xs: 58, sm: 55, md: 55, lg: 60 },      
+        height: { xs: 58, sm: 55, md: 55, lg: 60 },      
+
+        zIndex: 9999,
+        "&:hover": {
+          backgroundColor: "#218838",
+          transform: "scale(1.1)",
+        },
+        transition: "all 0.3s ease",
+      }}
+      aria-label="Call Now"
+    >
+      <PhoneIcon sx={{ fontSize: { xs: 28, sm: 26, md: 30, lg: 32 } }} />
+    </Fab>
+  );
+};
+
+
 // Floating Form 
 
 const FloatingForm = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
  
   // NEW: Is scroll allowed to auto-collapse?
   const [autoCollapseEnabled, setAutoCollapseEnabled] = useState(true);
@@ -86,7 +122,7 @@ const FloatingForm = () => {
   // Detect scroll only ONCE
   useEffect(() => {
     const handleScroll = () => {
-      if (autoCollapseEnabled && window.scrollY > 200) {
+      if (autoCollapseEnabled && window.scrollY > 300) {
         setIsScrolled(true);
         setIsOpen(false); // collapse only the first time
         setAutoCollapseEnabled(false); // stop auto-collapsing forever
@@ -154,8 +190,8 @@ const FloatingForm = () => {
           elevation={3}
           sx={{
             position: "fixed",
-            bottom:50,
-            right: "10%",
+            bottom:{xs: "20%", sm: "30%", md: "8%"},
+            right: { xs: 20, sm: 40, md: '19%' },
             width: 320,
             p: 2,
             zIndex: 9999,
@@ -306,6 +342,7 @@ const FloatingForm = () => {
 
 
 function App() {
+  const isMobile = useMediaQuery("(max-width: 600px)");
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -315,6 +352,8 @@ function App() {
           <Navbar />
 <WhatsApp/>
 <FloatingForm/>
+{isMobile &&<PhoneCallButton/>}
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

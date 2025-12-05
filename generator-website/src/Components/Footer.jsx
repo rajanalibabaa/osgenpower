@@ -490,7 +490,7 @@ const Footer = () => {
         aria-label="Scroll button"
         sx={{
           position: "fixed",
-          bottom: 25,
+          bottom: { xs: 65, sm: 200, md: 25, lg: 25 },
           right: 25,
           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           color: "#fff",

@@ -34,7 +34,7 @@ import RightCapacitySolutionAboutimage from "../assets/osgenpower_RightCapacityS
 import TechnicalSupportAboutimage from "../assets/osgenpower_TechnicalSupportAboutimage.jpg"
 import WellExperiencedAboutimage from "../assets/osgenpower_WellExperiencedAboutimage.jpg"
 import TrustedBrandAboutimage from "../assets/osgenpower_TrustedBrandAboutimage.jpg"
-import img1 from '../assets/osgenpower_Aboutpagebackground.jpg'
+// import img1 from '../assets/osgenpower_Aboutpagebackground.jpg'
 import FAQSection from '../Components/FAQSections';
 import omshakthigenpower_logo from '../assets/omshakthigenpower_logo.jpg'
 // Animation variants

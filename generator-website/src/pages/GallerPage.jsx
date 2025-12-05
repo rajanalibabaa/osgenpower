@@ -71,7 +71,7 @@ const GalleryPage = () => {
   }, [allImages.length]);
 
   return (
-    <Box sx={{ backgroundColor: "#F9F9F9", py: 6 }}>
+    <Box sx={{ backgroundColor: "#F9F9F9", py: 6, }}>
       {/* 🔸 Header */}
       <Typography
         variant="h3"
@@ -101,7 +101,7 @@ const GalleryPage = () => {
       {/* 🎞️ Main Slideshow Section with Arrows */}
 <Box
   sx={{
-    mx: "auto",
+    // mx: "auto",
     position: "relative",
     cursor: "pointer",
     mb: 4,
@@ -127,7 +127,8 @@ const GalleryPage = () => {
   exit={{ opacity: 0 }}
   transition={{ duration: 0.5 }}
   style={{
-    width: "500px",    
+    width: "100%",  
+    maxWidth: "500px",  
     height: "300px",  
     objectFit: "contain", 
     display: "block",

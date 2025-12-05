@@ -19,6 +19,7 @@ import image4 from "../assets/osgenpower_Kcc1530kvimage.jpeg";
 import image5 from "../assets/osgenpower_koel-green-genset-40kva-125kva.jpg";
 import image6 from "../assets/osgenpower_160kVA-250kVAimage.jpg";
 import image7 from "../assets/koel-diesel-genset-320-kva-1010-kva--164.png";
+import image8 from "../assets/omshakthipowerservicebg.jpg";
 
 const useCardData = () =>
   useMemo(
@@ -38,6 +39,14 @@ const useCardData = () =>
         desc:
           "KOEL AMFi panels automatically switch on your genset when the mains supply fails and switch off the genset when the mains supply restores giving you un-matched convenience.",
         pdf: "/OsGenPowerKCC - 5-kva-125-kva.pdf",
+      },
+       {
+        id: 6,
+        img: image6,
+        title: "KOEL Green Gensets - 160-KVA-250-KVA",
+        desc:
+          "Revised CPCB norms are aimed at protecting the environment by reducing Genset emissions and improving emission quality. These are some of the most stringent emission norms in the world.",
+        pdf: "/OsGenPowerKCC-160-kva-250-kva.pdf",
       },
       {
         id: 3,
@@ -63,14 +72,7 @@ const useCardData = () =>
           "KOEL Green Gensets offer a unique combination of CPCB norm compliance and enhanced fuel efficiency. Across the range, KOEL Green Gensets offer substantial savings in fuel cost.",
         pdf: "/OsGenPowerKOEL Green - 40kVA to 125kVA Product Brochure.pdf",
       },
-      {
-        id: 6,
-        img: image6,
-        title: "KOEL Green Gensets - 160-KVA-250-KVA",
-        desc:
-          "Revised CPCB norms are aimed at protecting the environment by reducing Genset emissions and improving emission quality. These are some of the most stringent emission norms in the world.",
-        pdf: "/OsGenPowerKCC-160-kva-250-kva.pdf",
-      },
+     
       {
         id: 7,
         img: image7,
@@ -97,146 +99,229 @@ const GensetCard = React.memo(({ index, item, onOpen, isMobile, isTablet }) => (
     }}
   >
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: "easeOut",
+        duration: 0.6,
+        delay: index * 0.15,
+        ease: "backOut",
       }}
       style={{ width: "100%", display: "flex" }}
     >
-      <Card
+      <Box
         sx={{
           width: "100%",
           maxWidth: 420,
-          borderRadius: "22px",
-          overflow: "hidden",
           position: "relative",
-          background: "#ffffff",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-          transition: "0.35s",
-          p: 0,
-
+          cursor: "pointer",
+          transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+          
           "&:hover": {
-            transform: "translateY(-6px)",
-            boxShadow: "0 16px 40px rgba(0,0,0,0.15)",
+            transform: "scale(1.03)",
           },
         }}
       >
-        {/* TOP IMAGE SECTION */}
+        {/* Main Container with Glassmorphism Effect */}
         <Box
           sx={{
-            height: isMobile ? 190 : isTablet ? 220 : 260,
-            position: "relative",
-            background: "rgba(255,255,255,0.6)",
+            // background: "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))",
             backdropFilter: "blur(10px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            border: "1px solid rgba(255, 255, 255, 1)",
+            borderRadius: "32px",
             overflow: "hidden",
+            position: "relative",
+            
+              // "&::before": {
+              //   content: '""',
+              //   position: "absolute",
+              //   top: 0,
+              //   left: 0,
+              //   right: 0,
+              //   height: "2px",
+              //   background: "linear-gradient(90deg, #0fa95e, #34d399, #0fa95e)",
+              //   zIndex: 1,
+              // }
           }}
         >
-          {/* Glow Shadow Behind Image */}
+          {/* Floating Image Container */}
           <Box
             sx={{
-              position: "absolute",
-              width: "70%",
-              height: "70%",
-              filter: "blur(40px)",
-              background: "rgba(0, 180, 90, 0.25)",
-              borderRadius: "50%",
-            }}
-          />
-
-          {/* PRODUCT IMAGE */}
-          <img
-            src={item.img}
-            loading="lazy"
-            alt={item.title}
-            style={{
-              width: "80%",
-              height: "80%",
-              objectFit: "contain",
-              zIndex: 5,
-              transform: "translateY(8px)",
-              transition: "0.5s",
-            }}
-            className="product-img"
-          />
-        </Box>
-
-        {/* CONTENT */}
-        <CardContent
-          sx={{
-            padding: { xs: 2, sm: 3 },
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            variant="h6"
-            fontWeight={700}
-            sx={{
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              mb: 1,
-              color: "#1d1d1d",
-            }}
-          >
-            {item.title}
-          </Typography>
-
-          <Typography
-            variant="body2"
-            sx={{
-              color: "grey.700",
-              lineHeight: 1.6,
-              height: 48,
-              overflow: "hidden",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              mb: 2,
-              fontSize: { xs: "0.82rem", sm: "0.9rem" },
-            }}
-          >
-            {item.desc}
-          </Typography>
-
-          {/* Bottom Action Bar */}
-          <Box
-            sx={{
-              mt: 2,
+              position: "relative",
+              height: isMobile ? 200 : isTablet ? 240 : 280,
               display: "flex",
+              alignItems: "center",
               justifyContent: "center",
+              background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
+              margin: 2,
+              marginBottom: 0,
+              borderRadius: "24px",
+              overflow: "hidden",
             }}
           >
-            <Button
-              onClick={() => onOpen(item.pdf)}
-              variant="contained"
+            {/* Animated Background Circles */}
+            {/* <Box
               sx={{
-                background: "linear-gradient(135deg, #16a34a, #0e7b38)",
-                color: "#fff",
-                fontWeight: "600",
-                borderRadius: "999px",
-                px: 4,
-                py: 1.2,
-                textTransform: "none",
-                fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                boxShadow: "0 6px 16px rgba(0,150,70,0.3)",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  background: "linear-gradient(135deg, #11803f, #0b5c2d)",
+                position: "absolute",
+                width: "120%",
+                height: "120%",
+                background: "radial-gradient(circle at 30% 70%, rgba(15, 169, 94, 0.1) 0%, transparent 50%)",
+                animation: "float 6s ease-in-out infinite",
+                "@keyframes float": {
+                  "0%, 100%": { transform: "rotate(0deg) scale(1)" },
+                  "50%": { transform: "rotate(5deg) scale(1.05)" },
                 },
               }}
-            >
-              Download Brochure
-            </Button>
+            /> */}
+{/*             
+            <Box
+              sx={{
+                position: "absolute",
+                width: "80%",
+                height: "80%",
+                border: "2px solid rgba(15, 169, 94, 0.1)",
+                borderRadius: "50%",
+                animation: "pulse 4s ease-in-out infinite",
+                "@keyframes pulse": {
+                  "0%, 100%": { transform: "scale(1)", opacity: 0.3 },
+                  "50%": { transform: "scale(1.1)", opacity: 0.1 },
+                },
+              }}
+            /> */}
+
+            {/* Product Image */}
+            <img
+              src={item.img}
+              loading="lazy"
+              alt={item.title}
+              style={{
+                width: "75%",
+                height: "75%",
+                objectFit: "contain",
+                zIndex: 3,
+                filter: "drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08))",
+                transition: "transform 0.3s ease",
+              }}
+            />
           </Box>
-        </CardContent>
-      </Card>
+
+          {/* Content Section with Modern Layout */}
+          <Box sx={{ padding: { xs: 2.5, sm: 3.5 } }}>
+            {/* Title with Accent Line */}
+            <Box sx={{ position: "relative", mb: 2 }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: "1.1rem", sm: "1.25rem" },
+                  fontWeight: 600,
+                  color: "#ffffffff",
+                  textAlign: "center",
+                  position: "relative",
+                  paddingBottom: 1,
+                }}
+              >
+                {item.title}
+              </Typography>
+              
+              {/* Decorative Line */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "60px",
+                  height: "3px",
+                  background: "white",
+                  borderRadius: "2px",
+                }}
+              />
+            </Box>
+
+            {/* Description */}
+            <Typography
+              variant="body2"
+              sx={{
+                color: "#ffffffff",
+                lineHeight: 1.7,
+                textAlign: "center",
+                fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                mb: 3,
+                minHeight: "48px",
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {item.desc}
+            </Typography>
+
+            {/* Modern Button Design */}
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Box
+                onClick={() => onOpen(item.pdf)}
+                sx={{
+                  position: "relative",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  background: "linear-gradient(135deg, #f42409ff 0%, #ee0909ff 100%)",
+                  color: "#ffffff",
+                  padding: { xs: "12px 24px", sm: "14px 28px" },
+                  borderRadius: "50px",
+                  fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  border: "2px solid transparent",
+                  overflow: "hidden",
+                  
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    inset: 0,
+                    padding: "2px",
+                    background: "linear-gradient(135deg, #0fa95e, #34d399, #10b981)",
+                    borderRadius: "inherit",
+                    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    maskComposite: "xor",
+                    opacity: 0,
+                    transition: "opacity 0.3s ease",
+                  },
+                  
+                  "&:hover": {
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 10px 25px rgba(15, 169, 94, 0.3)",
+                    
+                    "&::before": {
+                      opacity: 1,
+                    }
+                  },
+                }}
+              >
+                <Box
+                  component="span"
+                  sx={{
+                    fontSize: "1.1em",
+                    transition: "transform 0.3s ease",
+                    
+                    ".MuiBox-root:hover &": {
+                      transform: "translateX(2px)",
+                    }
+                  }}
+                >
+                  📄
+                </Box>
+                Download Brochure
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </motion.div>
   </Grid>
 ));
+
 
 
 const SalesRentalDealerPage = () => {
@@ -267,7 +352,9 @@ const SalesRentalDealerPage = () => {
           md: "24px", 
           lg: "32px" 
         },
-backgroundColor: "#ffffffff",
+background:`url(${image8}) center center/cover no-repeat`,
+        
+
       }}
     >
               <Typography textAlign='center' color="#ff4400ff" variant={isMobile ? "h4" : "h3"} fontWeight='bold' fontSize={{xs:'1.5rem',md:'3.5rem'}}>Generator / Sales / Rental </Typography>
