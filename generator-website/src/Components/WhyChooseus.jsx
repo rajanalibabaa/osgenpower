@@ -172,8 +172,8 @@ const WhyChooseUs = () => {
                   py: 1.5,
                   fontWeight: 600,
                   borderRadius: "6px",
-                  borderColor: "#ffffffff",
-                  color: "#ffffffff",
+                  borderColor: "#000000ff",
+                  color: "#000000ff",
                   "&:hover": {
                     borderColor: "#e81010",
                     color: "#e81010",

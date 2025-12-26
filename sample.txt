@@ -1,1 +1,254 @@
 
+
+// const FloatingForm = () => {
+//   const isMobile = useMediaQuery("(max-width: 600px)");
+//   const [formData, setFormData] = useState({
+//     fullName: "",
+//     mobile: "",
+//     altMobile: "",
+//     message: "",
+//   });
+
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Form Submitted:", formData);
+//     alert("Form submitted!");
+//     setFormData({
+//       fullName: "",
+//       mobile: "",
+//       altMobile: "",
+//       message: "",
+//     });
+//   };
+
+//   return (
+//     <>
+//       {!isMobile && (
+//         <motion.div
+//           initial={{ opacity: 0, x: 50 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 0.8, delay: 1 }}
+//         >
+//           <Paper
+//             elevation={0} // Remove default shadow for modern glassmorphism
+//             sx={{
+//               mt: 12,
+//               mr: 5,
+//               width: 350,
+//               height: 420, // Slightly taller for modern spacing
+//               p: 3,
+//               zIndex: 9999,
+//               background: "#ff9c45ff", // Glassmorphism background
+//               // backdropFilter: "blur(20px)", // Modern blur effect
+//               border: "1px solid rgba(255, 255, 255, 0.2)",
+//               color: "#000000ff",
+//               borderRadius: "20px", // Softer rounded corners
+//               position: "relative",
+//               overflow: "hidden",
+//               // Add subtle gradient overlay for depth
+//               // "&::before": {
+//               //   content: '""',
+//               //   position: "absolute",
+//               //   top: 0,
+//               //   left: 0,
+//               //   right: 0,
+//               //   height: "2px",
+//               //   background: "linear-gradient(90deg, #e81010, #e81010)",
+//               // },
+//             }}
+//           >
+//             {/* Modern Title with Gradient */}
+//             <Typography
+//               variant="h6"
+//               sx={{
+//                 textAlign: "center",
+//                 mb: 3,
+//                 mt: 1,
+//                 // color: "#",
+//                 fontWeight: 700,
+//                 background: "#ffffffff",
+//                 backgroundClip: "text",
+//                 WebkitBackgroundClip: "text",
+//                 WebkitTextFillColor: "transparent",
+//               }}
+//             >
+//               Get in Touch
+//             </Typography>
+
+//             <Box component="form" onSubmit={handleSubmit}>
+//               {/* Full Name - Modern Input Styling */}
+//               <TextField
+//                 name="fullName"
+//                 label="Full Name"
+//                 variant="outlined"
+//                 fullWidth
+//                 size="small"
+//                 value={formData.fullName}
+//                 onChange={handleChange}
+//                 InputProps={{
+//                   startAdornment: (
+//                     <InputAdornment position="start">
+//                       <PersonIcon sx={{ color: "#e81010" }} /> {/* Red icon */}
+//                     </InputAdornment>
+//                   ),
+//                 }}
+//                 sx={{
+//                   mb: 2.5,
+//                   input: { color: "#ffffffff" },
+//                   label: { color: "rgba(255, 255, 255, 1)" },
+//                   fieldset: {
+//                     borderColor: "rgba(255, 255, 255, 1)",
+//                   },
+//                   "&:hover .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#ffffffff",
+//                   },
+//                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#f3f3f3ff",
+//                   },
+                  
+//                   "& .MuiInputLabel-root.Mui-focused": {
+//                     color: "#ffffffff", 
+//                   },
+//                 }}
+//               />
+
+//               {/* Mobile Number */}
+//               <TextField
+//                 name="mobile"
+//                 label="Mobile Number"
+//                 variant="outlined"
+//                 fullWidth
+//                 size="small"
+//                 value={formData.mobile}
+//                 onChange={handleChange}
+//                 InputProps={{
+//                   startAdornment: (
+//                     <InputAdornment position="start">
+//                       <PhoneIcon sx={{ color: "#e81010" }} />
+//                     </InputAdornment>
+//                   ),
+//                 }}
+//                 sx={{
+//                   mb: 2.5,
+//                   input: { color: "#ffffffff" },
+//                   label: { color: "rgba(255, 255, 255, 0.8)" },
+//                   fieldset: {
+//                     borderColor: "rgba(255, 255, 255, 1)",
+//                   },
+//                   "&:hover .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#ffffffff",
+//                   },
+//                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#f3f3f3ff",
+//                   },
+                  
+//                   "& .MuiInputLabel-root.Mui-focused": {
+//                     color: "#ffffffff", 
+//                   },
+//                 }}
+//               />
+
+//               {/* Alternative Mobile */}
+//               <TextField
+//                 name="altMobile"
+//                 label="Alternative Mobile"
+//                 variant="outlined"
+//                 fullWidth
+//                 size="small"
+//                 value={formData.altMobile}
+//                 onChange={handleChange}
+//                 InputProps={{
+//                   startAdornment: (
+//                     <InputAdornment position="start">
+//                       <PhoneIcon sx={{ color: "#e81010" }} />
+//                     </InputAdornment>
+//                   ),
+//                 }}
+//                 sx={{
+//                   mb: 2.5,
+//                   input: { color: "#ffffffff" },
+//                   label: { color: "rgba(255, 255, 255, 1)" },
+//                   fieldset: {
+//                     borderColor: "rgba(255, 255, 255, 1)",
+//                   },
+//                   "&:hover .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#ffffffff",
+//                   },
+//                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#f3f3f3ff",
+//                   },
+                  
+//                   "& .MuiInputLabel-root.Mui-focused": {
+//                     color: "#ffffffff", 
+//                   },
+//                 }}
+//               />
+
+//               {/* Message */}
+//               <TextField
+//                 name="message"
+//                 label="Message"
+//                 variant="outlined"
+//                 multiline
+//                 rows={3}
+//                 fullWidth
+//                 size="small"
+//                 value={formData.message}
+//                 onChange={handleChange}
+//                 InputProps={{
+//                   startAdornment: (
+//                     <InputAdornment position="start" sx={{ alignSelf: "flex-start" }}>
+//                       <MessageIcon sx={{ color: "#e81010", mt: 1 }} />
+//                     </InputAdornment>
+//                   ),
+//                 }}
+//                 sx={{
+//                   mb: 2.5,
+//                   input: { color: "#ffffffff" },
+//                   label: { color: "rgba(255, 255, 255, 1)" },
+//                   fieldset: {
+//                     borderColor: "rgba(255, 255, 255, 1)",
+//                   },
+//                   "&:hover .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#ffffffff",
+//                   },
+//                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//                     borderColor: "#ffffffff",
+//                   },
+                  
+//                   "& .MuiInputLabel-root.Mui-focused": {
+//                     color: "#ffffffff", 
+//                   },
+//                 }}
+//               />
+
+//               {/* Modern Submit Button */}
+//               <Button
+//                 type="submit"
+//                 fullWidth
+//                 variant="contained"
+//                 sx={{
+//                   background: "linear-gradient(135deg, #e81010 0%, #e81010 100%)",
+//                   borderRadius: "10px",
+//                   py: 1.2,
+//                   fontWeight: 600,
+//                   textTransform: "none",
+//                   "&:hover": {
+//                     background: "linear-gradient(135deg, #c81010 0%, #c81010 100%)", // Darker red
+//                     transform: "scale(1.02)",
+//                   },
+//                 }}
+//               >
+//                 Send Message
+//               </Button>
+//             </Box>
+//           </Paper>
+//         </motion.div>
+//       )}
+//     </>
+//   );
+// };

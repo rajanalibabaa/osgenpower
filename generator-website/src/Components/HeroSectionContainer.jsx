@@ -1,550 +1,480 @@
-import React, { memo, useMemo, useState, useEffect } from "react";
+import React, { memo, useMemo, useState, useEffect, useCallback } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
-import img1 from "../assets/osgenpower_Herobannerbgimage.jpg"; // Background image 1
-import img2 from "../assets/osgenpowerhero1.jpg"; // Background image 2
-import img3 from "../assets/osgenpowerhero2.jpg"; // Background image 3
-import img4 from "../assets/osgenpowerhero3.jpg"; // Background image 4
-import img5 from "../assets/osgenpowerhero4.jpg"; // Background image 5
-
+import img2 from "../assets/osgenpowerHeroSec1.png";
+import img3 from "../assets/2.png";
+import img4 from "../assets/3.png";
+import img5 from "../assets/4.png";
 import { useNavigate } from "react-router-dom";
-import { InputAdornment, Paper, IconButton, TextField } from "@mui/material";
 
-import PersonIcon from "@mui/icons-material/Person";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MessageIcon from "@mui/icons-material/Message";
+// Slide data with different content for each image
+const slideData = [
+  {
+    id: 1,
+    image: img2,
+    title: "Power That Drives the Future",
+    subtitle: "Industrial Generators • Heavy Duty • Commercial Solutions",
+    description: "Experience unmatched reliability with our industrial-grade generators. Built for continuous operation and designed to power your most demanding applications with precision and efficiency.",
+    primaryBtn: "View Industrial Range",
+    secondaryBtn: "Get Quote",
+    gradient: "linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)",
+    theme: "industrial"
+  },
+  {
+    id: 2,
+    image: img3,
+    title: "Smart Energy Solutions",
+    subtitle: "Home Backup • Smart Control • Eco-Friendly",
+    description: "Transform your home energy experience with intelligent backup systems. Our smart generators automatically detect power outages and provide seamless energy transition for modern living.",
+    primaryBtn: "Explore Home Series",
+    secondaryBtn: "Smart Features",
+    gradient: "linear-gradient(135deg, #4834d4 0%, #686de0 100%)",
+    theme: "smart"
+  },
+  {
+    id: 3,
+    image: img4,
+    title: "Portable Power Revolution",
+    subtitle: "Outdoor Adventures • Mobile Power • Compact Design",
+    description: "Take power anywhere with our lightweight, portable generators. Perfect for camping, events, and emergency situations. Clean energy that doesn't compromise on performance or portability.",
+    primaryBtn: "Shop Portable",
+    secondaryBtn: "Compare Models",
+    gradient: "linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%)",
+    theme: "portable"
+  },
+  {
+    id: 4,
+    image: img5,
+    title: "Sustainable Energy Future",
+    subtitle: "Green Technology • Solar Hybrid • Zero Emissions",
+    description: "Join the renewable energy revolution with our hybrid solar generators. Combining traditional reliability with sustainable innovation for a cleaner, more efficient energy solution.",
+    primaryBtn: "Green Solutions",
+    secondaryBtn: "Learn More",
+    gradient: "linear-gradient(135deg, #26de81 0%, #20bf6b 100%)",
+    theme: "sustainable"
+  }
+];
 
-// Optimized animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 50 },
-  animate: { opacity: 1, y: 0 },
+// Enhanced animation variants
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+    scale: 0.8,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+    scale: 0.8,
+  }),
 };
 
-const fadeInScale = {
-  initial: { opacity: 0, scale: 0.7, x: 150 },
-  animate: { opacity: 1, scale: 1, x: 0 },
+const contentVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 60,
+    scale: 0.9,
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      staggerChildren: 0.1,
+    }
+  },
+  exit: { 
+    opacity: 0, 
+    y: -30,
+    scale: 0.9,
+    transition: { duration: 0.4 }
+  }
 };
 
-// Memoized button styles for better performance
-const getButtonStyles = (theme) => ({
+const childVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const buttonHoverVariants = {
+  hover: { 
+    scale: 1.05,
+    y: -2,
+    transition: { duration: 0.2, ease: "easeInOut" }
+  },
+  tap: { 
+    scale: 0.98,
+    y: 0,
+  }
+};
+
+const dotVariants = {
+  inactive: { 
+    scale: 1, 
+    opacity: 0.4,
+    backgroundColor: "rgba(255, 255, 255, 0.4)"
+  },
+  active: { 
+    scale: 1.2, 
+    opacity: 1,
+    backgroundColor: "#fff",
+    transition: { duration: 0.3, ease: "easeInOut" }
+  }
+};
+
+// Memoized button styles
+const getButtonStyles = (theme, currentSlide) => ({
   primary: {
-    background: "linear-gradient(135deg, #e81010 0%, #e81010 100%)", // Red gradient
-    borderRadius: "12px",
+    background: currentSlide.gradient,
+    borderRadius: "16px",
     fontWeight: 600,
-    px: { xs: 2, sm: 3, md: 4 },
-    py: { xs: 1, sm: 1.25, md: 1.5 },
+    px: { xs: 3, sm: 4, md: 5 },
+    py: { xs: 1.5, sm: 2, md: 2.5 },
     textTransform: "none",
-    boxShadow: "0 4px 15px rgba(232, 16, 16, 0.4)", // Updated to red shadow
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
     border: "none",
-    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+    minWidth: { xs: "160px", sm: "180px", md: "200px" },
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     "&:hover": {
-      background: "linear-gradient(135deg, #c81010 0%, #c81010 100%)", // Darker red on hover
-      transform: "translateY(-3px)",
-      boxShadow: "0 8px 25px rgba(232, 16, 16, 0.5)", // Red shadow
-    },
-    "&:active": {
-      transform: "translateY(-1px)",
-      boxShadow: "0 4px 15px rgba(232, 16, 16, 0.4)",
+      filter: "brightness(1.1)",
+      transform: "translateY(-2px)",
+      boxShadow: "0 12px 40px rgba(0, 0, 0, 0.4)",
     },
   },
   outlined: {
-    color: "#ffffffff",
-    borderColor: "rgba(255, 255, 255, 0.8)", // Red border
+    color: "#fff",
+    borderColor: "rgba(255, 255, 255, 0.8)",
     borderWidth: "2px",
-    borderRadius: "12px",
-    px: { xs: 2, sm: 3, md: 4 },
-    py: { xs: 1, sm: 1.25, md: 1.5 },
+    borderRadius: "16px",
+    px: { xs: 3, sm: 4, md: 5 },
+    py: { xs: 1.5, sm: 2, md: 2.5 },
     textTransform: "none",
     fontWeight: 600,
-    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-    background: "rgba(201, 200, 200, 0.1)", // Red tint
-    // backdropFilter: "blur(10px)",
+    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+    minWidth: { xs: "160px", sm: "180px", md: "200px" },
+    background: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     "&:hover": {
-      // backgroundColor: "rgba(232, 16, 16, 0.2)",
-      color: "#fff",
-      borderColor: "rgba(232, 16, 16, 1)",
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+      borderColor: "#fff",
       transform: "translateY(-2px)",
-      boxShadow: "0 6px 20px rgba(232, 16, 16, 0.3)", // Red shadow
-    },
-    "&:active": {
-      transform: "translateY(0px)",
+      boxShadow: "0 8px 24px rgba(255, 255, 255, 0.3)",
     },
   },
 });
-
-const FloatingForm = () => {
-  const isMobile = useMediaQuery("(max-width: 600px)");
-  const [formData, setFormData] = useState({
-    fullName: "",
-    mobile: "",
-    altMobile: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Form submitted!");
-    setFormData({
-      fullName: "",
-      mobile: "",
-      altMobile: "",
-      message: "",
-    });
-  };
-
-  return (
-    <>
-      {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          <Paper
-            elevation={0} // Remove default shadow for modern glassmorphism
-            sx={{
-              mt: 12,
-              mr: 5,
-              width: 350,
-              height: 420, // Slightly taller for modern spacing
-              p: 3,
-              zIndex: 9999,
-              background: "#ff9c45ff", // Glassmorphism background
-              // backdropFilter: "blur(20px)", // Modern blur effect
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              color: "#000000ff",
-              borderRadius: "20px", // Softer rounded corners
-              position: "relative",
-              overflow: "hidden",
-              // Add subtle gradient overlay for depth
-              // "&::before": {
-              //   content: '""',
-              //   position: "absolute",
-              //   top: 0,
-              //   left: 0,
-              //   right: 0,
-              //   height: "2px",
-              //   background: "linear-gradient(90deg, #e81010, #e81010)",
-              // },
-            }}
-          >
-            {/* Modern Title with Gradient */}
-            <Typography
-              variant="h6"
-              sx={{
-                textAlign: "center",
-                mb: 3,
-                mt: 1,
-                // color: "#",
-                fontWeight: 700,
-                background: "#ffffffff",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Get in Touch
-            </Typography>
-
-            <Box component="form" onSubmit={handleSubmit}>
-              {/* Full Name - Modern Input Styling */}
-              <TextField
-                name="fullName"
-                label="Full Name"
-                variant="outlined"
-                fullWidth
-                size="small"
-                value={formData.fullName}
-                onChange={handleChange}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PersonIcon sx={{ color: "#e81010" }} /> {/* Red icon */}
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  mb: 2.5,
-                  input: { color: "#ffffffff" },
-                  label: { color: "rgba(255, 255, 255, 1)" },
-                  fieldset: {
-                    borderColor: "rgba(255, 255, 255, 1)",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ffffffff",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#f3f3f3ff",
-                  },
-                  
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#ffffffff", 
-                  },
-                }}
-              />
-
-              {/* Mobile Number */}
-              <TextField
-                name="mobile"
-                label="Mobile Number"
-                variant="outlined"
-                fullWidth
-                size="small"
-                value={formData.mobile}
-                onChange={handleChange}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PhoneIcon sx={{ color: "#e81010" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  mb: 2.5,
-                  input: { color: "#ffffffff" },
-                  label: { color: "rgba(255, 255, 255, 0.8)" },
-                  fieldset: {
-                    borderColor: "rgba(255, 255, 255, 1)",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ffffffff",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#f3f3f3ff",
-                  },
-                  
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#ffffffff", 
-                  },
-                }}
-              />
-
-              {/* Alternative Mobile */}
-              <TextField
-                name="altMobile"
-                label="Alternative Mobile"
-                variant="outlined"
-                fullWidth
-                size="small"
-                value={formData.altMobile}
-                onChange={handleChange}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PhoneIcon sx={{ color: "#e81010" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  mb: 2.5,
-                  input: { color: "#ffffffff" },
-                  label: { color: "rgba(255, 255, 255, 1)" },
-                  fieldset: {
-                    borderColor: "rgba(255, 255, 255, 1)",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ffffffff",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#f3f3f3ff",
-                  },
-                  
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#ffffffff", 
-                  },
-                }}
-              />
-
-              {/* Message */}
-              <TextField
-                name="message"
-                label="Message"
-                variant="outlined"
-                multiline
-                rows={3}
-                fullWidth
-                size="small"
-                value={formData.message}
-                onChange={handleChange}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start" sx={{ alignSelf: "flex-start" }}>
-                      <MessageIcon sx={{ color: "#e81010", mt: 1 }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  mb: 2.5,
-                  input: { color: "#ffffffff" },
-                  label: { color: "rgba(255, 255, 255, 1)" },
-                  fieldset: {
-                    borderColor: "rgba(255, 255, 255, 1)",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ffffffff",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#ffffffff",
-                  },
-                  
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#ffffffff", 
-                  },
-                }}
-              />
-
-              {/* Modern Submit Button */}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{
-                  background: "linear-gradient(135deg, #e81010 0%, #e81010 100%)",
-                  borderRadius: "10px",
-                  py: 1.2,
-                  fontWeight: 600,
-                  textTransform: "none",
-                  "&:hover": {
-                    background: "linear-gradient(135deg, #c81010 0%, #c81010 100%)", // Darker red
-                    transform: "scale(1.02)",
-                  },
-                }}
-              >
-                Send Message
-              </Button>
-            </Box>
-          </Paper>
-        </motion.div>
-      )}
-    </>
-  );
-};
 
 const HeroSectionModern = memo(() => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-  const buttonStyles = getButtonStyles(theme);
   const navigate = useNavigate();
 
-  // Slideshow state for background images
-  const images = [ img2, img3, img4, img5]; // 5 images for slideshow
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
-  // Change background every 3 seconds
+  const buttonStyles = getButtonStyles(theme, slideData[currentSlide]);
+
+  // Auto-slide functionality
   useEffect(() => {
+    if (!isAutoplay) return;
+    
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [images.length]);
+      setDirection(1);
+      setCurrentSlide((prev) => (prev + 1) % slideData.length);
+    }, 5000);
 
-  // Memoize current background URL
-  const currentBackground = useMemo(
-    () => images[currentImageIndex],
-    [currentImageIndex, images]
-  );
+    return () => clearInterval(interval);
+  }, [isAutoplay]);
+
+  // Manual slide change
+  const goToSlide = useCallback((index) => {
+    if (index === currentSlide) return;
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+    setIsAutoplay(false);
+    
+    // Resume autoplay after 10 seconds
+    setTimeout(() => setIsAutoplay(true), 10000);
+  }, [currentSlide]);
+
+  const currentSlideData = slideData[currentSlide];
 
   return (
     <Box
       sx={{
         position: "relative",
-        height: { xs: "80svh", md: "100vh" },
-        backgroundSize: "cover",
-        backgroundPosition: { xs: "center right", md: "center" },
-        backgroundRepeat: "no-repeat",
-        color: "#fff",
-        display: "flex",
+        height: { xs: "100vh", md: "100vh" },
         overflow: "hidden",
-        minHeight: { xs: "600px", sm: "700px", md: "600px" },
+        minHeight: { xs: "700px", sm: "800px", md: "700px" },
       }}
     >
- 
- <AnimatePresence mode="popLayout">
-  <Box
-    key={currentImageIndex}
-    initial={{ x: "100%", opacity: 0 }}   // slide from right
-    animate={{ x: "10%", opacity: 0 }}     // enter to center
-    exit={{ x: "-100%", opacity: 0 }}     // slide out to left
-    transition={{  ease: "easeInOut" }}
-    style={{
-      position: "absolute",
-      inset: 0,
-      backgroundImage: `url(${currentBackground})`,
-      backgroundRepeat: "no-repeat",
-      backgroundAttachment: "fixed",
-      backgroundBlendMode: "overlay",
-      backdropFilter: " blur(55px)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
-  >
-    {/* DARK OVERLAY (also animated) */}
-    <Box
-     
-      sx={{
-        position: "absolute",
-        inset: 0,
-        backgroundColor: "#00000058", // Semi-transparent black
-      }}
-    />
-  </Box>
-</AnimatePresence>
-
-
-     
-
-      <Box sx={{ position: "absolute", zIndex: 0, width: "100%",mt: { xs: "0vh", md: "10vh" }, display: { xs: "block", md: "flex", justifyContent: "space-evenly" } }}>
-        <Box
-          sx={{
-            mt: { xs: "16vh", sm: "10vh", md: "15vh" },
-            textAlign: { xs: "center", md: "left" },
-            maxWidth: { xs: "100%", md: "50%" },
-            px: { xs: 2, sm: 0 },
-            ml: { xs: 0, md: 5 },
+      {/* Background Images with Animation */}
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.div
+          key={currentSlide}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.6 },
+            scale: { duration: 0.6 }
+          }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${currentSlideData.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Main Heading */}
+          {/* Dynamic Overlay */}
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              background: `linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%)`,
+              backdropFilter: "blur(1px)",
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Dot Indicators */}
+      <Box
+        sx={{
+          position: "absolute",
+          right: { xs: 20, sm: 30, md: 40 },
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          gap: { xs: 2, sm: 3 },
+        }}
+      >
+        {slideData.map((_, index) => (
           <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Typography
-              variant="h1"
-              sx={{
-                fontWeight: { xs: 600, md: 700 },
-                lineHeight: { xs: 1.1, md: 1.2 },
-                fontSize: {
-                  xs: "1.8rem",
-                  sm: "2.5rem",
-                  md: "3rem",
-                  lg: "3.5rem",
-                },
-                mb: { xs: 1.5, md: 2 },
-                background: "linear-gradient(135deg, #ffffffff 0%, #ffffff 100%)", // Gold-white gradient for visibility on black overlay
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                // filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))", // Subtle glow
-              }}
-            >
-              Power That Drives the Future Generations
-            </Typography>
-          </motion.div>
-
-          {/* Subtitle */}
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 500,
-                mb: { xs: 2, md: 4 },
-                fontSize: { xs: "1rem", sm: "1.15rem", md: "1.25rem" },
-                background: "linear-gradient(135deg, #ffffff 0%, #ffffffff 50%, #ffffffff 100%)", // White to red to gold for vibrancy
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                fontFamily: "'Inter', 'Roboto', sans-serif",
-                letterSpacing: "0.5px",
-              }}
-            >
-              Reliable Generators • Smart Energy • Sustainable Solutions
-            </Typography>
-          </motion.div>
-
-          {/* Description */}
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                lineHeight: 1.7,
-                mb: { xs: 3, sm: 4, md: 5 },
-                fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
-                color: "#ffffffff",
-                maxWidth: { xs: "100%", md: "600px" },
-                fontWeight: 400,
-                textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
-                opacity: 0.95,
-                "& strong": {
-                  color: "#ffffffff", // Red highlight to match theme
-                  fontWeight: 600,
-                },
-              }}
-            >
-              From homes to industries, we deliver <strong>uninterrupted power solutions</strong>
-              that combine performance, efficiency, and eco-conscious design.
-              <strong> Empower your business</strong> with the energy of innovation.
-            </Typography>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                gap: { xs: 1.5, sm: 2 },
-                flexWrap: "wrap",
-                justifyContent: { xs: "center", md: "flex-start" },
-                flexDirection: { xs: "column", sm: "row" },
-              }}
-            >
-              <Button variant="contained" size="large" sx={buttonStyles.primary} onClick={() => navigate("/Generatorsales/Delearership/Rental")}>
-                Explore Generators
-              </Button>
-
-              <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={() => navigate("/contact")}>
-                Request Service
-              </Button>
-
-              {!isMobile && (
-                <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={() => navigate("/contact")}>
-                  Request Dealership
-                </Button>
-              )}
-            </Box>
-
-            {/* Third button for mobile - stacked */}
-            {isMobile && (
-              <Box sx={{ mt: 1.5, display: "flex", justifyContent: "center" }}>
-                <Button variant="outlined" size="large" sx={buttonStyles.outlined}>
-                  Request Dealership
-                </Button>
-              </Box>
-            )}
-          </motion.div>
-        </Box>
-        <FloatingForm />
+            key={index}
+            variants={dotVariants}
+            animate={currentSlide === index ? "active" : "inactive"}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => goToSlide(index)}
+            style={{
+              width: isMobile ? "12px" : "16px",
+              height: isMobile ? "12px" : "16px",
+              borderRadius: "50%",
+              cursor: "pointer",
+              border: "2px solid rgba(255, 255, 255, 0.3)",
+              backdropFilter: "blur(10px)",
+            }}
+          />
+        ))}
       </Box>
 
-     
+      {/* Progress Indicator */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: { xs: "80%", sm: "300px" },
+          height: "4px",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderRadius: "2px",
+          overflow: "hidden",
+          zIndex: 10,
+        }}
+      >
+        <motion.div
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          key={currentSlide}
+          style={{
+            height: "100%",
+            background: currentSlideData.gradient,
+            borderRadius: "2px",
+          }}
+        />
+      </Box>
+
+      {/* Content */}
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 5, height: "100%" }}>
+        <Box
+          sx={{
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            pt: { xs: 8, sm: 10, md: 0 },
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: { xs: "100%", md: "60%", lg: "50%" },
+              textAlign: { xs: "center", md: "left" },
+              px: { xs: 2, sm: 0 },
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                variants={contentVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {/* Title */}
+                <motion.div variants={childVariants}>
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      fontWeight: { xs: 700, md: 800 },
+                      lineHeight: { xs: 1.1, md: 1.2 },
+                      fontSize: {
+                        xs: "2.2rem",
+                        sm: "3rem",
+                        md: "3.5rem",
+                        lg: "4rem",
+                      },
+                      mb: { xs: 2, md: 3 },
+                      background: currentSlideData.gradient,
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {currentSlideData.title}
+                  </Typography>
+                </motion.div>
+
+                {/* Subtitle */}
+                <motion.div variants={childVariants}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 500,
+                      mb: { xs: 2, md: 3 },
+                      fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.4rem" },
+                      color: "rgba(255, 255, 255, 0.9)",
+                      letterSpacing: "0.5px",
+                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {currentSlideData.subtitle}
+                  </Typography>
+                </motion.div>
+
+                {/* Description */}
+                <motion.div variants={childVariants}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      lineHeight: 1.8,
+                      mb: { xs: 4, sm: 5, md: 6 },
+                      fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+                      color: "rgba(255, 255, 255, 0.85)",
+                      maxWidth: { xs: "100%", md: "600px" },
+                      fontWeight: 400,
+                      textShadow: "0 1px 2px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {currentSlideData.description}
+                  </Typography>
+                </motion.div>
+
+                {/* Buttons */}
+                <motion.div variants={childVariants}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: { xs: 2, sm: 3 },
+                      flexDirection: { xs: "column", sm: "row" },
+                      alignItems: { xs: "center", sm: "flex-start" },
+                      justifyContent: { xs: "center", md: "flex-start" },
+                    }}
+                  >
+                    <motion.div
+                      variants={buttonHoverVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <Button
+                        variant="contained"
+                        size="large"
+                        sx={buttonStyles.primary}
+                        onClick={() => navigate("/Generatorsales/Delearership/Rental")}
+                      >
+                        {currentSlideData.primaryBtn}
+                      </Button>
+                    </motion.div>
+
+                    <motion.div
+                      variants={buttonHoverVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        sx={buttonStyles.outlined}
+                        onClick={() => navigate("/contact")}
+                      >
+                        {currentSlideData.secondaryBtn}
+                      </Button>
+                    </motion.div>
+                  </Box>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </Box>
+        </Box>
+      </Container>
+
+      {/* Floating Elements for Visual Enhancement */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "10%",
+          right: "5%",
+          width: { xs: "60px", md: "100px" },
+          height: { xs: "60px", md: "100px" },
+          background: currentSlideData.gradient,
+          borderRadius: "50%",
+          opacity: 0.1,
+          filter: "blur(40px)",
+          animation: "float 6s ease-in-out infinite",
+          "@keyframes float": {
+            "0%, 100%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(-20px)" },
+          },
+        }}
+      />
     </Box>
   );
 });
@@ -552,16 +482,3 @@ const HeroSectionModern = memo(() => {
 HeroSectionModern.displayName = "HeroSectionModern";
 
 export default HeroSectionModern;
-
-
-
-
-
-
-
-
-
-
-
-
-
