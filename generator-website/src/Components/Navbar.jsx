@@ -11,7 +11,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from "@mui/icons-material/Public";
 
-
 // Bottom Nav
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -28,7 +27,10 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 const SUB_SERVICES = [
   { text: "Kirloskar Green Generators", path: "/services/kirloskar" },
   { text: "All type of DG Set", path: "/services/dg-set" },
-  { text: "All Turnkey Project Undertaken Hiring 5kva to 1500kva", path: "/services/turnkey" },
+  {
+    text: "All Turnkey Project Undertaken Hiring 5kva to 1500kva",
+    path: "/services/turnkey",
+  },
   { text: "Manufacturing Acoustic Encloser", path: "/services/acoustic" },
   { text: "All type of Electrical Works", path: "/services/electrical" },
   { text: "All type of HT/LT/AMF Panel boards", path: "/services/panels" },
@@ -37,7 +39,11 @@ const SUB_SERVICES = [
 const NAV_ITEMS = [
   { text: "Home", icon: <HomeIcon />, path: "/" },
   { text: "About Us", icon: <InfoIcon />, path: "/about" },
-  { text: "Generator Sales / Rental", icon: <StoreIcon />, path: "/Generatorsales/Delearership/Rental" },
+  {
+    text: "Generator Sales / Rental",
+    icon: <StoreIcon />,
+    path: "/Generatorsales/Delearership/Rental",
+  },
   {
     text: "Generator Services",
     icon: <BuildIcon />,
@@ -88,220 +94,217 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <AppBar position="fixed" elevation={6} sx={{ background: "white", height: 170}}>
-<Container
-  maxWidth="xl"
-  sx={{
-    height: "100%",
-    display: "flex",
-    alignItems: "center", 
-  }}
->
-<Toolbar
-  disableGutters
-  sx={{
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",        
-    justifyContent: "space-around",
-  }}
->
-            
-            {/* Logo */}
-       
-<Box
-  sx={{
-    position: "relative",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    zIndex: 1,
-
-    // Yellow slanted background
-   "&::before": {
-  content: '""',
-  position: "absolute",
-  left: -200,
-  top: 0,
-  height: "100%",
-  width: 600,
-  bgcolor: "#f6c21c",
-  clipPath: "polygon(0 0, 100% 0, 88% 100%, 0% 100%)",
-
-  zIndex: -1,
-},
-
-  }}
-  onClick={() => navigate("/")}
->
-  <img
-    src="/omshakthigenpower_logo.jpg"
-    alt="Logo"
-    style={{ height: 56 }}
-  />
-</Box>
-
-
-            {/* Desktop Menu */}
-<Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: 3,
-  }}
->
-  {/* Address */}
-  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-    <Box
-      sx={{
-        width: 44,
-        height: 44,
-        borderRadius: 1,
-        border: "1px solid #eee",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#f6c21c",
-      }}
-    >
-      <HomeIcon />    </Box>
-    <Box>
-      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
-        112 Your Address 23
-      </Box>
-      <Box sx={{ fontSize: 13, color: "#777" }}>
-        Washington DC 1234
-      </Box>
-    </Box>
-  </Box>
-
-  {/* Mail */}
-  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-    <Box
-      sx={{
-        width: 44,
-        height: 44,
-        borderRadius: 1,
-        border: "1px solid #eee",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#f6c21c",
-      }}
-    >
-      <EmailIcon />
-    </Box>
-    <Box>
-      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
-        Send us a mail
-      </Box>
-      <Box sx={{ fontSize: 13, color: "#777" }}>
-        mail@domain.com
-      </Box>
-    </Box>
-  </Box>
-
-  {/* Call */}
-  <Box
-    sx={{
-      bgcolor: "#CF0F0F",
-      color: "#fff",
-      px: 3,
-      py: 1.5,
-      borderRadius: 1,
-      textAlign: "center",
-    }}
-  >
-    <Box sx={{ fontSize: 13 }}>CALL TOLL FREE</Box>
-    <Box sx={{ fontSize: 18, fontWeight: 700 }}>
-      080 - 888 - 357
-    </Box>
-  </Box>
-</Box>
-<Box
-  position="fixed"
-  elevation={6}
-  sx={{
-    top: 120,
-    height: 70,
-    zIndex: 1200,
-  }}
->
- <Box
-  sx={{
-    mt: 2,
-    width: "50vw",
-    minWidth: 1130,
-    height: "100%",
-    mx: "auto",
-    bgcolor: "#14232d",
-    display: "flex",
-    alignItems: "center",
-  }}
->
-  <Toolbar
-    disableGutters
-    sx={{
-      width: "100%",
-      height: "100%",
-      px: 5,
-      display: "flex",
-      alignItems: "center",
-      gap: 5,         // add gap between menu and quote button
-    }}
-  >
-    {/* MENU */}
-    <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
-      {[
-        "HOME",
-        "COMPANY PROFILE",
-        "POWER SOLUTIONS",
-        "SOLAR",
-        "PRODUCTS",
-        "REACH US",
-      ].map((item) => (
-        <Box
-          key={item}
+      <AppBar
+        position="fixed"
+        elevation={6}
+        sx={{ background: "white", height: 130 }}
+      >
+        <Container
+          maxWidth="xl"
           sx={{
-            color: "#fff",
-            fontWeight: 600,
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-            "&:hover": { color: "#f6c21c" }, // optional hover effect
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          {item}
-        </Box>
-      ))}
-    </Box>
+          <Toolbar
+            disableGutters
+            sx={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            {/* Logo */}
 
-    {/* GET A QUOTE button */}
-    <Box
-      sx={{
-        height: "100%",
-        bgcolor: "#f6c21c",
-        display: "flex",
-        alignItems: "center",
-        fontWeight: 700,
-        whiteSpace: "nowrap",
-        px: 3,           // add horizontal padding inside the box
-        cursor: "pointer",
-        userSelect: "none",
-      }}
-    >
-      <PublicIcon sx={{ mr: 1 }} /> {/* margin right for icon spacing */}
-      GET A QUOTE
-    </Box>
-  </Toolbar>
-</Box>
+            <Box
+              sx={{
+                position: "relative",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                zIndex: 1,
 
-</Box>
+                // Yellow slanted background
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  left: -200,
+                  top: 0,
+                  height: "100%",
+                  width: 600,
+                  bgcolor: "#f6c21c",
+                  clipPath: "polygon(0 0, 100% 0, 88% 100%, 0% 100%)",
 
+                  zIndex: -1,
+                },
+              }}
+              onClick={() => navigate("/")}
+            >
+              <img
+                src="/omshakthigenpower_logo.jpg"
+                alt="Logo"
+                style={{ height: 56 }}
+              />
+            </Box>
 
+            {/* Desktop Menu */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 3,
+              }}
+            >
+              {/* Address */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 1,
+                    border: "1px solid #eee",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#f6c21c",
+                  }}
+                >
+                  <HomeIcon />{" "}
+                </Box>
+                <Box>
+                  <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
+                    112 Your Address 23
+                  </Box>
+                  <Box sx={{ fontSize: 13, color: "#777" }}>
+                    Washington DC 1234
+                  </Box>
+                </Box>
+              </Box>
 
+              {/* Mail */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 1,
+                    border: "1px solid #eee",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#f6c21c",
+                  }}
+                >
+                  <EmailIcon />
+                </Box>
+                <Box>
+                  <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
+                    Send us a mail
+                  </Box>
+                  <Box sx={{ fontSize: 13, color: "#777" }}>
+                    mail@domain.com
+                  </Box>
+                </Box>
+              </Box>
 
+              {/* Call */}
+              <Box
+                sx={{
+                  bgcolor: "#CF0F0F",
+                  color: "#fff",
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 1,
+                  textAlign: "center",
+                }}
+              >
+                <Box sx={{ fontSize: 13 }}>CALL TOLL FREE</Box>
+                <Box sx={{ fontSize: 18, fontWeight: 700 }}>
+                  080 - 888 - 357
+                </Box>
+              </Box>
+            </Box>
+            <Box
+              position="fixed"
+              elevation={6}
+              sx={{
+                top: 100,
+                height: 70,
+                zIndex: 1200,
+              }}
+            >
+              <Box
+                sx={{
+                  mt: 2,
+                  width: "50vw",
+                  minWidth: 1130,
+                  height: "100%",
+                  mx: "auto",
+                  bgcolor: "#14232d",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Toolbar
+                  disableGutters
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    px: 5,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5, // add gap between menu and quote button
+                  }}
+                >
+                  {/* MENU */}
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
+                    {[
+                      "HOME",
+                      "COMPANY PROFILE",
+                      "POWER SOLUTIONS",
+                      "SOLAR",
+                      "PRODUCTS",
+                      "REACH US",
+                    ].map((item) => (
+                      <Box
+                        key={item}
+                        sx={{
+                          color: "#fff",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                          whiteSpace: "nowrap",
+                          "&:hover": { color: "#f6c21c" }, // optional hover effect
+                        }}
+                      >
+                        {item}
+                      </Box>
+                    ))}
+                  </Box>
 
+                  {/* GET A QUOTE button */}
+                  <Box
+                    sx={{
+                      height: "100%",
+                      bgcolor: "#f6c21c",
+                      display: "flex",
+                      alignItems: "center",
+                      fontWeight: 700,
+                      whiteSpace: "nowrap",
+                      px: 3, // add horizontal padding inside the box
+                      cursor: "pointer",
+                      userSelect: "none",
+                    }}
+                  >
+                    <PublicIcon sx={{ mr: 1 }} />{" "}
+                    {/* margin right for icon spacing */}
+                    GET A QUOTE
+                  </Box>
+                </Toolbar>
+              </Box>
+            </Box>
 
             {/* {!isMobile && (
               <Box sx={{ display: "flex" }}>
@@ -396,55 +399,78 @@ const Navbar = () => {
       {/* ===========================
           MOBILE BOTTOM NAVIGATION
       ============================ */}
-    {isMobile && (
-  <Box
-    sx={{
-      position: "fixed",
-      bottom: 0,
-      left: 0,
-      right: 0,
-      width: "100%",
-      bgcolor: "white",
-      boxShadow: "0 -2px 10px rgba(0,0,0,0.2)",
-      zIndex: 1200,
-    }}
-  >
-    <BottomNavigation
-      value={activeMainItem}
-      onChange={(event, newItem) => {
-        setActiveMainItem(newItem);
+      {isMobile && (
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            bgcolor: "white",
+            boxShadow: "0 -2px 10px rgba(0,0,0,0.2)",
+            zIndex: 1200,
+          }}
+        >
+          <BottomNavigation
+            value={activeMainItem}
+            onChange={(event, newItem) => {
+              setActiveMainItem(newItem);
 
-        if (newItem === "Generator Services") {
-          setMobileServicesMenu((prev) => !prev); 
-          return;
-        }
+              if (newItem === "Generator Services") {
+                setMobileServicesMenu((prev) => !prev);
+                return;
+              }
 
-        const nav = NAV_ITEMS.find((x) => x.text === newItem);
-        navigate(nav.path);
-        setMobileServicesMenu(false);
-      }}
-      sx={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-evenly",
-        "& .MuiBottomNavigationAction-root": {
-          minWidth: "auto",
-          flex: 1,               // EQUAL width for each button
-          padding: "6px 0",
-        },
-      }}
-      showLabels
-    >
-      <BottomNavigationAction label="Home" value="Home" icon={<HomeIcon />} />
-      <BottomNavigationAction label="About" value="About Us" icon={<InfoIcon />} />
-      <BottomNavigationAction label="Sales" value="Generator Sales / Rental" icon={<StoreIcon />} />
-      <BottomNavigationAction label="Services" value="Generator Services" icon={<BuildIcon />} />
-      <BottomNavigationAction label="Gallery" value="Gallery" icon={<GalleryIcon />} />
-      <BottomNavigationAction label="Contact" value="Contact Us" icon={<ContactIcon />} />
-    </BottomNavigation>
-  </Box>
-)}
-
+              const nav = NAV_ITEMS.find((x) => x.text === newItem);
+              navigate(nav.path);
+              setMobileServicesMenu(false);
+            }}
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              "& .MuiBottomNavigationAction-root": {
+                minWidth: "auto",
+                flex: 1, // EQUAL width for each button
+                padding: "6px 0",
+              },
+            }}
+            showLabels
+          >
+            <BottomNavigationAction
+              label="Home"
+              value="Home"
+              icon={<HomeIcon />}
+            />
+            <BottomNavigationAction
+              label="About"
+              value="About Us"
+              icon={<InfoIcon />}
+            />
+            <BottomNavigationAction
+              label="Sales"
+              value="Generator Sales / Rental"
+              icon={<StoreIcon />}
+            />
+            <BottomNavigationAction
+              label="Services"
+              value="Generator Services"
+              icon={<BuildIcon />}
+            />
+            <BottomNavigationAction
+              label="Gallery"
+              value="Gallery"
+              icon={<GalleryIcon />}
+            />
+            <BottomNavigationAction
+              label="Contact"
+              value="Contact Us"
+              icon={<ContactIcon />}
+            />
+          </BottomNavigation>
+        </Box>
+      )}
     </>
   );
 };
