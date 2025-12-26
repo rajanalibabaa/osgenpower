@@ -229,7 +229,7 @@ const HeroSectionModern = memo(() => {
         position: "relative",
         height: { xs: "100vh", md: "100vh" },
         overflow: "hidden",
-        minHeight: { xs: "700px", sm: "800px", md: "700px" },
+        minHeight: { xs: "500px", sm: "800px", md: "700px" },
       }}
     >
       {/* Background Images with Animation */}
@@ -330,7 +330,7 @@ const HeroSectionModern = memo(() => {
       </Box>
 
       {/* Content */}
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 5, height: "100%",mt:{xs:5,md:10} }}>
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 5, height: "100%",mt:{xs:-12,md:10} }}>
         <Box
           sx={{
             height: "100%",
@@ -421,7 +421,7 @@ const HeroSectionModern = memo(() => {
                     sx={{
                       display: "flex",
                       gap: { xs: 2, sm: 3 },
-                      flexDirection: { xs: "column", sm: "row" },
+                      flexDirection: { xs: "row", sm: "row" },
                       alignItems: { xs: "center", sm: "flex-start" },
                       justifyContent: { xs: "center", md: "flex-start" },
                     }}
