@@ -140,7 +140,7 @@ const dotVariants = {
 // Memoized button styles
 const getButtonStyles = (theme) => ({
   primary: {
-    background: "#f5c21b", // Red gradient
+    background: "#cf0e0e", // Red gradient
     borderRadius: "12px",
     fontWeight: 600,
     px: { xs: 2, sm: 3, md: 4 },
@@ -305,11 +305,11 @@ const HeroSectionModern = memo(() => {
       <Box
         sx={{
           position: "absolute",
-          bottom: 20,
+          bottom: { xs: 90, sm: 30, md: 20 },
           left: "50%",
           transform: "translateX(-50%)",
-          width: { xs: "80%", sm: "300px" },
-          height: "4px",
+          width: { xs: "80%", sm: "300px",md:"400px" },
+          height: "6px",
           backgroundColor: "rgba(255, 255, 255, 1)",
           borderRadius: "2px",
           overflow: "hidden",
@@ -323,7 +323,7 @@ const HeroSectionModern = memo(() => {
           key={currentSlide}
           style={{
             height: "100%",
-            background: "#f5c21b",
+            background: "#e81010",
             borderRadius: "2px",
           }}
         />
@@ -341,9 +341,9 @@ const HeroSectionModern = memo(() => {
         >
           <Box
             sx={{
-              maxWidth: { xs: "100%", md: "60%", lg: "50%" },
+              maxWidth: { xs: "100%", md: "60%", lg: "70%" },
               textAlign: { xs: "center", md: "left" },
-              px: { xs: 2, sm: 0 },
+              px: { xs: 2, sm: 0, md: 10 },
             }}
           >
             <AnimatePresence mode="wait">

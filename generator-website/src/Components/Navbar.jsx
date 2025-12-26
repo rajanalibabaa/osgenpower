@@ -9,9 +9,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from "@mui/icons-material/Public";
 
-// Bottom Nav
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 // Icons
 import HomeIcon from "@mui/icons-material/Home";
@@ -67,7 +67,13 @@ const Navbar = () => {
 
   // mobile/tablet drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [openPower, setOpenPower] = useState(false); // collapse for Power Solutions (Generator Services)
+  const [openPower, setOpenPower] = useState(false); // collapse in drawer
+
+  // DESKTOP: POWER SOLUTIONS hover dropdown
+  const [anchorElPower, setAnchorElPower] = useState(null);
+  const openPowerMenu = Boolean(anchorElPower);
+  const handleOpenPowerMenu = (e) => setAnchorElPower(e.currentTarget);
+  const handleClosePowerMenu = () => setAnchorElPower(null);
 
   // Detect active route
   useEffect(() => {
@@ -88,283 +94,286 @@ const Navbar = () => {
   const handleNavItemClick = (path) => {
     navigate(path);
     setDrawerOpen(false);
+    handleClosePowerMenu();
   };
 
   return (
     <>
       {/* DESKTOP HEADER (hidden on mobile/tablet) */}
-       <AppBar position="fixed" elevation={6} sx={{      display: {xs:"none",md:"flex"},
- background: "white", height: 140}}>
-<Container
-  maxWidth="xl"
-  sx={{
-    height: "100%",
-      display: {xs:"none",md:"flex"},
-    alignItems: "center", 
-  }}
->
-<Toolbar
-  disableGutters
-  sx={{
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",        
-    justifyContent: "space-around",
-  }}
->
-            
-            {/* Logo */}
-       
-<Box
-  sx={{
-    position: "relative",
-    height: "100%",
-      display: {xs:"none",md:"flex"},
-    alignItems: "center",
-    zIndex: 1,
-
-    // Yellow slanted background
-   "&::before": {
-  content: '""',
-  position: "absolute",
-  left: -200,
-  top: 0,
-  height: "100%",
-  width: 600,
-  bgcolor: "#f6c21c",
-  clipPath: "polygon(0 0, 100% 0, 88% 100%, 0% 100%)",
-
-  zIndex: -1,
-},
-
-  }}
-  onClick={() => navigate("/")}
->
-  <img
-    src="/omshakthigenpower_logo.jpg"
-    alt="Logo"
-    style={{ height: 56 }}
-  />
-</Box>
-
-
-            {/* Desktop Menu */}
-<Box
-  sx={{
-    display: {xs:"none",md:"flex"},
-    alignItems: "center",
-    gap: 3,
-  }}
->
-  {/* Address */}
-  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-    <Box
-      sx={{
-        width: 44,
-        height: 44,
-        borderRadius: 1,
-        border: "1px solid #eee",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#f6c21c",
-      }}
-    >
-      <HomeIcon />    </Box>
-    <Box>
-      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
-        112 Your Address 23
-      </Box>
-      <Box sx={{ fontSize: 13, color: "#777" }}>
-        Washington DC 1234
-      </Box>
-    </Box>
-  </Box>
-
-  {/* Mail */}
-  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-    <Box
-      sx={{
-        width: 44,
-        height: 44,
-        borderRadius: 1,
-        border: "1px solid #eee",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#f6c21c",
-      }}
-    >
-      <EmailIcon />
-    </Box>
-    <Box>
-      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
-        Send us a mail
-      </Box>
-      <Box sx={{ fontSize: 13, color: "#777" }}>
-        mail@domain.com
-      </Box>
-    </Box>
-  </Box>
-
-  {/* Call */}
-  <Box
-    sx={{
-      bgcolor: "#CF0F0F",
-      color: "#fff",
-      px: 3,
-      py: 1.5,
-      borderRadius: 1,
-      textAlign: "center",
-    }}
-  >
-    <Box sx={{ fontSize: 13 }}>CALL TOLL FREE</Box>
-    <Box sx={{ fontSize: 18, fontWeight: 700 }}>
-      080 - 888 - 357
-    </Box>
-  </Box>
-</Box>
-<Box
-  position="fixed"
-  elevation={6}
-  sx={{
-    top: 100,
-    height: 70,
-    zIndex: 1200,
-  }}
->
- <Box
-  sx={{
-    mt: 2,
-    width: "50vw",
-    minWidth: 1130,
-    height: "100%",
-    mx: "auto",
-    bgcolor: "#14232d",
-      display: {xs:"none",md:"flex"},
-    alignItems: "center",
-  }}
->
-  <Toolbar
-    disableGutters
-    sx={{
-      width: "100%",
-      height: "100%",
-      px: 5,
-      display: "flex",
-      alignItems: "center",
-      gap: 5,         // add gap between menu and quote button
-    }}
-  >
-    {/* MENU */}
-    <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
-      {[
-        "HOME",
-        "COMPANY PROFILE",
-        "POWER SOLUTIONS",
-        "SOLAR",
-        "PRODUCTS",
-        "REACH US",
-      ].map((item) => (
-        <Box
-          key={item}
+      <AppBar position="fixed" elevation={6} sx={{ display: { xs: "none", md: "flex" }, background: "white", height: 140 }}>
+        <Container
+          maxWidth="xl"
           sx={{
-            color: "#fff",
-            fontWeight: 600,
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-            "&:hover": { color: "#f6c21c" }, // optional hover effect
+            height: "100%",
+            display: { xs: "none", md: "flex" },
+            alignItems: "center",
           }}
         >
-          {item}
-        </Box>
-      ))}
-    </Box>
+          <Toolbar
+            disableGutters
+            sx={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            {/* Logo */}
+            <Box
+              sx={{
+                position: "relative",
+                height: "100%",
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+                zIndex: 1,
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  left: -200,
+                  top: 0,
+                  height: "100%",
+                  width: 600,
+                  bgcolor: "#f6c21c",
+                  clipPath: "polygon(0 0, 100% 0, 88% 100%, 0% 100%)",
+                  zIndex: -1,
+                },
+              }}
+              onClick={() => navigate("/")}
+            >
+              <img src="/omshakthigenpower_logo.jpg" alt="Logo" style={{ height: 56 }} />
+            </Box>
 
-    {/* GET A QUOTE button */}
-    <Box
-      sx={{
-        height: "100%",
-        bgcolor: "#f6c21c",
-        display: "flex",
-        alignItems: "center",
-        fontWeight: 700,
-        whiteSpace: "nowrap",
-        px: 3,           // add horizontal padding inside the box
-        cursor: "pointer",
-        userSelect: "none",
-      }}
-    >
-      <PublicIcon sx={{ mr: 1 }} /> {/* margin right for icon spacing */}
-      GET A QUOTE
-    </Box>
-  </Toolbar>
-</Box>
-
-</Box>
-
-
-
-
-
-
-            {/* {!isMobile && (
-              <Box sx={{ display: "flex" }}>
-                {NAV_ITEMS.map((item) =>
-                  item.dropdown ? (
-                    <React.Fragment key={item.text}>
-                      <Button
-                        onClick={(e) => setAnchorElServices(e.currentTarget)}
-                        onMouseEnter={(e) => setAnchorElServices(e.currentTarget)}
-                        endIcon={<ArrowDropDownIcon />}
-                        sx={{
-                          mx: 0.8,
-                          color:
-                            activeMainItem === item.text || openServicesMenu ? "#eb2723" : "#000",
-                        }}
-                      >
-                        {item.text}
-                      </Button>
-
-                      <Menu
-                        anchorEl={anchorElServices}
-                        open={openServicesMenu}
-                        onClose={() => setAnchorElServices(null)}
-                        MenuListProps={{
-                          onMouseLeave: () => setAnchorElServices(null),
-                        }}
-                        sx={{
-                          "& .MuiPaper-root": { bgcolor: "#000", color: "#fff", mt: 1.5 },
-                        }}
-                      >
-                        {item.dropdown.map((sub) => (
-                          <MenuItem
-                            key={sub.text}
-                            onClick={() => handleNavItemClick(sub.path)}
-                            sx={{
-                              color: location.pathname === sub.path ? "#f9ca11" : "white",
-                            }}
-                          >
-                            {sub.text}
-                          </MenuItem>
-                        ))}
-                      </Menu>
-                    </React.Fragment>
-                  ) : (
-                    <Button
-                      key={item.text}
-                      onClick={() => navigate(item.path)}
-                      sx={{ mx: 0.8, color: activeMainItem === item.text ? "#eb2723" : "#000" }}
-                    >
-                      {item.text}
-                    </Button>
-                  )
-                )}
+            {/* Desktop contact strip */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 3 }}>
+              {/* Address */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 1,
+                    border: "1px solid #eee",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#f6c21c",
+                  }}
+                >
+                  <HomeIcon />
+                </Box>
+                <Box>
+                  <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>112 Your Address 23</Box>
+                  <Box sx={{ fontSize: 13, color: "#777" }}>Washington DC 1234</Box>
+                </Box>
               </Box>
-            )} */}
+
+              {/* Mail */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 1,
+                    border: "1px solid #eee",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#f6c21c",
+                  }}
+                >
+                  <EmailIcon />
+                </Box>
+                <Box>
+                  <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>Send us a mail</Box>
+                  <Box sx={{ fontSize: 13, color: "#777" }}>mail@domain.com</Box>
+                </Box>
+              </Box>
+
+              {/* Call */}
+              <Box
+                sx={{
+                  bgcolor: "#CF0F0F",
+                  color: "#fff",
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 1,
+                  textAlign: "center",
+                }}
+              >
+                <Box sx={{ fontSize: 13 }}>CALL TOLL FREE</Box>
+                <Box sx={{ fontSize: 18, fontWeight: 700 }}>080 - 888 - 357</Box>
+              </Box>
+            </Box>
           </Toolbar>
         </Container>
+
+        {/* Floating dark nav (desktop only) */}
+        <Box position="fixed" sx={{ top: 100, height: 70, zIndex: 1200, justifyContent: "center", width: "100%" }}>
+          <Box
+            sx={{
+              mt: 2,
+              width: "50vw",
+              minWidth: 1130,
+              height: "100%",
+              mx: "auto",
+              bgcolor: "#14232d",
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+            }}
+          >
+            <Toolbar
+              disableGutters
+              sx={{
+                width: "100%",
+                height: "100%",
+                px: 5,
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              {/* MENU – same UI; Power Solutions gets a down arrow + hover dropdown */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                  onClick={() => navigate("/")}
+                >
+                  HOME
+                </Box>
+
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                  onClick={() => navigate("/about")}
+                >
+                  COMPANY PROFILE
+                </Box>
+
+                {/* POWER SOLUTIONS with arrow + hover dropdown (no layout change) */}
+                <Box
+                  onMouseEnter={handleOpenPowerMenu}
+                  onClick={handleOpenPowerMenu}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.5,
+                    color: openPowerMenu ? "#f6c21c" : "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                >
+                  POWER SOLUTIONS
+                  <ArrowDropDownIcon sx={{ fontSize: 22 }} />
+                </Box>
+
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                  onClick={() => navigate("/services/solar")}
+                >
+                  SOLAR
+                </Box>
+
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                  onClick={() => navigate("/products")}
+                >
+                  PRODUCTS
+                </Box>
+
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    "&:hover": { color: "#f6c21c" },
+                  }}
+                  onClick={() => navigate("/contact")}
+                >
+                  REACH US
+                </Box>
+              </Box>
+
+              {/* Dropdown menu for POWER SOLUTIONS */}
+              <Menu
+                anchorEl={anchorElPower}
+                open={openPowerMenu}
+                onClose={handleClosePowerMenu}
+                MenuListProps={{ onMouseLeave: handleClosePowerMenu }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+                sx={{
+                  "& .MuiPaper-root": {
+                    bgcolor: "#14232d",
+                    color: "#fff",
+                    mt: 1,
+                    borderRadius: 1,
+                    minWidth: 260,
+                  },
+                }}
+              >
+                {SUB_SERVICES.map((sub) => (
+                  <MenuItem
+                    key={sub.text}
+                    onClick={() => handleNavItemClick(sub.path)}
+                    sx={{
+                      color: "#fff",
+                      "&:hover": { bgcolor: "rgba(255,255,255,0.08)", color: "#f6c21c" },
+                    }}
+                  >
+                    {sub.text}
+                  </MenuItem>
+                ))}
+              </Menu>
+
+              {/* GET A QUOTE button */}
+              <Box
+                sx={{
+                  height: "100%",
+                  bgcolor: "#f6c21c",
+                  display: "flex",
+                  alignItems: "center",
+                  fontWeight: 700,
+                  whiteSpace: "nowrap",
+                  px: 3,
+                  cursor: "pointer",
+                  userSelect: "none",
+                  ml: "auto",
+                }}
+                onClick={() => navigate("/contact")}
+              >
+                <PublicIcon sx={{ mr: 1 }} />
+                GET A QUOTE
+              </Box>
+            </Toolbar>
+          </Box>
+        </Box>
       </AppBar>
 
       {/* MOBILE/TABLET HEADER (logo left, hamburger right) */}
@@ -482,57 +491,6 @@ const Navbar = () => {
           </Box>
         </Box>
       </Drawer>
-
-      {/* MOBILE BOTTOM NAVIGATION */}
-      {/* {isMobile && (
-        <Box
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            bgcolor: "white",
-            boxShadow: "0 -2px 10px rgba(0,0,0,0.2)",
-            zIndex: 1200,
-          }}
-        >
-          <BottomNavigation
-            value={activeMainItem}
-            onChange={(event, newItem) => {
-              setActiveMainItem(newItem);
-
-              if (newItem === "Generator Services") {
-                // optional: can open drawer + expand instead
-                setDrawerOpen(true);
-                setOpenPower(true);
-                return;
-              }
-
-              const nav = NAV_ITEMS.find((x) => x.text === newItem);
-              if (nav) navigate(nav.path);
-            }}
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-evenly",
-              "& .MuiBottomNavigationAction-root": {
-                minWidth: "auto",
-                flex: 1,
-                padding: "6px 0",
-              },
-            }}
-            showLabels
-          >
-            <BottomNavigationAction label="Home" value="Home" />
-            <BottomNavigationAction label="Company Profile" value="About Us" />
-            <BottomNavigationAction label="Power Solutions" value="Generator Sales / Rental" />
-            <BottomNavigationAction label="Solar" value="Generator Services" />
-            <BottomNavigationAction label="Products" value="Gallery" />
-            <BottomNavigationAction label="Reach Us" value="Contact Us" />
-          </BottomNavigation>
-        </Box>
-      )} */}
     </>
   );
 };
