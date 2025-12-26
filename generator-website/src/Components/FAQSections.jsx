@@ -127,7 +127,7 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
           </Typography>
         </MotionBox>
       <Container maxWidth="md">
-        {/* Section Header */}
+       
       
 
       {/* FAQ Accordion List */}
