@@ -4,11 +4,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate, useLocation } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import EmailIcon from "@mui/icons-material/Email";
+import PublicIcon from "@mui/icons-material/Public";
+
 
 // Bottom Nav
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -86,17 +88,222 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <AppBar position="fixed" elevation={6} sx={{ background: "white" }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters sx={{ minHeight: 70, justifyContent: "space-between" }}>
+      <AppBar position="fixed" elevation={6} sx={{ background: "white", height: 170}}>
+<Container
+  maxWidth="xl"
+  sx={{
+    height: "100%",
+    display: "flex",
+    alignItems: "center", 
+  }}
+>
+<Toolbar
+  disableGutters
+  sx={{
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",        
+    justifyContent: "space-around",
+  }}
+>
             
             {/* Logo */}
-            <Box sx={{ cursor: "pointer" }} onClick={() => navigate("/")}>
-              <img src="/omshakthigenpower_logo.jpg" alt="Logo" style={{ height: 56, borderRadius: 6 }} />
-            </Box>
+       
+<Box
+  sx={{
+    position: "relative",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    zIndex: 1,
+
+    // Yellow slanted background
+   "&::before": {
+  content: '""',
+  position: "absolute",
+  left: -200,
+  top: 0,
+  height: "100%",
+  width: 600,
+  bgcolor: "#f6c21c",
+  clipPath: "polygon(0 0, 100% 0, 88% 100%, 0% 100%)",
+
+  zIndex: -1,
+},
+
+  }}
+  onClick={() => navigate("/")}
+>
+  <img
+    src="/omshakthigenpower_logo.jpg"
+    alt="Logo"
+    style={{ height: 56 }}
+  />
+</Box>
+
 
             {/* Desktop Menu */}
-            {!isMobile && (
+<Box
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: 3,
+  }}
+>
+  {/* Address */}
+  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+    <Box
+      sx={{
+        width: 44,
+        height: 44,
+        borderRadius: 1,
+        border: "1px solid #eee",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#f6c21c",
+      }}
+    >
+      <HomeIcon />    </Box>
+    <Box>
+      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
+        112 Your Address 23
+      </Box>
+      <Box sx={{ fontSize: 13, color: "#777" }}>
+        Washington DC 1234
+      </Box>
+    </Box>
+  </Box>
+
+  {/* Mail */}
+  <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+    <Box
+      sx={{
+        width: 44,
+        height: 44,
+        borderRadius: 1,
+        border: "1px solid #eee",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#f6c21c",
+      }}
+    >
+      <EmailIcon />
+    </Box>
+    <Box>
+      <Box sx={{ fontSize: 14, color: "black", fontWeight: 600 }}>
+        Send us a mail
+      </Box>
+      <Box sx={{ fontSize: 13, color: "#777" }}>
+        mail@domain.com
+      </Box>
+    </Box>
+  </Box>
+
+  {/* Call */}
+  <Box
+    sx={{
+      bgcolor: "#CF0F0F",
+      color: "#fff",
+      px: 3,
+      py: 1.5,
+      borderRadius: 1,
+      textAlign: "center",
+    }}
+  >
+    <Box sx={{ fontSize: 13 }}>CALL TOLL FREE</Box>
+    <Box sx={{ fontSize: 18, fontWeight: 700 }}>
+      080 - 888 - 357
+    </Box>
+  </Box>
+</Box>
+<Box
+  position="fixed"
+  elevation={6}
+  sx={{
+    top: 120,
+    height: 70,
+    zIndex: 1200,
+  }}
+>
+ <Box
+  sx={{
+    mt: 2,
+    width: "50vw",
+    minWidth: 1130,
+    height: "100%",
+    mx: "auto",
+    bgcolor: "#14232d",
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  <Toolbar
+    disableGutters
+    sx={{
+      width: "100%",
+      height: "100%",
+      px: 5,
+      display: "flex",
+      alignItems: "center",
+      gap: 5,         // add gap between menu and quote button
+    }}
+  >
+    {/* MENU */}
+    <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
+      {[
+        "HOME",
+        "COMPANY PROFILE",
+        "POWER SOLUTIONS",
+        "SOLAR",
+        "PRODUCTS",
+        "REACH US",
+      ].map((item) => (
+        <Box
+          key={item}
+          sx={{
+            color: "#fff",
+            fontWeight: 600,
+            cursor: "pointer",
+            whiteSpace: "nowrap",
+            "&:hover": { color: "#f6c21c" }, // optional hover effect
+          }}
+        >
+          {item}
+        </Box>
+      ))}
+    </Box>
+
+    {/* GET A QUOTE button */}
+    <Box
+      sx={{
+        height: "100%",
+        bgcolor: "#f6c21c",
+        display: "flex",
+        alignItems: "center",
+        fontWeight: 700,
+        whiteSpace: "nowrap",
+        px: 3,           // add horizontal padding inside the box
+        cursor: "pointer",
+        userSelect: "none",
+      }}
+    >
+      <PublicIcon sx={{ mr: 1 }} /> {/* margin right for icon spacing */}
+      GET A QUOTE
+    </Box>
+  </Toolbar>
+</Box>
+
+</Box>
+
+
+
+
+
+
+            {/* {!isMobile && (
               <Box sx={{ display: "flex" }}>
                 {NAV_ITEMS.map((item) =>
                   item.dropdown ? (
@@ -149,7 +356,7 @@ const Navbar = () => {
                   )
                 )}
               </Box>
-            )}
+            )} */}
           </Toolbar>
         </Container>
       </AppBar>
