@@ -51,23 +51,10 @@ const ManufacturingAcoustic = () => {
         color: 'black',
         overflow: 'hidden',
         position: 'relative',
-        py: { xs: 6, md: 10 },
+        py: { xs: 12, md: 14 },
       }}
     >
-      {/* Animated Background */}
-      {/* <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle at 20% 80%, rgba(0, 230, 118, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(0, 191, 165, 0.1) 0%, transparent 50%)
-          `,
-        }}
-      /> */}
+      
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Hero Section */}
@@ -82,7 +69,7 @@ const ManufacturingAcoustic = () => {
               fontWeight='bold'
               sx={{
                 fontSize: { xs: '2rem', md: '3.5rem' },
-                background: "#eb2723",
+                background: "#e81010",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
                 mb: 2,
@@ -96,7 +83,7 @@ const ManufacturingAcoustic = () => {
         mt:1,
         mb: 2,
         height: 3,
-        backgroundColor: "#eb2723",
+        backgroundColor: "#e81010",
         mx: "auto",
       }}
     />
@@ -137,7 +124,7 @@ const ManufacturingAcoustic = () => {
                       <EngineeringOutlined 
                         sx={{ 
                           fontSize: { xs: 32, md: 40 }, 
-                          color: '#00e676',
+                          color: '#e81010',
                           // background: 'rgba(0, 230, 118, 0.1)',
                           borderRadius: 2,
                           p: 1
@@ -151,7 +138,7 @@ const ManufacturingAcoustic = () => {
                         >
                           Kirloskar Green Generators
                         </Typography>
-                        <Typography variant="h6" sx={{ color: '#eb2723', fontSize: { xs: '1rem', md: '0.9rem' } }}>
+                        <Typography variant="h6" sx={{ color: '#e81010', fontSize: { xs: '1rem', md: '0.9rem' } }}>
                           Ecotone Systems
                         </Typography>
                       </Box>
@@ -194,7 +181,7 @@ const ManufacturingAcoustic = () => {
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: { xs: 2, md: 3 } }}>
                               <Box
                                 sx={{
-                                  background: 'linear-gradient(45deg, #00e676, #00bfa5)',
+                                  background: 'linear-gradient(45deg, #e81010, #b71c1c)',
                                   color: 'white',
                                   borderRadius: '50%',
                                   width: { xs: 38, md: 50 },
@@ -214,7 +201,7 @@ const ManufacturingAcoustic = () => {
                                   sx={{
                                     width: 2,
                                     height: { xs: 50, md: 80 },
-                                    background: 'linear-gradient(180deg, #00e676, #00bfa5)',
+                                    background: 'linear-gradient(180deg, #e81010, #b71c1c)',
                                     opacity: 0.4,
                                     mt: 1
                                   }}
@@ -232,7 +219,7 @@ const ManufacturingAcoustic = () => {
                                 border: '1px solid rgba(255,255,255,0.1)',
                                 '&:hover': {
                                   background: 'rgba(255,255,255,0.08)',
-                                  borderColor: 'rgba(0, 230, 119, 0.63)',
+                                  borderColor: 'rgba(232, 16, 16, 0.63)',
                                   transform: 'translateX(5px)',
                                 },
                                 transition: 'all 0.3s ease',
@@ -245,7 +232,7 @@ const ManufacturingAcoustic = () => {
                                     variant="h6" 
                                     fontWeight="bold" 
                                     sx={{ 
-                                      color: '#eb2723',
+                                      color: '#e81010',
                                       fontSize: { xs: '1rem', md: '1.2rem' },
                                       mb: 1
                                     }}

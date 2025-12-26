@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import img1 from "../assets/omshakthigenpower_contact.jpg";
 import FAQSection from "../Components/FAQSections";
 import img5 from "../assets/osgenpower_Untitleddesign.jpg";
+import ExperienceSection from "../Components/ExperienceSections";
 
 const MotionBox = motion(Box);
 const MotionTypography = motion(Typography);
@@ -47,7 +48,7 @@ export default function ContactPage() {
   component="section"
   sx={{
     position: "relative",
-    py: { xs: 4, md: 8 },
+    py: { xs: 4, md: 16 },
     px: { xs: 2, md: 8 },
     mb: { xs: 4, md: 8 },
     overflow: "hidden",
@@ -68,7 +69,7 @@ export default function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         sx={{
-          mt: { xs: 0, sm: 0, md: 0 },
+          mt: { xs: 7, sm: 8, md: 0 },
           width: "100%",
           height: { xs: "30vh", sm: "30vh", md: "15vh" },
           // backgroundImage: `url(${bg})`,
@@ -88,7 +89,7 @@ export default function ContactPage() {
             variant="h3"
             // mt={2}
             sx={{
-              color: "#ff4400",
+              color: "#e81010",
               fontWeight: "bold",
               letterSpacing: "0.5px",
               fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
@@ -103,7 +104,7 @@ export default function ContactPage() {
                   width: 100,
                   mt:1,
                   height: 3,
-                  backgroundColor: "#ff6a00",
+                  backgroundColor: "#e81010",
                   mx: "auto",
                 }}
               />
@@ -160,7 +161,7 @@ Reach out to us for product details, quotations, support, or partnership request
                   fontWeight="bold"
                   gutterBottom
                   sx={{
-                    background: "linear-gradient(90deg, #ff4d4d, #ff8c1a, #ffd11a, #33cc33, #1ab2ff, #b31aff)",
+                    background: "#e81010",
                     backgroundSize: "400% 400%",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
@@ -205,7 +206,7 @@ Reach out to us for product details, quotations, support, or partnership request
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <AccountCircle sx={{ color: "#c62828" }} />
+                          <AccountCircle sx={{ color: "#e81010" }} />
                         </InputAdornment>
                       ),
                     }}
@@ -216,7 +217,7 @@ Reach out to us for product details, quotations, support, or partnership request
                         transition: "0.3s",
                         "& fieldset": { borderColor: "#e0e0e0" },
 
-                        "&:hover fieldset": { borderColor: "#c62828" },
+                        "&:hover fieldset": { borderColor: "#e81010" },
 
                         "&.Mui-focused fieldset": {
                           borderColor: "black",
@@ -243,7 +244,7 @@ Reach out to us for product details, quotations, support, or partnership request
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <PhoneIcon sx={{ color: "#c62828" }} />
+                          <PhoneIcon sx={{ color: "#e81010" }} />
                         </InputAdornment>
                       ),
                     }}
@@ -254,7 +255,7 @@ Reach out to us for product details, quotations, support, or partnership request
                         transition: "0.3s",
                         "& fieldset": { borderColor: "#e0e0e0" },
 
-                        "&:hover fieldset": { borderColor: "#c62828" },
+                        "&:hover fieldset": { borderColor: "#e81010" },
 
                         "&.Mui-focused fieldset": {
                           borderColor: "black",
@@ -320,7 +321,7 @@ Reach out to us for product details, quotations, support, or partnership request
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <MessageIcon sx={{ color: "#c62828", mt: 1 }} />
+                          <MessageIcon sx={{ color: "#e81010", mt: 1 }} />
                         </InputAdornment>
                       ),
                     }}
@@ -331,7 +332,7 @@ Reach out to us for product details, quotations, support, or partnership request
                         transition: "0.3s",
                         "& fieldset": { borderColor: "#e0e0e0" },
 
-                        "&:hover fieldset": { borderColor: "#c62828" },
+                        "&:hover fieldset": { borderColor: "#e81010" },
 
                         "&.Mui-focused fieldset": {
                           borderColor: "black",
@@ -358,7 +359,7 @@ Reach out to us for product details, quotations, support, or partnership request
                       fontWeight: "bold",
                       fontSize: "1.08rem",
                       borderRadius: 3,
-                      background: "linear-gradient(90deg,#e53935, #d81b60)",
+                      background: "linear-gradient(90deg,#e53935, #e81010)",
                       boxShadow: "0 6px 18px rgba(216,27,96,0.35)",
                       transition: "0.3s ease",
                       "&:hover": {
@@ -427,7 +428,7 @@ Reach out to us for product details, quotations, support, or partnership request
 
               <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={3} bgcolor={"#ffffffe3"} p={5}>
                 <Box display="flex" alignItems="flex-start" gap={2}>
-                  <LocationOnIcon color="error" sx={{ fontSize: 30 }} />
+                  <LocationOnIcon  sx={{ fontSize: 30, color: "#e81010" }} />
                   <Box>
                     <Typography variant="h6">Address</Typography>
                     <Typography >
@@ -438,7 +439,7 @@ Reach out to us for product details, quotations, support, or partnership request
                 </Box>
 
                 <Box display="flex" alignItems="center" gap={2}>
-                  <PhoneIcon color="success" sx={{ fontSize: 30 }} />
+                  <PhoneIcon  sx={{ fontSize: 30,color: "#e81010" }} />
                   <Box>
                     <Typography variant="h6">Phone</Typography>
                     <Typography
@@ -452,7 +453,7 @@ Reach out to us for product details, quotations, support, or partnership request
                 </Box>
 
                 <Box display="flex" alignItems="center" gap={2}>
-                  <EmailIcon color="error" sx={{ fontSize: 30 }} />
+                  <EmailIcon  sx={{ fontSize: 30, color: "#e81010" }} />
                   <Box>
                     <Typography variant="h6">Email</Typography>
                     <Typography
@@ -469,7 +470,7 @@ Reach out to us for product details, quotations, support, or partnership request
           </Grid>
         </Grid>
       </Box>
-
+<ExperienceSection/>
       <FAQSection />
     </>
   );

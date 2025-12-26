@@ -37,6 +37,8 @@ import TrustedBrandAboutimage from "../assets/osgenpower_TrustedBrandAboutimage.
 // import img1 from '../assets/osgenpower_Aboutpagebackground.jpg'
 import FAQSection from '../Components/FAQSections';
 import omshakthigenpower_logo from '../assets/omshakthigenpower_logo.jpg'
+import MissionVisionTabs from '../Components/MisisonVisisnTable';
+import ExperienceSection from '../Components/ExperienceSections';
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -76,8 +78,8 @@ const AboutPage = () => {
   const MotionBox = motion(Box);
 
   // Define the orange colors
-  const primaryOrange = "#ff4400ff";
-  const secondaryOrange = "#ff6a00ff";
+  const primaryOrange = "#e81010";
+  const secondaryOrange = "#e81010";
 
   const achievements = [
     { number: '1000+', label: 'Installations in Chennai', delay: 0.1 },
@@ -122,7 +124,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <Box sx={{ overflow: 'hidden' }}>
+    <Box sx={{ overflow: 'hidden',mt:8 }}>
       {/* Hero Banner */}
       <Paper
         component={motion.section}
@@ -179,7 +181,11 @@ const AboutPage = () => {
               textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
             }}
           >
-            About  <img src={omshakthigenpower_logo} alt="Om Shakthi Gen Power" style={{ maxWidth: '100%', height: 'auto' }} />   !!
+            About Om Shakthi Gen Power !!
+            
+             {/* <img src={omshakthigenpower_logo} alt="Om Shakthi Gen Power" style={{ maxWidth: '100%', height: 'auto' }} />    */}
+             
+             
           </Typography>
           <Typography 
             variant="h4" 
@@ -278,172 +284,7 @@ const AboutPage = () => {
         </motion.div>
       </Container>
 
-      {/* Mission & Vision */}
-      <Container sx={{ mb: 1 }}>
-        <Box
-          sx={{
-            py: 2,
-            backgroundColor: alpha(theme.palette.background.default, 0.5),
-            textAlign: "center",
-          }}
-        >
-          <Grid container spacing={4} justifyContent="center">
-            {/* Mission */}
-            <Grid item xs={12} md={6}>
-              <motion.div
-                variants={fadeSlide}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-              >
-                <Paper
-                  elevation={3}
-                  sx={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    height: "100%",
-                    background: "#fff",
-                    p: { xs: 4, md: 5 },
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-                    position: "relative",
-                  }}
-                >
-                  {/* Header Tab */}
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: "50%",
-                      transform: "translate(-50%, 25%)",
-                      backgroundColor: "#FFA239",
-                      px: 4,
-                      py: 1,
-                      borderRadius: "30px",
-                      fontWeight: 700,
-                      color: "#fff",
-                      fontSize: "1.25rem",
-                      boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
-                    }}
-                  >
-                    Mission
-                  </Box>
-
-                  {/* Content */}
-                  <Box
-                    sx={{
-                      mt: 4,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                      gap: 2,
-                    }}
-                  >
-                    <TrackChangesOutlinedIcon
-                      sx={{
-                        fontSize: 60,
-                        color: primaryOrange,
-                      }}
-                    />
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#000000ff",
-                        // fontSize: "1rem",
-                        // lineHeight: 1.8,
-                        maxWidth: 400,
-                        mx: "auto",
-                      }}
-                    >
-                      To empower individuals and organizations with uninterrupted,
-                      efficient, and sustainable energy — using innovation and
-                      technology to redefine generator performance and reliability.
-                    </Typography>
-                  </Box>
-                </Paper>
-              </motion.div>
-            </Grid>
-
-            {/* Vision */}
-            <Grid item xs={12} md={6}>
-              <motion.div
-                variants={fadeSlide}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-              >
-                <Paper
-                  elevation={3}
-                  sx={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    height: "100%",
-                    background: "#fff",
-                    p: { xs: 4, md: 5 },
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-                    position: "relative",
-                  }}
-                >
-                  {/* Header Tab */}
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: "50%",
-                      transform: "translate(-50%, 25%)",
-                      backgroundColor: "#63A361",
-                      px: 4,
-                      py: 1,
-                      borderRadius: "30px",
-                      fontWeight: 700,
-                      color: "#fff",
-                      fontSize: "1.25rem",
-                      boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
-                    }}
-                  >
-                    Vision
-                  </Box>
-
-                  {/* Content */}
-                  <Box
-                    sx={{
-                      mt: 4,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                      gap: 2,
-                    }}
-                  >
-                    <EmojiObjectsOutlinedIcon
-                      sx={{
-                        fontSize: 60,
-                        color: secondaryOrange,
-                      }}
-                    />
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "#000000ff",
-                        // fontSize: "1rem",
-                        // lineHeight: 1.8,
-                        maxWidth: 400,
-                        mx: "auto",
-                      }}
-                    >
-                      To become India's most trusted and technologically advanced
-                      power solutions provider — building a future where energy
-                      outages never disrupt productivity or peace of mind.
-                    </Typography>
-                  </Box>
-                </Paper>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
+  
 
 
  
@@ -601,105 +442,8 @@ const AboutPage = () => {
         </Grid>
       </Container>
 
-      {/* Sustainability Section */}
-   <Container sx={{ mb: 15 }}>
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-  >
-    <Paper
-      elevation={10}
-      sx={{
-        p: { xs: 4, md: 8 },
-        borderRadius: 6,
-        background: `linear-gradient(145deg, #e8f5e9, #ffffff80)`,
-        backdropFilter: "blur(15px)",
-        border: "1px solid rgba(76,175,80,0.2)",
-        textAlign: "center",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
-      {/* Glowing Circle Animation */}
-      <Box
-        sx={{
-          position: "absolute",
-          width: 300,
-          height: 300,
-          top: -100,
-          right: -100,
-          background: "radial-gradient(circle, rgba(76,175,80,0.3), transparent 70%)",
-          filter: "blur(60px)",
-          zIndex: 0,
-        }}
-      />
-
-      <Stack
-        direction={{ xs: "column", md: "row" }}
-        alignItems="center"
-        justifyContent="center"
-        spacing={5}
-        sx={{ position: "relative", zIndex: 2 }}
-      >
-        {/* Floating Icon */}
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-            rotate: [0, 3, 0],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Box
-            sx={{
-              width: { xs: 90, md: 130 },
-              height: { xs: 90, md: 130 },
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "linear-gradient(145deg, #a5d6a7, #81c784)",
-              boxShadow: "0 0 40px rgba(76,175,80,0.4)",
-              color: "#fff",
-              fontSize: { xs: 40, md: 60 },
-            }}
-          >
-            <NatureIcon fontSize="inherit" />
-          </Box>
-        </motion.div>
-
-        <Box sx={{ textAlign: { xs: "center", md: "left" }, maxWidth: 700 }}>
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              background: "linear-gradient(90deg, #2e7d32, #66bb6a)",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              fontSize: { xs: "2rem", md: "3rem" },
-              mb: 2,
-            }}
-          >
-             Sustainability Promise
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              color: "#33691e",
-              lineHeight: 1.8,
-              fontSize: { xs: "1.1rem", md: "1.3rem" },
-            }}
-          >
-            We lead the way in eco-conscious energy solutions. Our low-emission and hybrid generator
-            systems empower industries to reduce carbon impact while maintaining superior efficiency
-            and reliability.
-          </Typography>
-        </Box>
-      </Stack>
-    </Paper>
-  </motion.div>
-</Container>
+   <MissionVisionTabs/>
+   <ExperienceSection/>
 <FAQSection />
     </Box>
   );

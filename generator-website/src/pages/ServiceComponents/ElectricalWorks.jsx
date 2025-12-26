@@ -19,43 +19,12 @@ const ElectricalWorks = () => {
       sx={{
         // background: "linear-gradient(135deg, #081a20 0%, #1f4640 100%)",
         color: "#000000ff",
-        py: { xs: 8, sm: 10, md: 12 },
+        py: { xs: 12, sm: 16, md: 12 },
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Glowing background effects */}
-      {/* <Box
-        sx={{
-          position: "absolute",
-          width: 400,
-          height: 400,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at center, #00ff99 0%, transparent 70%)",
-          opacity: 0.15,
-          top: "10%",
-          right: "10%",
-          filter: "blur(120px)",
-        }}
-      /> */}
-      {/* <Box
-        sx={{
-          position: "absolute",
-          width: 300,
-          height: 100,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at center, #1de9b6 0%, transparent 70%)",
-          opacity: 0.15,
-          bottom: "10%",
-          left: "10%",
-          filter: "blur(100px)",
-          animation: "pulse 5s infinite alternate",
-          "@keyframes pulse": {
-            "0%": { transform: "scale(1)" },
-            "100%": { transform: "scale(1.1)" },
-          },
-        }}
-      /> */}
+     
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Header Section */}
@@ -65,7 +34,7 @@ const ElectricalWorks = () => {
             fontWeight='bold'
             textAlign="center"
             sx={{
-              background: "#eb2723",
+              background: "#e81010",
               WebkitBackgroundClip: "text",
               color: "transparent",
               mb: { xs: 2, sm: 3 },
@@ -80,7 +49,7 @@ const ElectricalWorks = () => {
         mt:1,
         mb: 2,
         height: 3,
-        backgroundColor: "#eb2723",
+        backgroundColor: "#e81010",
         mx: "auto",
       }}
     />
@@ -142,7 +111,7 @@ const ElectricalWorks = () => {
                     fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" },
                   }}
                 >
-                  <Box component="span" sx={{ color: "#4CAF50" }}>
+                  <Box component="span" sx={{ color: "#e81010" }}>
                     ELECTRICAL
                   </Box>{" "}
                   WORKS
@@ -153,7 +122,7 @@ const ElectricalWorks = () => {
                     height: 4,
                     width: { xs: 50, sm: 60 },
                     mx: { xs: "auto", lg: 0 },
-                    background: "linear-gradient(90deg, #4CAF50, #009688)",
+                    background: "linear-gradient(90deg, #e81010, #b71c1c)",
                     mb: 3,
                     borderRadius: 2,
                   }}
@@ -192,7 +161,7 @@ const ElectricalWorks = () => {
                   py: { xs: 3, sm: 4, md: 6 },
                 }}
               >
-                <Box
+                {/* <Box
                   sx={{
                     position: "absolute",
                     top: 0,
@@ -206,7 +175,7 @@ const ElectricalWorks = () => {
                       lg: "polygon(20% 0%, 100% 0, 100% 100%, 0% 100%)",
                     },
                   }}
-                />
+                /> */}
                 <Box
                   component="img"
                   src={img3}

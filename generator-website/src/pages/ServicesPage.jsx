@@ -78,42 +78,20 @@ const ServicesPage = () => {
       variants={sidebarVariants}
       initial="hidden"
       animate="visible"
+      
       style={{
         width: isMobile ? '100%' : 320,
         height: '100%',
         overflow: 'hidden',
         background: primaryGradient,
-        color: '#000000ff',
+        color: '#ff9c45',
         display: 'flex',
         flexDirection: 'column',
         boxShadow: glowShadow,
       }}
     >
-      <Box
-        sx={{
-          borderBottom: `2px solid ${alpha(neonGreen, 0.4)}`,
-          px: 2,
-          py: 2,
-          background: alpha('#000000ff', 0.12),
-          // backdropFilter: 'blur(6px)',
-        }}
-      >
-        <Typography
-          variant="h6"
-          sx={{
-            background: `linear-gradient(190deg, ${neonGreen}, ${neonTeal})`,
-            WebkitBackgroundClip: 'text',
-            color: 'transparent',
-            fontWeight: 700,
-            letterSpacing: 0.8,
-            // textShadow: `0 0 10px ${alpha(neonTeal, 0.6)}`,
-          }}
-        >
-          GENERATOR SERVICES
-        </Typography>
-      </Box>
 
-      <List sx={{ flexGrow: 1, py: 1 }}>
+      <List sx={{ flexGrow: 1, py: 12,background:'#ff9c45' ,color:'white' }}>
         {SERVICE_ITEMS.map((text, index) => (
           <motion.div
             key={index}

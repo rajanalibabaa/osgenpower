@@ -110,7 +110,7 @@ const Footer = () => {
       component="footer"
       sx={{
         position: "relative",
-        backgroundColor: "#1A2A4F",
+        backgroundColor: "#000000ff",
 
         py: { xs: 1, sm: 6, md: 2 },
         width: "100%",

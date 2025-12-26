@@ -67,10 +67,10 @@ const ServiceHighlightSection = () => {
 
   // ⭐ Add navigation path for each button
   const serviceButtons = [
-    { text: "Generator Sales", color: "#9e1c60", path: "/Generatorsales/Delearership/Rental" },
-    { text: "Generator Services", color: "#9e1c60", path: "/services/kirloskar" },
-    { text: "Generator Rental", color: "#9e1c60", path: "/services/kirloskar" },
-    { text: "Dealers Support", color: "#9e1c60", path: "/contact" },
+    { text: "Generator Sales", color: "#e81010", path: "/Generatorsales/Delearership/Rental" },
+    { text: "Generator Services", color: "#e81010", path: "/services/kirloskar" },
+    { text: "Generator Rental", color: "#e81010", path: "/services/kirloskar" },
+    { text: "Dealers Support", color: "#e81010", path: "/contact" },
   ];
 
   return (

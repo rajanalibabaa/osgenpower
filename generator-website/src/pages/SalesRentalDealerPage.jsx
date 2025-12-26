@@ -353,11 +353,11 @@ const SalesRentalDealerPage = () => {
           lg: "32px" 
         },
 background:`url(${image8}) center center/cover no-repeat`,
-        
+        mt: { xs: 9, md: 8 },
 
       }}
     >
-              <Typography textAlign='center' color="#ff4400ff" variant={isMobile ? "h4" : "h3"} fontWeight='bold' fontSize={{xs:'1.5rem',md:'3.5rem'}}>Generator / Sales / Rental </Typography>
+              <Typography textAlign='center' color="#e81010" variant={isMobile ? "h4" : "h3"} fontWeight='bold' fontSize={{xs:'1.5rem',md:'3.5rem'}} mt={2}>Generator / Sales / Rental </Typography>
 
         <Box
           sx={{
@@ -365,7 +365,7 @@ background:`url(${image8}) center center/cover no-repeat`,
             mx: "auto",
             mt:2,
             mb: 5,
-            backgroundColor: "#ff6a00ff",
+            backgroundColor: "#e81010",
             height: 3,
             borderRadius: 2,
           }}

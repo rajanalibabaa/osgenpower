@@ -348,7 +348,7 @@ function App() {
       <Router>
         {/* <Suspense fallback={<Loader />}> */}
         <ScrollToTop/>
-          <NewsTicker />
+          {/* <NewsTicker /> */}
           <Navbar />
 <WhatsApp/>
 <FloatingForm/>

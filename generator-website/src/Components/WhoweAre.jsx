@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from 'framer-motion';
-import img4 from "../assets/osgenpower_generatorhignlight.jpg";
+// import img4 from "../assets/osgenpower_generatorhignlight.jpg";
 import icon1 from "../assets/osgenpower_24-hours.png";
 import icon2 from "../assets/osgenpower_Iot.png";
 import icon3 from "../assets/osgenpower_green-power.png";
@@ -46,37 +46,56 @@ const WhoWeAre = () => {
         <Box
           sx={{
             position: 'relative',
-            backgroundColor: '#ffffff',
-            py: { xs: 2, md: 4 },
+            backgroundColor: "#ffffffff",
+            py: { xs: 2, md: 10 },
             px: { xs: 2, sm: 4, md: 8 },
-            textAlign: 'center'
+            // textAlign: 'center'
           }}
         >
+         <Box
+          sx={{
+            background: "#e81010",
+            display: "inline-block",
+            px: 2,
+            py: 0.5,
+            borderRadius: "2px",
+            mb: 4,
+            color: "white",
+            fontSize: "0.85rem",
+            fontWeight: 600,
+          }}
+        >
+          WHO WE ARE
+        </Box>
+
           <Typography
-            variant={isMobile ? "h4" : "h3"}
-            fontWeight="bold"
-            color="#ff4400"
-            gutterBottom
+            variant="h3"
+          sx={{
+            fontWeight: 700,
+            color: "#000000ff",
+            lineHeight: 1.2,
+            mb: 5,
+            fontSize: { xs: "1.8rem", md: "2.5rem" },
+          }}
           >
-            Who We Are
+            Leading Distributor & Supplier of Diesel Generators in Chennai
+          </Typography>
+          <Typography
+             sx={{
+            color: "#000000ff",
+            lineHeight: 1.7,
+            mb: 4,
+            fontSize: { xs: "1rem", md: "1rem" },
+            maxWidth: "1000px",
+          }}
+          >
+                       <strong>Om Shakthi Gen Power</strong> is a professionally managed company with strong expertise in <strong>Sales, Service, Projects, and Administration.</strong> Guided by the vast industry experience of <strong>Mr. S. Shenbagam</strong>, we have achieved rapid growth and earned the trust of customers across Tamil Nadu. <br/> <br/>
+
+          <strong> We are Chennai's leading distributors and suppliers </strong> of diesel generators and gensets, delivering power solutions that combine reliability, performance, and innovation. <strong> As trusted Kirloskar dealers </strong>, we empower industries and businesses with eco-efficient and intelligent energy solutions.
+
           </Typography>
 
-          <Box sx={{ width: 80, height: 3, backgroundColor: "#ff6a00", mx: "auto", mb: 3 }} />
 
-          <Typography
-            variant="body1"
-            sx={{
-              maxWidth: '950px',
-              mx: 'auto',
-              px: { xs: 2, md: 10 },
-              mb: { xs: 4, md: 6 },
-              color: 'rgba(0, 0, 0, 0.85)',
-              lineHeight: 1.8,
-              fontWeight: 500,
-            }}
-          >
-           We are Chennai's leading distributors and suppliers of diesel generators and gensets, delivering power solutions that combine reliability, performance, and innovation. As trusted Kirloskar dealers, we empower industries and businesses with eco-efficient and intelligent energy solutions.
-          </Typography>
 
           {/* FIXED SCROLLABLE MOBILE CARDS */}
           <Box
@@ -91,8 +110,10 @@ const WhoWeAre = () => {
               sx={{
                 display: "flex",
                 mt: 2,
+                ml: 1,
+                mr: 1,
                 mb  : 3,
-                gap: 2,
+                gap: 5,
                 overflowX: { xs: "auto", md: "visible" },
                 scrollBehavior: "smooth",
                 pb: { xs: 2, md: 0 },
@@ -100,17 +121,17 @@ const WhoWeAre = () => {
               }}
             >
               {highlights.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                >
+                
                   <Paper
                     elevation={3}
                     sx={{
-                      minWidth: { xs: "200px", sm: "240px", md: "280px" },
+                      maxWidth: { xs: "200px", sm: "240px", md: "300px" },
                       maxHeight: { xs: "200px", sm: "240px", md: "280px" },
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      paddingTop: 2,
                       p: 3,
                       borderRadius: "20px",
                       textAlign: "center",
@@ -131,7 +152,6 @@ const WhoWeAre = () => {
                       {item.title}
                     </Typography>
                   </Paper>
-                </motion.div>
               ))}
             </Box>
 
@@ -150,7 +170,7 @@ const WhoWeAre = () => {
 
           <ContactButtons />
 
-          <Box
+          {/* <Box
             component="img"
             src={img4}
             alt="Generator Highlight"
@@ -162,7 +182,7 @@ const WhoWeAre = () => {
               borderRadius: "8px",
               boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
             }}
-          />
+          /> */}
         </Box>
       </motion.div>
     </>

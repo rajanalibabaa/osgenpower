@@ -50,7 +50,8 @@ const PanelBoards = () => {
         minHeight: '100vh',
         color: 'white',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        mt: 10,
       }}
     >
       {/* Background */}
@@ -82,7 +83,7 @@ const PanelBoards = () => {
               fontWeight='bold'
               textAlign="center"
               sx={{
-                background: "#eb2723",
+                background: "#e81010",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
                 mb: 2,
@@ -97,7 +98,7 @@ const PanelBoards = () => {
         mt:1,
         mb: 2,
         height: 3,
-        backgroundColor: "#eb2723",
+        backgroundColor: "#e81010",
         mx: "auto",
       }}
     />
@@ -139,8 +140,8 @@ We are offering EB Metering Panel Board to our clients.It is to be installed EB 
                   <PrecisionManufacturingOutlined 
                     sx={{ 
                       fontSize: 40, 
-                      color: '#00e676',
-                      background: 'rgba(0, 230, 118, 0.1)',
+                      color: '#e81010',
+                      background: 'rgba(232, 16, 16, 0.1)',
                       borderRadius: 2,
                       p: 1
                     }} 
@@ -149,7 +150,7 @@ We are offering EB Metering Panel Board to our clients.It is to be installed EB 
                     <Typography variant="h5" fontWeight="bold" sx={{ color: '#000000ff' }}>
                       Reliable Power Control
                     </Typography>
-                    <Typography variant="body1" sx={{ color: '#eb2723' }}>
+                    <Typography variant="body1" sx={{ color: '#e81010' }}>
                       Advanced Metering Panel Solutions
                     </Typography>
                   </Box>
@@ -182,7 +183,7 @@ animate={{ opacity: 1, x: 0 }}
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 3, mt: 0.5 }}>
                           <Box
                             sx={{
-                              background: 'linear-gradient(45deg, #00e676, #00bfa5)',
+                              background: 'linear-gradient(45deg, #e81010, #b71c1c)',
                               color: 'white',
                               borderRadius: '50%',
                               width: 45,
@@ -207,7 +208,7 @@ animate={{ opacity: 1, x: 0 }}
                               sx={{
                                 width: 2,
                                 height: 60,
-                                background: 'linear-gradient(180deg, #00e676, #00bfa5)',
+                                background: 'linear-gradient(180deg, #e81010, #b71c1c)',
                                 opacity: 0.4,
                                 mt: 1
                               }}
@@ -230,7 +231,7 @@ animate={{ opacity: 1, x: 0 }}
                             justifyContent: 'center',
                             '&:hover': {
                               background: 'rgba(255,255,255,0.05)',
-                              borderColor: 'rgba(0, 230, 119, 0.97)',
+                              borderColor: 'rgba(232, 16, 16, 0.97)',
                               transform: 'translateX(5px)'
                             }
                           }}
@@ -240,7 +241,7 @@ animate={{ opacity: 1, x: 0 }}
                             fontWeight="bold" 
                             gutterBottom
                             sx={{ 
-                              color: '#eb2723',
+                              color: '#e81010',
                               fontSize: '1.1rem',
                               mb: 1.5
                             }}

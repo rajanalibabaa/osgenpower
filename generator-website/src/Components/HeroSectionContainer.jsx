@@ -1,15 +1,18 @@
-import React, { memo , useMemo,useState,useEffect} from "react";
+import React, { memo, useMemo, useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, useMediaQuery } from "@mui/material";
-import img1 from "../assets/osgenpower_Herobannerbgimage.jpg"; // background image
-import img2 from '../assets/osgenpower_Ecofriendlyimages.png'
+import img1 from "../assets/osgenpower_Herobannerbgimage.jpg"; // Background image 1
+import img2 from "../assets/osgenpowerhero1.jpg"; // Background image 2
+import img3 from "../assets/osgenpowerhero2.jpg"; // Background image 3
+import img4 from "../assets/osgenpowerhero3.jpg"; // Background image 4
+import img5 from "../assets/osgenpowerhero4.jpg"; // Background image 5
 
 import { useNavigate } from "react-router-dom";
-import {InputAdornment,Paper,IconButton,TextField } from "@mui/material";
+import { InputAdornment, Paper, IconButton, TextField } from "@mui/material";
 
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -29,29 +32,29 @@ const fadeInScale = {
 // Memoized button styles for better performance
 const getButtonStyles = (theme) => ({
   primary: {
-        background: 'linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%)',
+    background: "linear-gradient(135deg, #e81010 0%, #e81010 100%)", // Red gradient
     borderRadius: "12px",
     fontWeight: 600,
     px: { xs: 2, sm: 3, md: 4 },
     py: { xs: 1, sm: 1.25, md: 1.5 },
     textTransform: "none",
-    boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+    boxShadow: "0 4px 15px rgba(232, 16, 16, 0.4)", // Updated to red shadow
     border: "none",
     fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     "&:hover": {
-      background: "linear-gradient(135deg, #ef016893 0%, #6b46c191 100%)",
+      background: "linear-gradient(135deg, #c81010 0%, #c81010 100%)", // Darker red on hover
       transform: "translateY(-3px)",
-      boxShadow: "0 8px 25px rgba(102, 126, 234, 0.5)",
+      boxShadow: "0 8px 25px rgba(232, 16, 16, 0.5)", // Red shadow
     },
     "&:active": {
       transform: "translateY(-1px)",
-      boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+      boxShadow: "0 4px 15px rgba(232, 16, 16, 0.4)",
     },
   },
   outlined: {
-    color: "white",
-    borderColor: "rgba(255, 255, 255, 0.3)",
+    color: "#ffffffff",
+    borderColor: "rgba(255, 255, 255, 0.8)", // Red border
     borderWidth: "2px",
     borderRadius: "12px",
     px: { xs: 2, sm: 3, md: 4 },
@@ -59,15 +62,15 @@ const getButtonStyles = (theme) => ({
     textTransform: "none",
     fontWeight: 600,
     fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-    background: "rgba(255, 255, 255, 0.05)",
-    backdropFilter: "blur(10px)",
+    background: "rgba(201, 200, 200, 0.1)", // Red tint
+    // backdropFilter: "blur(10px)",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.9)",
-      color: "#1a202c",
-      borderColor: "rgba(255, 255, 255, 0.9)",
+      // backgroundColor: "rgba(232, 16, 16, 0.2)",
+      color: "#fff",
+      borderColor: "rgba(232, 16, 16, 1)",
       transform: "translateY(-2px)",
-      boxShadow: "0 6px 20px rgba(255, 255, 255, 0.2)",
+      boxShadow: "0 6px 20px rgba(232, 16, 16, 0.3)", // Red shadow
     },
     "&:active": {
       transform: "translateY(0px)",
@@ -77,7 +80,7 @@ const getButtonStyles = (theme) => ({
 
 const FloatingForm = () => {
   const isMobile = useMediaQuery("(max-width: 600px)");
-   const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     fullName: "",
     mobile: "",
     altMobile: "",
@@ -93,292 +96,409 @@ const FloatingForm = () => {
     console.log("Form Submitted:", formData);
     alert("Form submitted!");
     setFormData({
-    fullName: "",
-    mobile: "",
-    altMobile: "",
-    message: "",
-  });
-
+      fullName: "",
+      mobile: "",
+      altMobile: "",
+      message: "",
+    });
   };
-
 
   return (
     <>
-    {!isMobile && (
-      <Paper
-          elevation={3}
-          sx={{
-            mt: 12,
-            mr: 10,
-            // position: "absolute",
-            // bottom:{xs: "20%", sm: "30%", md: "25%"},
-            // right: { xs: 20, sm: 40, md: '19%' },
-            width: 350,
-            height:390,
-            p: 2,
-            zIndex: 9999,
-            backgroundColor: "#2fa6aaff",
-            color: "#fff",
-            borderRadius: 2,
-          }}
+      {!isMobile && (
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          {/* Close Button */}
-         
-
-          <Typography
-            variant="h6"
-            sx={{ textAlign: "center", mb: 3, mt: 1, color: "#fff" }}
+          <Paper
+            elevation={0} // Remove default shadow for modern glassmorphism
+            sx={{
+              mt: 12,
+              mr: 5,
+              width: 350,
+              height: 420, // Slightly taller for modern spacing
+              p: 3,
+              zIndex: 9999,
+              background: "#ff9c45ff", // Glassmorphism background
+              // backdropFilter: "blur(20px)", // Modern blur effect
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "#000000ff",
+              borderRadius: "20px", // Softer rounded corners
+              position: "relative",
+              overflow: "hidden",
+              // Add subtle gradient overlay for depth
+              // "&::before": {
+              //   content: '""',
+              //   position: "absolute",
+              //   top: 0,
+              //   left: 0,
+              //   right: 0,
+              //   height: "2px",
+              //   background: "linear-gradient(90deg, #e81010, #e81010)",
+              // },
+            }}
           >
-            Send Us a Message
-          </Typography>
-
-          <Box component="form" onSubmit={handleSubmit}>
-            {/* Full Name */}
-            <TextField
-              name="fullName"
-              label="Full Name"
-              variant="outlined"
-              fullWidth
-              size="small"
-              value={formData.fullName}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PersonIcon sx={{ color: "#fff" }} />
-                  </InputAdornment>
-                ),
-              }}
+            {/* Modern Title with Gradient */}
+            <Typography
+              variant="h6"
               sx={{
-                mb: 2.5,
-                input: { color: "#fff" },
-                label: { color: "#fff" },
-                fieldset: { borderColor: "#fff" },
-              }}
-            />
-
-            {/* Mobile Number */}
-            <TextField
-              name="mobile"
-              label="Mobile Number"
-              variant="outlined"
-              fullWidth
-              size="small"
-              value={formData.mobile}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneIcon sx={{ color: "#fff" }} />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{
-                mb: 2.5,
-                input: { color: "#fff" },
-                label: { color: "#fff" },
-                fieldset: { borderColor: "#fff" },
-              }}
-            />
-
-            {/* Alternative Mobile */}
-            <TextField
-              name="altMobile"
-              label="Alternative Mobile"
-              variant="outlined"
-              fullWidth
-              size="small"
-              value={formData.altMobile}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneIcon sx={{ color: "#fff" }} />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{
-                mb: 2.5,
-                input: { color: "#fff" },
-                label: { color: "#fff" },
-                fieldset: { borderColor: "#fff" },
-              }}
-            />
-
-            {/* Message */}
-            <TextField
-              name="message"
-              label="Message"
-              variant="outlined"
-              multiline
-              rows={3}
-              fullWidth
-              size="small"
-              value={formData.message}
-              onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" sx={{ alignSelf: "flex-start" }}>
-                    <MessageIcon sx={{ color: "#fff", mt: 1 }} />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{
-                mb: 2.5,
-                input: { color: "#fff" },
-                label: { color: "#fff" },
-                fieldset: { borderColor: "#fff" },
-              }}
-            />
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="outlined"
-              sx={{
-                color: "#fff",
-                borderColor: "#fff",
+                textAlign: "center",
+                mb: 3,
                 mt: 1,
-                "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
+                // color: "#",
+                fontWeight: 700,
+                background: "#ffffffff",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              Submit
-            </Button>
-          </Box>
-        </Paper>
-    )}
-        
-      {/* )} */}
+              Get in Touch
+            </Typography>
+
+            <Box component="form" onSubmit={handleSubmit}>
+              {/* Full Name - Modern Input Styling */}
+              <TextField
+                name="fullName"
+                label="Full Name"
+                variant="outlined"
+                fullWidth
+                size="small"
+                value={formData.fullName}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PersonIcon sx={{ color: "#e81010" }} /> {/* Red icon */}
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  mb: 2.5,
+                  input: { color: "#ffffffff" },
+                  label: { color: "rgba(255, 255, 255, 1)" },
+                  fieldset: {
+                    borderColor: "rgba(255, 255, 255, 1)",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#ffffffff",
+                  },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#f3f3f3ff",
+                  },
+                  
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#ffffffff", 
+                  },
+                }}
+              />
+
+              {/* Mobile Number */}
+              <TextField
+                name="mobile"
+                label="Mobile Number"
+                variant="outlined"
+                fullWidth
+                size="small"
+                value={formData.mobile}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PhoneIcon sx={{ color: "#e81010" }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  mb: 2.5,
+                  input: { color: "#ffffffff" },
+                  label: { color: "rgba(255, 255, 255, 0.8)" },
+                  fieldset: {
+                    borderColor: "rgba(255, 255, 255, 1)",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#ffffffff",
+                  },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#f3f3f3ff",
+                  },
+                  
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#ffffffff", 
+                  },
+                }}
+              />
+
+              {/* Alternative Mobile */}
+              <TextField
+                name="altMobile"
+                label="Alternative Mobile"
+                variant="outlined"
+                fullWidth
+                size="small"
+                value={formData.altMobile}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PhoneIcon sx={{ color: "#e81010" }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  mb: 2.5,
+                  input: { color: "#ffffffff" },
+                  label: { color: "rgba(255, 255, 255, 1)" },
+                  fieldset: {
+                    borderColor: "rgba(255, 255, 255, 1)",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#ffffffff",
+                  },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#f3f3f3ff",
+                  },
+                  
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#ffffffff", 
+                  },
+                }}
+              />
+
+              {/* Message */}
+              <TextField
+                name="message"
+                label="Message"
+                variant="outlined"
+                multiline
+                rows={3}
+                fullWidth
+                size="small"
+                value={formData.message}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={{ alignSelf: "flex-start" }}>
+                      <MessageIcon sx={{ color: "#e81010", mt: 1 }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  mb: 2.5,
+                  input: { color: "#ffffffff" },
+                  label: { color: "rgba(255, 255, 255, 1)" },
+                  fieldset: {
+                    borderColor: "rgba(255, 255, 255, 1)",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#ffffffff",
+                  },
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#ffffffff",
+                  },
+                  
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#ffffffff", 
+                  },
+                }}
+              />
+
+              {/* Modern Submit Button */}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  background: "linear-gradient(135deg, #e81010 0%, #e81010 100%)",
+                  borderRadius: "10px",
+                  py: 1.2,
+                  fontWeight: 600,
+                  textTransform: "none",
+                  "&:hover": {
+                    background: "linear-gradient(135deg, #c81010 0%, #c81010 100%)", // Darker red
+                    transform: "scale(1.02)",
+                  },
+                }}
+              >
+                Send Message
+              </Button>
+            </Box>
+          </Paper>
+        </motion.div>
+      )}
     </>
   );
 };
-
 
 const HeroSectionModern = memo(() => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const buttonStyles = getButtonStyles(theme);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  // Slideshow state for background images
+  const images = [ img2, img3, img4, img5]; // 5 images for slideshow
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Change background every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  // Memoize current background URL
+  const currentBackground = useMemo(
+    () => images[currentImageIndex],
+    [currentImageIndex, images]
+  );
 
   return (
     <Box
       sx={{
         position: "relative",
-        height: { xs: "80svh", md: "90vh" }, // Use svh for mobile
-        backgroundImage: {
-          xs: `linear-gradient(rgba(5, 20, 40, 0.8), rgba(5, 20, 40, 0.8)), url(${img1})`,
-          md: `linear-gradient(rgba(5, 20, 40, 0.74), rgba(5, 20, 40, 0.95)), url(${img1})`,
-        },
+        height: { xs: "80svh", md: "100vh" },
         backgroundSize: "cover",
         backgroundPosition: { xs: "center right", md: "center" },
         backgroundRepeat: "no-repeat",
         color: "#fff",
         display: "flex",
         overflow: "hidden",
-        minHeight: { xs: "600px", sm: "700px" },
+        minHeight: { xs: "600px", sm: "700px", md: "600px" },
       }}
     >
-      <Box sx={{ position: "absolute", zIndex: 0 ,width: '100%',display: { xs: 'block', md: 'flex',justifyContent:'space-evenly'}}}>
+ 
+ <AnimatePresence mode="popLayout">
+  <Box
+    key={currentImageIndex}
+    initial={{ x: "100%", opacity: 0 }}   // slide from right
+    animate={{ x: "10%", opacity: 0 }}     // enter to center
+    exit={{ x: "-100%", opacity: 0 }}     // slide out to left
+    transition={{  ease: "easeInOut" }}
+    style={{
+      position: "absolute",
+      inset: 0,
+      backgroundImage: `url(${currentBackground})`,
+      backgroundRepeat: "no-repeat",
+      backgroundAttachment: "fixed",
+      backgroundBlendMode: "overlay",
+      backdropFilter: " blur(55px)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    {/* DARK OVERLAY (also animated) */}
+    <Box
+     
+      sx={{
+        position: "absolute",
+        inset: 0,
+        backgroundColor: "#00000058", // Semi-transparent black
+      }}
+    />
+  </Box>
+</AnimatePresence>
+
+
+     
+
+      <Box sx={{ position: "absolute", zIndex: 0, width: "100%",mt: { xs: "0vh", md: "10vh" }, display: { xs: "block", md: "flex", justifyContent: "space-evenly" } }}>
         <Box
           sx={{
-            
-            mt: { xs: "8vh", sm: "10vh", md: "15vh" },
+            mt: { xs: "16vh", sm: "10vh", md: "15vh" },
             textAlign: { xs: "center", md: "left" },
             maxWidth: { xs: "100%", md: "50%" },
             px: { xs: 2, sm: 0 },
-            ml: { xs: 0, md: 5},
+            ml: { xs: 0, md: 5 },
           }}
         >
-         {/* Main Heading */}
-<motion.div
-  variants={fadeInUp}
-  initial="initial"
-  animate="animate"
-  transition={{ duration: 0.8, ease: "easeOut" }}
->
-  <Typography
-    variant="h1"
-    sx={{
-      fontWeight: { xs: 600, md: 700 },
-      lineHeight: { xs: 1.1, md: 1.2 },
-      fontSize: {
-        xs: "1.8rem",
-        sm: "2.5rem",
-        md: "3rem",
-        lg: "3.5rem",
-      },
-      mb: { xs: 1.5, md: 2 },
-background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
-      backgroundClip: "text",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      // textShadow: "0 2px 20px rgba(255, 255, 255, 0.3)",
-      filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))",
-    }}
-  >
-    Power That Drives the Future Generations
-  </Typography>
-</motion.div>
+          {/* Main Heading */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: { xs: 600, md: 700 },
+                lineHeight: { xs: 1.1, md: 1.2 },
+                fontSize: {
+                  xs: "1.8rem",
+                  sm: "2.5rem",
+                  md: "3rem",
+                  lg: "3.5rem",
+                },
+                mb: { xs: 1.5, md: 2 },
+                background: "linear-gradient(135deg, #ffffffff 0%, #ffffff 100%)", // Gold-white gradient for visibility on black overlay
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                // filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))", // Subtle glow
+              }}
+            >
+              Power That Drives the Future Generations
+            </Typography>
+          </motion.div>
 
-{/* Subtitle */}
-<motion.div
-  variants={fadeInUp}
-  initial="initial"
-  animate="animate"
-  transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
->
-  <Typography
-    variant="h6"
-    sx={{
-      fontWeight: 500,
-      mb: { xs: 2, md: 4 },
-      fontSize: { xs: "1rem", sm: "1.15rem", md: "1.25rem" },
-      // background: "linear-gradient(135deg, #ffffffff 0%, #34d399 50%, #fbbf24 100%)",
-      background:'white',
-      backgroundClip: "text",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      fontFamily: "'Inter', 'Roboto', sans-serif",
-      letterSpacing: "0.5px",
-      // textShadow: "0 1px 10px rgba(96, 165, 250, 0.3)",
-    }}
-  >
-    Reliable Generators • Smart Energy • Sustainable Solutions
-  </Typography>
-</motion.div>
+          {/* Subtitle */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 500,
+                mb: { xs: 2, md: 4 },
+                fontSize: { xs: "1rem", sm: "1.15rem", md: "1.25rem" },
+                background: "linear-gradient(135deg, #ffffff 0%, #ffffffff 50%, #ffffffff 100%)", // White to red to gold for vibrancy
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontFamily: "'Inter', 'Roboto', sans-serif",
+                letterSpacing: "0.5px",
+              }}
+            >
+              Reliable Generators • Smart Energy • Sustainable Solutions
+            </Typography>
+          </motion.div>
 
-{/* Description */}
-<motion.div
-  variants={fadeInUp}
-  initial="initial"
-  animate="animate"
-  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
->
-  <Typography
-    variant="body1"
-    sx={{
-      lineHeight: 1.7,
-      mb: { xs: 3, sm: 4, md: 5 },
-      fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
-      color: "#f8fafc",
-      maxWidth: { xs: "100%", md: "600px" },
-      fontWeight: 400,
-      textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
-      opacity: 0.95,
-      "& strong": {
-        color: "#71f320ff",
-        fontWeight: 600,
-      },
-    }}
-  >
-    From homes to industries, we deliver <strong>uninterrupted power solutions </strong> 
-    that combine performance, efficiency, and eco-conscious design.  
-     <strong> Empower your business</strong> with the energy of innovation.
-  </Typography>
-</motion.div>
-
+          {/* Description */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                lineHeight: 1.7,
+                mb: { xs: 3, sm: 4, md: 5 },
+                fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
+                color: "#ffffffff",
+                maxWidth: { xs: "100%", md: "600px" },
+                fontWeight: 400,
+                textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
+                opacity: 0.95,
+                "& strong": {
+                  color: "#ffffffff", // Red highlight to match theme
+                  fontWeight: 600,
+                },
+              }}
+            >
+              From homes to industries, we deliver <strong>uninterrupted power solutions</strong>
+              that combine performance, efficiency, and eco-conscious design.
+              <strong> Empower your business</strong> with the energy of innovation.
+            </Typography>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
@@ -396,16 +516,16 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
                 flexDirection: { xs: "column", sm: "row" },
               }}
             >
-              <Button variant="contained" size="large" sx={buttonStyles.primary} onClick={()=> navigate('/Generatorsales/Delearership/Rental')}>
+              <Button variant="contained" size="large" sx={buttonStyles.primary} onClick={() => navigate("/Generatorsales/Delearership/Rental")}>
                 Explore Generators
               </Button>
 
-              <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={()=> navigate('/contact')}>
+              <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={() => navigate("/contact")}>
                 Request Service
               </Button>
 
               {!isMobile && (
-                <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={()=> navigate('/contact')}>
+                <Button variant="outlined" size="large" sx={buttonStyles.outlined} onClick={() => navigate("/contact")}>
                   Request Dealership
                 </Button>
               )}
@@ -421,103 +541,10 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
             )}
           </motion.div>
         </Box>
-        <FloatingForm/>
+        <FloatingForm />
       </Box>
-         
 
-      {/* Eco-friendly badge - Responsive positioning */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          top: isMobile ? 470 : 30,
-          right: isMobile ? 270 : 20,
-          zIndex: 3,
-        }}
-      >
-        <img
-          src={img2}
-          alt="Eco Friendly"
-          style={{
-            width: isMobile ? 120 : isTablet ? 100 : 100,
-            height: isMobile ? 110 : isTablet ? 100 : 200,
-            objectFit: "contain",
-          }}
-          loading="lazy"
-        />
-      </motion.div>
-
-      {/* Hero image - Responsive positioning */}
-      {/* {!isMobile && (
-        <motion.div
-          variants={fadeInScale}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
-          style={{
-            position: "absolute",
-            top: isTablet ? 430 : 280,
-            right: isTablet ? -20 : -60,
-            zIndex: 1,
-          }}
-        >
-          <img
-            src={img3}
-            alt="Generator"
-            style={{
-              width: isTablet ? 800 : 800,
-              height: isTablet ? 520 : 430,
-              objectFit: "contain",
-            }}
-            loading="lazy"
-          />
-        </motion.div>
-      )} */}
      
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        style={{
-          position: "absolute",
-          bottom: isMobile ? 10 : 15,
-          left: "50%",
-          transform: "translateX(-50%)",
-          textAlign: "center",
-          zIndex: 2,
-        }}
-      >
-        <Box
-          sx={{
-            width: isMobile ? 25 : 30,
-            height: isMobile ? 40 : 50,
-            border: "4px solid rgba(254, 29, 33, 1)",
-            borderRadius: 25,
-            margin: "0 auto",
-            position: "relative",
-          }}
-        >
-          <motion.div
-            animate={{ y: [3, 15, 3] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-            style={{
-              width: 5,
-              height: isMobile ? 18 : 16,
-              backgroundColor: "#f6e424ff",
-              borderRadius: 2,
-              position: "absolute",
-              top: 6,
-              left: "43%",
-              transform: "translateX(-50%)",
-              boxShadow: "0 0 8px rgba(0, 255, 0, 0.6)",
-            }}
-          />
-        </Box>
-      </motion.div>
     </Box>
   );
 });
@@ -525,3 +552,16 @@ background: "linear-gradient(135deg, #ffd700 800%, #d24a1dff 10%, #ffffff 70%)",
 HeroSectionModern.displayName = "HeroSectionModern";
 
 export default HeroSectionModern;
+
+
+
+
+
+
+
+
+
+
+
+
+

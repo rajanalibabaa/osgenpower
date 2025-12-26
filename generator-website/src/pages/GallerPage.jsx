@@ -15,6 +15,9 @@ import img4 from "../assets/osgenpower_Kcc35kv.png";
 import img5 from "../assets/osgenpower_kcc512kvimage.png";
 import img6 from "../assets/osgenpower_Kcc1530kvimage.jpeg";
 import img9 from "../assets/gallery/osgenpower_gallery.jpg";
+import ReachUs from "../Components/ReachUs";
+import MissionVisionTabs from "../Components/MisisonVisisnTable";
+import FAQSection from "../Components/FAQSections";
 
 const GalleryPage = () => {
   const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
@@ -71,6 +74,7 @@ const GalleryPage = () => {
   }, [allImages.length]);
 
   return (
+    <>
     <Box sx={{ backgroundColor: "#F9F9F9", py: 6, }}>
       {/* 🔸 Header */}
       <Typography
@@ -78,8 +82,9 @@ const GalleryPage = () => {
         textAlign="center"
         fontWeight="bold"
         sx={{
+          mt: 7,
           mb: 1,
-          background: "#f40",
+          background: "#e81010",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}
@@ -92,7 +97,7 @@ const GalleryPage = () => {
           mx: "auto",
 
           mb: 5,
-          backgroundColor: "#ff6a00ff",
+          backgroundColor: "#e81010",
           height: 3,
           borderRadius: 2,
         }}
@@ -150,8 +155,8 @@ const GalleryPage = () => {
       left: 10,
       transform: "translateY(-50%)",
       color: "white",
-      backgroundColor: "#EF7722",
-      "&:hover": { backgroundColor: "#E62727" },
+      backgroundColor: "#e81010",
+      "&:hover": { backgroundColor: "#e81010" },
     }}
   >
     <ArrowBackIosNewIcon  />
@@ -169,8 +174,8 @@ const GalleryPage = () => {
       right: 10,
       transform: "translateY(-50%)",
       color: "white",
-      backgroundColor: "#EF7722",
-      "&:hover": { backgroundColor: "#E62727" },
+      backgroundColor: "#e81010",
+      "&:hover": { backgroundColor: "#e81010" },
     }}
   >
     <ArrowForwardIosIcon />
@@ -208,11 +213,11 @@ const GalleryPage = () => {
               cursor: "pointer",
               border:
                 index === activeDisplayIndex
-                  ? "3px solid #ff6a00ff"
+                  ? "3px solid #e81010"
                   : "3px solid transparent",
               boxShadow:
                 index === activeDisplayIndex
-                  ? "0 0 10px rgba(255,106,0,0.5)"
+                  ? "0 0 10px rgba(232,16,16,0.5)"
                   : "0 2px 6px rgba(0,0,0,0.2)",
               transition: "all 0.3s ease",
             }}
@@ -311,6 +316,10 @@ const GalleryPage = () => {
         </Box>
       </Dialog>
     </Box>
+    <MissionVisionTabs/>
+    <ReachUs/>
+    <FAQSection/>
+    </>
   );
 };
 

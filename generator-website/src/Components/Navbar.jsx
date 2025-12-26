@@ -86,7 +86,7 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <AppBar position="relative" elevation={6} sx={{ background: "white" }}>
+      <AppBar position="fixed" elevation={6} sx={{ background: "white" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ minHeight: 70, justifyContent: "space-between" }}>
             
