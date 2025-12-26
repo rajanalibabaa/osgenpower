@@ -67,10 +67,10 @@ const ServiceHighlightSection = () => {
 
   // ⭐ Add navigation path for each button
   const serviceButtons = [
-    { text: "Generator Sales", color: "#9e1c60", path: "/Generatorsales/Delearership/Rental" },
-    { text: "Generator Services", color: "#9e1c60", path: "/services/kirloskar" },
-    { text: "Generator Rental", color: "#9e1c60", path: "/services/kirloskar" },
-    { text: "Dealers Support", color: "#9e1c60", path: "/contact" },
+    { text: "Generator Sales", color: "#e81010", path: "/Generatorsales/Delearership/Rental" },
+    { text: "Generator Services", color: "#e81010", path: "/services/kirloskar" },
+    { text: "Generator Rental", color: "#e81010", path: "/services/kirloskar" },
+    { text: "Dealers Support", color: "#e81010", path: "/contact" },
   ];
 
   return (
@@ -196,7 +196,7 @@ const ServiceHighlightSection = () => {
 
     <Box
       sx={{
-        width: 380,
+        width: { xs: "80%", md: "50%" },
         height: 3,
         backgroundColor: "#ff6a00",
       }}
@@ -210,7 +210,7 @@ const ServiceHighlightSection = () => {
                 mb: 3,
                 // color: "#666",
                 lineHeight: 1.8,
-                fontSize: { xs: "1rem", md: "1.1rem" },
+                // fontSize: { xs: "1rem", md: "1.1rem" },
               }}
             >
              We are the Dealer for Kirloskar Green Generators(KGD) & we have an entire range of diesel generators which starts from 5kVA to 1500kVA DG sets. Our generators provide reliable power solutions for businesses of all sizes across various industries.

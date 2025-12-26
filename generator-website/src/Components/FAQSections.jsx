@@ -78,11 +78,10 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Box
       sx={{
-        py: { xs: 1, md: 0 },
-        // background:
-        //   theme.palette.mode === "dark"
-        //     ? "linear-gradient(135deg, #0f0f0f, #1d1d1d)"
-        //     : "linear-gradient(135deg, #fafafa, #ffffff)",
+        // py: { xs: 1, md: 1 },
+        mt: { xs: 17, md: 1 },
+        p: { xs: 4, sm: 4, md: 4 },
+        backgroundColor: "#ffffffff",
       }}
     >
         <MotionBox
@@ -92,23 +91,18 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
           viewport={{ once: true }}
         >
           <Typography
-          variant={isMobile ? "h4" : "h3"}
-          fontWeight="bold"
-          gutterBottom
-          color="#ff4400"
-          sx={{ textAlign: "center" }}
+          variant="h3"
+          sx={{
+            fontWeight: 700,
+            lineHeight: 1.2,
+            mb: 2,
+            fontSize: { xs: "1.8rem", md: "2.5rem" },
+            textAlign: "center",
+          }}
         >
-          Who We Are
+          Frequently Asked Questions
         </Typography>
-            <Box
-      sx={{
-        width: 100,
-        mt:1,
-        height: 3,
-        backgroundColor: "#ff6a00",
-        mx: "auto",
-      }}
-    />
+            
           <Typography
             variant="body1"
             textAlign="center"

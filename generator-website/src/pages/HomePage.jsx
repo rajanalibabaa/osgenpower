@@ -1,6 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { motion } from "framer-motion";
+import ReliablePowerSection from "../Components/ReliableComponents";
+import WhyChooseUs from "../Components/WhyChooseus";
+import ExperienceSection from "../Components/ExperienceSections";
+import MissionVisionTabs from "../Components/MisisonVisisnTable";
+import ReachUs from "../Components/ReachUs";
+import img1 from '../assets/osgenpowerbannerimages.webp';
 // 🧠 Lazy-loaded sections for performance
 const HeroSectionContainer = React.lazy(() => import("../Components/HeroSectionContainer"));
 const SmartTechnology = React.lazy(() => import("../Components/SmartTechnology"));
@@ -21,58 +27,89 @@ const HomePage = () => {
     <>
       {/* ✅ Hero Section */}
       <HeroSectionContainer />
+       {/* <MotionBox
+        variants={sectionFadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      > */}
+              <ReliablePowerSection/>
+
+      {/* </MotionBox> */}
+       {/* <MotionBox
+        variants={sectionFadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      > */}
+{/* <img src={img1} style={{width:"100%",height:"auto"}} alt="" /> */}
+              <WhyChooseUs/>
+
+      {/* </MotionBox> */}
 {/* ✅ Who We Are Section */}
-      <MotionBox
+     
+     
+
+      {/* ✅ Services Provided */}
+      {/* <MotionBox
+        variants={sectionFadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      > */}
+        <WeAreProviding />
+      {/* </MotionBox> */}
+
+       {/* <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-      >
+      > */}
         <WhoWeAre />
-      </MotionBox>
-     
+      {/* </MotionBox> */}
 
-      {/* ✅ Services Provided */}
-      <MotionBox
-        variants={sectionFadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-      >
-        <WeAreProviding />
-      </MotionBox>
-           <MotionBox
+
+           {/* <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
-      >
-        <ServiceHighlightSection />
-      </MotionBox>
-       {/* ✅ Smart Technology */}
-      <MotionBox
+      > */}
+                   <MissionVisionTabs />
+
+      {/* </MotionBox> */}
+      {/* <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-      >
-        <SmartTechnology />
-      </MotionBox>
- {/* ✅ Service Highlights */}
- 
-      
+      > */}
+        <ExperienceSection/>
 
-     
+      {/* </MotionBox> */}
+      
+      {/* <MotionBox
+        variants={sectionFadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      > */}
+        <ReachUs/>
+
+      {/* </MotionBox> */}
+ 
+
 
       {/* ✅ FAQ Section */}
-      <MotionBox
+      {/* <MotionBox
         variants={sectionFadeIn}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-      >
+      > */}
         <FAQSection />
-      </MotionBox>
+      {/* </MotionBox> */}
    </>
   );
 };

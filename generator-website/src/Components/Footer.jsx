@@ -110,7 +110,7 @@ const Footer = () => {
       component="footer"
       sx={{
         position: "relative",
-        backgroundColor: "#1A2A4F",
+        backgroundColor: "#000000ff",
 
         py: { xs: 1, sm: 6, md: 2 },
         width: "100%",
@@ -442,11 +442,17 @@ const Footer = () => {
           Powered by :{" "}
           <a href="https://cholabiz.com/">
             {" "}
-            <img src={logo1} alt="CHOLA BIz" width="50px" />
+            <Typography
+              component="span"
+              color='white'
+              fontWeight={700}
+            >
+              CholaBiz.com
+            </Typography>
           </a>
         </Typography>
 
-        <Divider sx={{ my: 1, borderColor: "rgba(255, 255, 255, 1)" }} />
+        {/* <Divider sx={{ my: 1, borderColor: "rgba(255, 255, 255, 1)" }} />
 
         <Stack
           direction="row"
@@ -474,7 +480,7 @@ const Footer = () => {
               )}
             </React.Fragment>
           ))}
-        </Stack>
+        </Stack> */}
       </Container>
 
       {/* Scroll Button */}
@@ -484,7 +490,7 @@ const Footer = () => {
         aria-label="Scroll button"
         sx={{
           position: "fixed",
-          bottom: 25,
+          bottom: { xs: 65, sm: 200, md: 25, lg: 25 },
           right: 25,
           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           color: "#fff",

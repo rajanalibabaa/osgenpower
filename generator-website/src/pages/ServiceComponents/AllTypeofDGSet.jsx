@@ -54,7 +54,7 @@ const AllTypeofDGSet = () => {
         minHeight: '100vh',
         overflow: 'hidden',
         position: 'relative',
-        py: { xs: 4, sm: 5, md: 8 },
+        py: { xs: 12, sm: 16, md: 11 },
         px: { xs: 1, sm: 2, md: 4 },
       }}
     >
@@ -87,18 +87,28 @@ const AllTypeofDGSet = () => {
           <Box textAlign="center" mb={{ xs: 4, sm: 6, md: 8 }}>
             <Typography
               variant={isSmallMobile ? 'h5' : isMobile ? 'h4' : 'h3'}
-              fontWeight={800}
+              fontWeight='bold'
               sx={{
-                background: '#eb2723',
+                background: '#e81010',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
                 mb: 2,
-                fontSize: { xs: '1.6rem', sm: '2rem', md: '2.8rem' },
+                fontSize: { xs: '1.6rem', sm: '2rem', md: '3.5rem' },
               }}
             >
               Generator Erection Services
             </Typography>
-
+<Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#e81010",
+        mx: "auto",
+      }}
+    />
+          
             <Typography
               variant="body1"
               sx={{
@@ -148,8 +158,8 @@ const AllTypeofDGSet = () => {
                   <SupervisorAccountOutlined
                     sx={{
                       fontSize: { xs: 36, sm: 44 },
-                      color: '#00e676',
-                      background: 'rgba(0, 230, 118, 0.1)',
+                      color: '#e81010',
+                      background: 'rgba(255, 255, 255, 1)',
                       borderRadius: 2,
                       p: 1.5,
                     }}
@@ -168,7 +178,7 @@ const AllTypeofDGSet = () => {
                     <Typography
                       variant="subtitle1"
                       sx={{
-                        color: '#eb2723',
+                        color: '#e81010',
                         fontSize: { xs: '1rem', sm: '1.1rem', md: '0.9rem' },
                       }}
                     >
@@ -234,8 +244,8 @@ animate={{ opacity: 1, x: 0 }}
               justifyContent: 'center',
               fontWeight: 'bold',
               color: '#fff',
-              background: 'linear-gradient(135deg, #00e676, #00bfa5)',
-              boxShadow: '0 0 10px rgba(0,191,165,0.4)',
+              background: 'linear-gradient(135deg, #e81010, #b71c1c)',
+              boxShadow: '0 0 10px rgba(183,28,28,0.4)',
               fontSize: '1rem',
               zIndex: 2,
             }}
@@ -253,7 +263,7 @@ animate={{ opacity: 1, x: 0 }}
                 transform: 'translateX(-50%)',
                 width: 2,
                 height: 70,
-                background: 'linear-gradient(180deg, #00e676, #00bfa5)',
+                background: 'linear-gradient(180deg, #e81010, #b71c1c)',
                 opacity: 0.4,
                 zIndex: 1,
               }}
@@ -272,7 +282,7 @@ animate={{ opacity: 1, x: 0 }}
             transition: 'all 0.3s ease',
             '&:hover': {
               background: 'rgba(255,255,255,0.06)',
-              borderColor: 'rgba(0, 230, 119, 1)',
+              borderColor: 'rgba(232, 16, 16, 1)',
               transform: 'translateY(-2px)',
             },
           }}
@@ -280,7 +290,7 @@ animate={{ opacity: 1, x: 0 }}
           <Typography
             variant="h6"
             sx={{
-              color: '#eb2723',
+              color: '#e81010',
               fontWeight: 600,
               mb: 0.8,
               fontSize: { xs: '1rem', sm: '1.1rem' },

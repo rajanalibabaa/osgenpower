@@ -20,42 +20,12 @@ const AllTurnkeyProject = () => {
       sx={{
         // background: "linear-gradient(135deg, #081a20 0%, #1f4640 100%)", 
         color: "#000000ff",
-        py: { xs: 6, md: 4 },
+        py: { xs: 12, md: 12 },
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* <Box
-        sx={{
-          position: "absolute",
-          width: 400,
-          height: 400,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at center, #00ff99 0%, transparent 70%)",
-          opacity: 0.15, 
-          top: "10%",
-          right: "10%",
-          filter: "blur(120px)",
-        }}
-      /> */}
-       {/* <Box 
-        sx={{
-          position: "absolute",
-          width: 300,
-          height: 300,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at center, #1de9b6 0%, transparent 70%)",
-          opacity: 0.15,
-          bottom: "10%",
-          left: "10%",
-          filter: "blur(100px)",
-          animation: 'pulse 5s infinite alternate', 
-          '@keyframes pulse': {
-            '0%': { transform: 'scale(1)'},
-            '100%': { transform: 'scale(1.1)'},
-          },
-        }}
-      /> */}
+      
 
 
       <Container maxWidth="lg">
@@ -63,10 +33,10 @@ const AllTurnkeyProject = () => {
         <motion.div variants={fadeInUp} initial="initial" animate="animate">
           <Typography
             variant="h3"
-  fontWeight={800}
+  fontWeight='bold'
             textAlign="center"
             sx={{
-              background: "#eb2723",
+              background: "#e81010",
               WebkitBackgroundClip: "text",
               color: "transparent",
               mb: 2,
@@ -74,7 +44,17 @@ const AllTurnkeyProject = () => {
           >
           Turnkey Project Undertaken 
           </Typography>
-
+<Box
+      sx={{
+        width: 270,
+        mt:1,
+        mb: 2,
+        height: 3,
+        backgroundColor: "#e81010",
+        mx: "auto",
+      }}
+    />
+          
           <Typography
             variant="h6"
             textAlign="center"
@@ -116,16 +96,16 @@ const AllTurnkeyProject = () => {
        <Typography
   variant="h4"
   fontWeight={600}
-  sx={{ color: "#4CAF50", mb: 2, whiteSpace: "nowrap" }}
+  sx={{ color: "#e81010", mb: 2, whiteSpace: "nowrap" }}
 >
-  <Box component="span" sx={{ color: "#4CAF50", display: "inline" }}>
+  <Box component="span" sx={{ color: "#e81010", display: "inline" }}>
     TURNKEY 
   </Box>{" "}
   PROJECT
 </Typography>
 
         
-        <Box sx={{ height: 4, width: 60, background: "linear-gradient(90deg, #4CAF50, #009688)", mb: 3, borderRadius: 2 }} />
+        <Box sx={{ height: 4, width: 60, background: "linear-gradient(90deg, #e81010, #b71c1c)", mb: 3, borderRadius: 2 }} />
         
         <Typography variant="body1" sx={{ color: "rgba(0, 0, 0, 0.8)", lineHeight: 1.7, fontSize: "1.05rem" }}>
 Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our generators comply with the latest European Union Environmental Standards for exhaust emissions, fuel efficiency and noise pollution. Each undergo a rigourous and comprehensive safety and load test prior to dispatch to ensure they can deliver a reliable supply of electricity when you need it.        </Typography>
@@ -180,6 +160,7 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
       px: { xs: 2, md: 5 },
       py: { xs: 6, md: 3 },
       position: "relative",
+      backgroundColor: "#000000ff",
       overflow: "hidden",
     }}
   >
@@ -217,7 +198,7 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
             <BoltOutlinedIcon
               sx={{
                 fontSize: 80,
-                color: "#3cf042ff",
+                color: "#e81010ff",
                 // filter: "drop-shadow(0 0 20px rgba(76,175,80,0.5))",
           
               }}
@@ -227,7 +208,7 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
             variant="h4"
             fontWeight={700}
             sx={{
-              background: "linear-gradient(90deg, #000000ff, #000000ff)",
+              background: "white",
               WebkitBackgroundClip: "text",
               color: "transparent",
               letterSpacing: 1,
@@ -240,7 +221,7 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
         <Typography
           variant="subtitle1"
           sx={{
-            color: "rgba(0, 0, 0, 0.7)",
+            color: "rgba(255, 255, 255, 1)",
             fontWeight: 400,
             letterSpacing: 1,
           }}
@@ -254,7 +235,7 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
         <Typography
           variant="body1"
           sx={{
-            color: "rgba(0, 0, 0, 0.9)",
+            color: "rgba(255, 255, 255, 1)",
             fontSize: "1.15rem",
             lineHeight: 1.5,
           }}
@@ -264,12 +245,12 @@ Our hire fleet ranges in size from <strong>10kVA – 1250kVA</strong>. All our g
           <br />
          Summer & winter lead to an average 50-70% loading on the gensets. Considering this practical situation,  <Box
             component="span"
-            sx={{ color: "#4CAF50", fontWeight: 600 }}
+            sx={{ color: "#e81010", fontWeight: 600 }}
           >
             KOEL
           </Box> has extended fuel efficiency optimization from 100%, right up to 50% of rated load. Combination of best-in-class fuel efficiency & <Box
             component="span"
-            sx={{ color: "#4CAF50", fontWeight: 600 }}
+            sx={{ color: "#e81010", fontWeight: 600 }}
           >
            O2E
           </Box> provides a double advantage.
