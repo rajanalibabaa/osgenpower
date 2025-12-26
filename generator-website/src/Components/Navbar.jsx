@@ -224,7 +224,7 @@ const Navbar = () => {
   position="fixed"
   elevation={6}
   sx={{
-    top: 0,
+    top: 150,
     height: 70,
     zIndex: 1200,
   }}
