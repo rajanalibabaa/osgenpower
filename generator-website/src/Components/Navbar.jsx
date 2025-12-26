@@ -88,12 +88,13 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <AppBar position="fixed" elevation={6} sx={{ background: "white", height: 170}}>
+      <AppBar position="fixed" elevation={6} sx={{      display: {xs:"none",md:"flex"},
+ background: "white", height: 140}}>
 <Container
   maxWidth="xl"
   sx={{
     height: "100%",
-    display: "flex",
+      display: {xs:"none",md:"flex"},
     alignItems: "center", 
   }}
 >
@@ -114,7 +115,7 @@ const Navbar = () => {
   sx={{
     position: "relative",
     height: "100%",
-    display: "flex",
+      display: {xs:"none",md:"flex"},
     alignItems: "center",
     zIndex: 1,
 
@@ -146,7 +147,7 @@ const Navbar = () => {
             {/* Desktop Menu */}
 <Box
   sx={{
-    display: "flex",
+    display: {xs:"none",md:"flex"},
     alignItems: "center",
     gap: 3,
   }}
@@ -223,7 +224,7 @@ const Navbar = () => {
   position="fixed"
   elevation={6}
   sx={{
-    top: 120,
+    top: 100,
     height: 70,
     zIndex: 1200,
   }}
@@ -236,7 +237,7 @@ const Navbar = () => {
     height: "100%",
     mx: "auto",
     bgcolor: "#14232d",
-    display: "flex",
+      display: {xs:"none",md:"flex"},
     alignItems: "center",
   }}
 >
@@ -436,11 +437,11 @@ const Navbar = () => {
       showLabels
     >
       <BottomNavigationAction label="Home" value="Home" icon={<HomeIcon />} />
-      <BottomNavigationAction label="About" value="About Us" icon={<InfoIcon />} />
-      <BottomNavigationAction label="Sales" value="Generator Sales / Rental" icon={<StoreIcon />} />
-      <BottomNavigationAction label="Services" value="Generator Services" icon={<BuildIcon />} />
-      <BottomNavigationAction label="Gallery" value="Gallery" icon={<GalleryIcon />} />
-      <BottomNavigationAction label="Contact" value="Contact Us" icon={<ContactIcon />} />
+      <BottomNavigationAction label="Company Profile" value="About Us" icon={<InfoIcon />} />
+      <BottomNavigationAction label="Power Solutions" value="Generator Sales / Rental" icon={<StoreIcon />} />
+      <BottomNavigationAction label="Solar" value="Generator Services" icon={<BuildIcon />} />
+      <BottomNavigationAction label="Products" value="Gallery" icon={<GalleryIcon />} />
+      <BottomNavigationAction label="Reach Us" value="Contact Us" icon={<ContactIcon />} />
     </BottomNavigation>
   </Box>
 )}
