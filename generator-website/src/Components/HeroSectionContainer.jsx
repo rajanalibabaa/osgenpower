@@ -388,9 +388,9 @@ const HeroSectionModern = memo(() => {
                       fontWeight: 500,
                       mb: { xs: 2, md: 3 },
                       fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.4rem" },
-                      color: "rgba(255, 255, 255, 0.9)",
+                      color: "rgba(255, 255, 255, 1)",
                       letterSpacing: "0.5px",
-                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      // textShadow: "0 1px 3px rgba(0,0,0,0.5)",
                     }}
                   >
                     {currentSlideData.subtitle}
@@ -405,10 +405,10 @@ const HeroSectionModern = memo(() => {
                       lineHeight: 1.8,
                       mb: { xs: 4, sm: 5, md: 6 },
                       fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
-                      color: "rgba(255, 255, 255, 0.85)",
+                      color: "rgba(255, 255, 255, 1)",
                       maxWidth: { xs: "100%", md: "600px" },
                       fontWeight: 400,
-                      textShadow: "0 1px 2px rgba(0,0,0,0.5)",
+                      // textShadow: "0 1px 2px rgba(0,0,0,0.5)",
                     }}
                   >
                     {currentSlideData.description}
